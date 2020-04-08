@@ -1,0 +1,53 @@
+<section class="ajaxSection">
+    <div class="title">Ajax</div>
+
+    <div style="margin-bottom: 50px;">
+        <div class="input_con">
+            <span class="placeholder">Id:</span>
+            <input class="typeInput" [(ngModel)]="typeWord.id" />
+        </div>
+        <div class="input_con">
+            <span class="placeholder">Name:</span>
+            <input class="typeInput" [(ngModel)]="typeWord.name" />
+        </div>
+        <div class="input_con">
+            <span class="placeholder">age:</span>
+            <input class="typeInput" [(ngModel)]="typeWord.age" />
+        </div>
+        <div class="input_con">
+            <span class="placeholder">level:</span>
+            <input class="typeInput" [(ngModel)]="typeWord.level" />
+        </div>
+        <button class="button" (click)="addEmp()">submit</button>
+    </div>
+
+
+    <!-- <ul class="arraylist">
+        <li class="item" *ngFor="let item of employeeArray; let num=index">
+            <span>id:{{item.id}}</span>
+            <span>Name:{{item.name}}</span>
+            <span>Position:{{item.age}}</span>
+            <span>level:{{item.level}}</span>
+            <button (click)="delEmp(num)">x</button>
+        </li>
+    </ul> -->
+
+    <table cellspacing="0" class="tableList">
+        <thead>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Position</th>
+            <th>level</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of employeeArray; let num=index">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+                <td>{{item.age}}</td>
+                <td>{{item.level}}</td>
+                <td><button  class="delButton" (click)="delEmp(num)">×</button></td>
+            </tr>
+        </tbody>
+    </table>
+</section>

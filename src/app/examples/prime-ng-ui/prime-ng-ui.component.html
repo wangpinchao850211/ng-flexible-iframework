@@ -1,0 +1,19 @@
+<div>
+    1.radio button
+    <div class="ui-g" style="width:250px;margin-bottom:10px">
+    <p-radioButton name="groupname" value="val1" lable="Option 2" StyleClass="radio-format"></p-radioButton>
+    <p-radioButton name="groupname" value="val1" ></p-radioButton>
+    </div>
+</div>
+
+
+<div class="wrapperList">
+    <p *ngFor="let list of uiComponentList; let i = index;">{{i+1}}.{{list}}</p>
+</div>
+<div class="wrapper">
+    <h3>width属性</h3>
+    <div *ngFor="let i of list;" class="table-wrapper" pTooltip="{{i.tooltip}}" tooltipPosition="top">
+    {{i.tooltip}}
+    </div>
+</div>
+

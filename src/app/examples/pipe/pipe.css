@@ -1,0 +1,44 @@
+.pipe {
+padding-left: 20px;
+}
+
+.markdown-main-content {
+    padding: 30px;
+    background: #FFFFFF;
+   
+}
+.variable-binding {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.iframe-pipe-eg-input {
+    display: block;
+    width: 300px;
+    height: 40px;
+    border-color: cadetblue;
+}
+
+.title {
+    font-size: 16px;
+    color: black;
+}
+
+.for-example {
+    width:400px;
+    background-color: #fff;
+    margin: 0px 0px 10px 10px;
+    padding: 10px;
+}
+
+.impipe-table {
+    width: 31%;
+    border: 1px solid black;
+    background-color: aliceblue;
+    margin-top: 10px;
+}
+
+.impipe {
+    margin-top: 10px;
+}

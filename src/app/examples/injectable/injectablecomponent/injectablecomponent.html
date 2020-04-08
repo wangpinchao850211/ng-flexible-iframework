@@ -1,0 +1,13 @@
+<p>在组件中注入service服务：假设另一个组件也需要详细的信息可以复用</p>
+<p>具体实现步骤:</p><br>
+<p>1.创建一个HeroService.ts</p><br>
+<span>
+    <img  src="/assets/images/injectablefromcomponent1.PNG" alt=""/>
+</span>
+<p>2.把service引入到InjectableFromComponent</p><br>
+<p>3.在构造函数中注入service,并providers</p><br>
+<p>可以实现在组件中直接调用service,</p><br>
+<p>this.heros = this.heroService.getHeros();</p><br>
+<span>
+        <img  src="/assets/images/injectablefromcomponent2.PNG" alt=""/>
+    </span>

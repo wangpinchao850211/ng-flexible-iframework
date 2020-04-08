@@ -1,0 +1,81 @@
+@import '~src/assets/base.scss';
+// scss混合
+@mixin menuBase($menuWidth: $menu-width) {
+    width: $menuWidth;
+    background: $color-grey;
+    position: relative;
+    transition: all .2s;
+    margin-right: 1px;
+}
+
+@mixin mainBase {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: $color-grey-blue;
+}
+
+.container-layout {
+    display: flex;
+    min-height: $full-height;
+    overflow-x: hidden;
+    .asild-menu {
+        @include menuBase();
+        .menu {
+            width: $full-width;
+        }
+    }
+    .fold-asild-menu {
+        @include menuBase($fold-menu-width);
+        .menu-mini {
+            width: $full-width;
+            margin-top: .5rem;
+        }
+    }
+    .fold {
+        // 折叠按钮
+        position: absolute;
+        right: 5%;
+        bottom: .5rem;
+        width: .3rem;
+        height: .3rem;
+        cursor: pointer;
+        img {
+            position: absolute;
+            top: 0;
+            width: $full-width;
+            height: $full-height;
+        }
+    }
+    .title {
+        font-size: .25rem;
+        line-height: .5rem;
+        color: $color-black;
+        text-align: center;
+    }
+    .main {
+        @include mainBase;
+        @at-root .main-content {
+            // 主要内容区 (跳出选择器嵌套)
+            flex: 1;
+            background: $color-mask;
+        }
+    }
+    .fold-main {
+        @include mainBase;
+    }
+    .main-footer {
+        height: .5rem;
+        background: $color-grey;
+    }
+    .main-header{
+        height: .5rem;
+        background: $color-grey;
+    }
+    .tab-bar-wrapper{
+        width: 100%;
+        height: .6rem;
+        overflow-x: hidden;
+        background: white;
+    }
+}

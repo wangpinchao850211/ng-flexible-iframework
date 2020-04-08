@@ -1,0 +1,80 @@
+<div class="pipe">
+    <div class="variable-binding">
+        下面是三个自定义的pipe:
+        <br>
+        1. 通过管道转换UTC时间
+        <br>
+        <b>Note:</b>
+        type是-8,表示显示向前8小时的时间，如果type是24，表示显示明天的日期，可以通过改变type的数，显示任意的时间
+        <br>
+        <img src="../../../assets/images/pipe2.PNG" alt="">
+        <br>
+        //<b>output:</b> {{ CreateDttm | utcDate:(value || -8) | date:"medium"}}
+        <br>
+        2. 根据选的百分比不同，通过管道里的算法计算rate
+        <br>
+        <p style="font-weight: bold">For Example:<p>
+                <br>
+                <div class="for-example">
+                    <div>
+                        <label class="title">Tax Rate:</label>
+                        <select [value]="taxRate || 0" (change)="taxRate = $event.target.value"
+                            class="iframe-pipe-eg-input">
+                            <option value="0">None</option>
+                            <option value="10">10%</option>
+                            <option value="20">20%</option>
+                            <option value="50">50%</option>
+                        </select>
+                    </div>
+                    <div style="background-color: seagreen; width: 200px; margin: 10px;">运算结果：
+                        {{100 | addTax:(taxRate || 0) | currency:"USD":true}}</div>
+                </div>
+                <br>
+                具体代码：
+                <br>
+                <img src="../../../assets/images/pipe.PNG" alt="">
+                <br>
+                用法：把pipe放在module里，然后引这个module到组件中
+                <br>
+                结合自定义的管道和angular内置管道，自定义pipe的输出作为内置pipe的输入：
+                <br>
+                <img src="../../../assets/images/pipe1.PNG" alt="">
+    </div>
+    <div class="variable-binding">
+        <br>
+        3. 自定义<span style="font-weight: bold">impure</span>管道：功能是根据catogory去filter产品
+        <br>
+        <div class="impipe">
+            <div>
+                <label class="title">Category Filter:</label>
+                <select [(ngModel)]="categoryFilter" class="iframe-pipe-eg-input">
+                    <option>pet</option>
+                    <option>tool</option>
+                </select>
+            </div>
+            <table class="impipe-table">
+                <tr>
+                    <th>sequence</th>
+                    <th>name</th>
+                    <th>category</th>
+                </tr>
+                <tr *ngFor="let item of products | filter:categoryFilter; let i = index;">
+                    <td>{{item.id}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.category}}</td>
+                </tr>
+            </table>
+            <br>
+                <img src="../../../assets/images/pipe3.PNG" alt="">
+        </div>
+    </div>
+    <div class="variable-binding">
+        note: <br>
+        pure pipe: Angular检测到变更时transfer数据，但无法在增加，编辑删除数组元素的情况下使用纯管道方法。<br>
+        impure pipe: 处理数组元素发生变更的数组内容。要谨慎使用非纯管道对一个数组进行排序，会严重影响Angular应用程序的性能
+    </div>
+
+    <section class="markdown-main-content">
+        <markdown class="variable-binding" [data]="md"></markdown>
+    </section>
+</div>

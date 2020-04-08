@@ -1,0 +1,1917 @@
+{
+    "RequestId": "60582864-b933-4d13-b048-752d4d7a8947",
+    "QuestionnaireId": "4a78a752-effb-4c9b-b467-c10853556b64",
+    "QuestionnaireNm": "Accenture BDA Questionnaire",
+    "QuestionnaireDesc": "Questionnaire",
+    "Sections": [
+        {
+            "Section": {
+                "SectionId": "5dcb31ae-41aa-44eb-87fd-0492c11e0336",
+                "SectionDesc": "Data Source 1",
+                "SectionNo": null,
+                "Repeatable": false,
+                "SectionIdentifier": null,
+                "ToolTip": "",
+                "Sections": [],
+                "Rows": [
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Layout": "02-01-12",
+                                    "QuestionVisibility": "E",
+                                    "Question": {
+                                        "QuestionId": "0cb7e65f-99ec-4927-abf0-677185b67f04",
+                                        "QuestionDesc": "Please provide your EID.",
+                                        "QuestionTypeId": 14,
+                                        "QuestionNo": 1,
+                                        "QuestionIdentifier": "sponserPeoplePicker",
+                                        "Tooltip": null,
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "\\S"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "",
+                                                    "OptionId": "ae561524-f193-4a50-8dd8-ab830e5d3bd0",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "T09493.ECH.001@ds.dev.accenture.com",
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "",
+                                                    "OptionId": "7a8fb223-3c45-4094-95d3-0285e1fb9f58",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseId": "7a045da2-54c0-4cac-8d5b-d49542e9e0f6",
+                                                    "ResponseTxt": "T09493.ECH.001",
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": []
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    },
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Question": {
+                                        "QuestionId": "0cb7e65f-99ec-4927-abf0-677185b67f04",
+                                        "QuestionDesc": "Please input the Start Date.",
+                                        "QuestionTypeId": 1,
+                                        "Layout": "02-01-12",
+                                        "QuestionNo": 2,
+                                        "QuestionIdentifier": "",
+                                        "Tooltip": null,
+                                        "QuestionVisibility": "E",
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "\\S"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "",
+                                                    "OptionId": "ae561524-f193-4a50-8dd8-ab830e5d3bd0",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": []
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    },
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Question": {
+                                        "QuestionId": "ea5822e7-3cf6-4769-927b-f265cb440fd0",
+                                        "QuestionDesc": "How much is the cost?",
+                                        "QuestionTypeId": 2,
+                                        "Layout": "01-01-12",
+                                        "QuestionNo": "3",
+                                        "QuestionIdentifier": "ProjectedAnnualCompensation",
+                                        "Tooltip": null,
+                                        "QuestionVisibility": "E",
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "\\S"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "$0 USD",
+                                                    "OptionId": "c8fa65da-03f1-4579-87d5-69cfbca7fcd5",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "$50 USD",
+                                                    "OptionId": "f3ccf10e-5036-4a0a-a249-6b25d9fe300c",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "$100 USD",
+                                                    "OptionId": "1c6a7622-f322-4bc8-887c-ae2e36c9d3e5",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "$150 USD",
+                                                    "OptionId": "709b5053-6af3-4541-8304-5111a72eb52e",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "$200 USD",
+                                                    "OptionId": "12ffb9ad-78a3-4276-99a1-f1be4bb2dd67",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "$250 USD",
+                                                    "OptionId": "dc5f53a5-b4c7-4b4e-a4cd-8719659e6627",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "Greater than $250 USD",
+                                                    "OptionId": "56536fe4-133e-4830-84a0-0db5871b32d9",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": []
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    },
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Question": {
+                                        "QuestionId": "2192f364-8e4d-42d2-84b8-911c472a6cfd",
+                                        "QuestionDesc": "Is the data ready?",
+                                        "QuestionTypeId": 8,
+                                        "Layout": "04-01-12",
+                                        "QuestionNo": "4",
+                                        "QuestionIdentifier": null,
+                                        "Tooltip": "Only individual persons who will be engaged directly should select \"Individual.\"  \"Company\" includes all of the following: sole proprietorship, government agency, non-profit organization, partnership, private corporation, publicly traded corporation, organization partly or wholly owned by a government, government-controlled or affiliated organization, etc.",
+                                        "QuestionVisibility": "E",
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "\\S"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "Yes",
+                                                    "OptionId": "94e37316-21d8-46f8-805e-8db896e37af7",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "No",
+                                                    "OptionId": "008df817-6b2f-45d5-a199-2d6b27c43a75",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": []
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    },
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Question": {
+                                        "QuestionId": "3030c089-53c0-447c-b2f5-2f2fc3550c53",
+                                        "QuestionDesc": "Please provide the reasons.",
+                                        "QuestionTypeId": 6,
+                                        "Layout": "07-01-12",
+                                        "QuestionNo": "5",
+                                        "QuestionIdentifier": "ExpectedDurationOfContract",
+                                        "Tooltip": null,
+                                        "QuestionVisibility": "E",
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "\\S"
+                                            },
+                                            {
+                                                "ValidationTypeId": 1,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "^[\\s\\S]{0,5000}$"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "",
+                                                    "OptionId": "3c9d613c-1382-4eb1-bf42-95bf896a39b6",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": [
+                                            {
+                                                "DependencyTypeId": 1,
+                                                "DependencySource": [
+                                                    {
+                                                        "SourceQuestionId": "2192f364-8e4d-42d2-84b8-911c472a6cfd",
+                                                        "OptionId": "008df817-6b2f-45d5-a199-2d6b27c43a75"
+                                                    }
+                                                ],
+                                                "FrontFormula": "obj[0].Section.Rows[3].Cols[0].Question.Question.OptionResponses[1].OptionResponse.ResponseTxt == 'true'"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    },
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Question": {
+                                        "QuestionId": "6933aeac-0b9b-41a8-a391-1f2b22820810",
+                                        "QuestionDesc": "This could include, but is not limited to, the following (check any boxes that apply):",
+                                        "QuestionTypeId": 7,
+                                        "Layout": "02-01-12",
+                                        "QuestionNo": 6,
+                                        "QuestionIdentifier": null,
+                                        "Tooltip": null,
+                                        "QuestionVisibility": "E",
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "\\S"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "A potential conflict of interest",
+                                                    "OptionId": "6aae8c6c-e7e5-406c-8afe-0baceb1c3bbf",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": "A conflict of interest could include when  an executive, Board member, or key employee of the Business Development Agent, or their family member, is an Accenture employee, public official or  commercial client who might influence Accenture business.",
+                                                    "ResponseTxt": "",
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "Any history of providing inaccurate or incomplete information",
+                                                    "OptionId": "13e0f4d0-684e-470a-98bf-a1176d6ecc88",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "",
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "Ambivalence toward or a general disregard for regulatory requirements, particularly as those requirements relate to bribery",
+                                                    "OptionId": "9cd6ad2f-b2f1-472b-aa8f-e21c629ca423",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "",
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "Links to organized crime or otherwise disreputable groups",
+                                                    "OptionId": "8e0c3575-6e57-47c8-82b1-e3bc329d257a",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "",
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "History of criminal or civil litigation and/or regulatory enforcement actions",
+                                                    "OptionId": "91b30624-652c-4c96-b914-4304d884b3ef",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "",
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "Any other information suggesting that the Business Development Agent will not comply with law in connection with the services being performed for Accenture",
+                                                    "OptionId": "af216255-45c6-4f5e-b259-a3abb437e2ae",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "",
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": []
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    },
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Question": {
+                                        "QuestionId": "0aad3090-02ff-4269-a348-11519ede9c65",
+                                        "QuestionDesc": "<b>Intermediary Name</b><br>Legal Name of Business Development Agent, Company or Individual",
+                                        "QuestionTypeId": 4,
+                                        "Layout": "04-01-12",
+                                        "QuestionNo": 7,
+                                        "QuestionIdentifier": "CaseName",
+                                        "Tooltip": null,
+                                        "QuestionVisibility": "E",
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 1,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "The length must less than 50",
+                                                "FrontFormula": "^[\\s\\S]{0,50}$"
+                                            },
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "Required",
+                                                "FrontFormula": "\\S"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "",
+                                                    "OptionId": "f98a030f-d718-435e-ae03-b69fc4182f7d",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "test9261043",
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": []
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    },
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Question": {
+                                        "QuestionId": "79ed493c-3702-41e5-98ec-5d34a745e5d0",
+                                        "QuestionDesc": "Deployed to Entity (DTE)",
+                                        "QuestionTypeId": 22,
+                                        "Layout": "05-01-12",
+                                        "QuestionNo": 8,
+                                        "QuestionIdentifier": "OGs",
+                                        "Tooltip": null,
+                                        "QuestionVisibility": "E",
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "\\S"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "",
+                                                    "OptionId": "1ea5ec57-8668-4317-9b52-ae5fddae710b",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "|||AIXXX0XXX",
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "",
+                                                    "OptionId": "9f2a04a2-372d-4f87-957f-db3434a2f355",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "|||Accenture Applied Intelligence",
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": []
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    }
+                ],
+                "SectionValidStatus": false
+            }
+        },
+        {
+            "Section": {
+                "SectionId": "5dcb31ae-41aa-44eb-87fd-0492c11e0311",
+                "SectionDesc": "Data Source 2",
+                "SectionNo": null,
+                "Repeatable": false,
+                "SectionIdentifier": null,
+                "ToolTip": "",
+                "Sections": [],
+                "Rows": [
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Question": {
+                                        "QuestionId": "6933aeac-0b9b-41a8-a391-1f2b22820811",
+                                        "QuestionDesc": "This could include, but is not limited to, the following (check any boxes that apply):",
+                                        "QuestionTypeId": 7,
+                                        "Layout": "02-01-12",
+                                        "QuestionNo": 1,
+                                        "QuestionIdentifier": null,
+                                        "Tooltip": null,
+                                        "QuestionVisibility": "E",
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "\\S"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "A potential conflict of interest",
+                                                    "OptionId": "6aae8c6c-e7e5-406c-8afe-0baceb1c3b11",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": "A conflict of interest could include when  an executive, Board member, or key employee of the Business Development Agent, or their family member, is an Accenture employee, public official or  commercial client who might influence Accenture business.",
+                                                    "ResponseTxt": "",
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "Any history of providing inaccurate or incomplete information",
+                                                    "OptionId": "13e0f4d0-684e-470a-98bf-a1176d6ecc11",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "",
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "Ambivalence toward or a general disregard for regulatory requirements, particularly as those requirements relate to bribery",
+                                                    "OptionId": "9cd6ad2f-b2f1-472b-aa8f-e21c629ca411",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "",
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "Links to organized crime or otherwise disreputable groups",
+                                                    "OptionId": "8e0c3575-6e57-47c8-82b1-e3bc329d2511",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "",
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "History of criminal or civil litigation and/or regulatory enforcement actions",
+                                                    "OptionId": "91b30624-652c-4c96-b914-4304d884b311",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "",
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "Any other information suggesting that the Business Development Agent will not comply with law in connection with the services being performed for Accenture",
+                                                    "OptionId": "af216255-45c6-4f5e-b259-a3abb437e211",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "",
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": []
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    },
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Question": {
+                                        "QuestionId": "0cb7e65f-99ec-4927-abf0-677185b67f11",
+                                        "QuestionDesc": "Please provide your EID.",
+                                        "QuestionTypeId": 14,
+                                        "Layout": "02-01-12",
+                                        "QuestionNo": 2,
+                                        "QuestionIdentifier": "sponserPeoplePicker",
+                                        "Tooltip": null,
+                                        "QuestionVisibility": "E",
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "\\S"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "",
+                                                    "OptionId": "ae561524-f193-4a50-8dd8-ab830e5d3b11",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "",
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "",
+                                                    "OptionId": "7a8fb223-3c45-4094-95d3-0285e1fb9f11",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "",
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": []
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    },
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Question": {
+                                        "QuestionId": "ea5822e7-3cf6-4769-927b-f265cb440f11",
+                                        "QuestionDesc": "How much is the cost?",
+                                        "QuestionTypeId": 2,
+                                        "Layout": "01-01-12",
+                                        "QuestionNo": "3",
+                                        "QuestionIdentifier": "ProjectedAnnualCompensation",
+                                        "Tooltip": null,
+                                        "QuestionVisibility": "E",
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "\\S"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "$0 USD",
+                                                    "OptionId": "c8fa65da-03f1-4579-87d5-69cfbca7fc11",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "$50 USD",
+                                                    "OptionId": "f3ccf10e-5036-4a0a-a249-6b25d9fe3011",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "$100 USD",
+                                                    "OptionId": "1c6a7622-f322-4bc8-887c-ae2e36c9d311",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "$150 USD",
+                                                    "OptionId": "709b5053-6af3-4541-8304-5111a72eb511",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "$200 USD",
+                                                    "OptionId": "12ffb9ad-78a3-4276-99a1-f1be4bb2dd11",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "$250 USD",
+                                                    "OptionId": "dc5f53a5-b4c7-4b4e-a4cd-8719659e6611",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "Greater than $250 USD",
+                                                    "OptionId": "56536fe4-133e-4830-84a0-0db5871b3211",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": []
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    },
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Question": {
+                                        "QuestionId": "2192f364-8e4d-42d2-84b8-911c472a6c11",
+                                        "QuestionDesc": "Is the data ready?",
+                                        "QuestionTypeId": 8,
+                                        "Layout": "04-01-12",
+                                        "QuestionNo": "4",
+                                        "QuestionIdentifier": null,
+                                        "Tooltip": "Only individual persons who will be engaged directly should select \"Individual.\"  \"Company\" includes all of the following: sole proprietorship, government agency, non-profit organization, partnership, private corporation, publicly traded corporation, organization partly or wholly owned by a government, government-controlled or affiliated organization, etc.",
+                                        "QuestionVisibility": "E",
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "\\S"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "Yes",
+                                                    "OptionId": "94e37316-21d8-46f8-805e-8db896e37a11",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "No",
+                                                    "OptionId": "008df817-6b2f-45d5-a199-2d6b27c43a11",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": []
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    },
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Question": {
+                                        "QuestionId": "3030c089-53c0-447c-b2f5-2f2fc3550c11",
+                                        "QuestionDesc": "Please provide the reasons.",
+                                        "QuestionTypeId": 6,
+                                        "Layout": "07-01-12",
+                                        "QuestionNo": "5",
+                                        "QuestionIdentifier": "ExpectedDurationOfContract",
+                                        "Tooltip": null,
+                                        "QuestionVisibility": "E",
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "\\S"
+                                            },
+                                            {
+                                                "ValidationTypeId": 1,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "^[\\s\\S]{0,5000}$"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "",
+                                                    "OptionId": "3c9d613c-1382-4eb1-bf42-95bf896a3911",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": [
+                                            {
+                                                "DependencyTypeId": 1,
+                                                "DependencySource": [
+                                                    {
+                                                        "SourceQuestionId": "2192f364-8e4d-42d2-84b8-911c472a6c11",
+                                                        "OptionId": "008df817-6b2f-45d5-a199-2d6b27c43a11"
+                                                    }
+                                                ],
+                                                "FrontFormula": "obj[1].Section.Rows[3].Cols[0].Question.Question.OptionResponses[1].OptionResponse.ResponseTxt == 'true'"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    },
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Question": {
+                                        "QuestionId": "0aad3090-02ff-4269-a348-11519ede9c11",
+                                        "QuestionDesc": "<b>Intermediary Name</b><br>Legal Name of Business Development Agent, Company or Individual",
+                                        "QuestionTypeId": 4,
+                                        "Layout": "04-01-12",
+                                        "QuestionNo": 6,
+                                        "QuestionIdentifier": "CaseName",
+                                        "Tooltip": null,
+                                        "QuestionVisibility": "E",
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 1,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "^[\\s\\S]{0,50}$"
+                                            },
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "\\S"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "",
+                                                    "OptionId": "f98a030f-d718-435e-ae03-b69fc4182f11",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "test9261043",
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": [
+                                            {
+                                                "DependencyTypeId": 1,
+                                                "DependencySource": [
+                                                    {
+                                                        "SourceQuestionId": "2192f364-8e4d-42d2-84b8-911c472a6c11",
+                                                        "OptionId": "008df817-6b2f-45d5-a199-2d6b27c43a11"
+                                                    }
+                                                ],
+                                                "FrontFormula": "obj[1].Section.Rows[3].Cols[0].Question.Question.OptionResponses[1].OptionResponse.ResponseTxt == 'true'"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    },
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Question": {
+                                        "QuestionId": "79ed493c-3702-41e5-98ec-5d34a745e511",
+                                        "QuestionDesc": "Deployed to Entity (DTE)",
+                                        "QuestionTypeId": 22,
+                                        "Layout": "05-01-12",
+                                        "QuestionNo": 7,
+                                        "QuestionIdentifier": "OGs",
+                                        "Tooltip": null,
+                                        "QuestionVisibility": "E",
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "\\S"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "",
+                                                    "OptionId": "1ea5ec57-8668-4317-9b52-ae5fddae7111",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "",
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "",
+                                                    "OptionId": "9f2a04a2-372d-4f87-957f-db3434a2f311",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "",
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": []
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    }
+                ],
+                "SectionValidStatus": false
+            }
+        },
+        {
+            "Section": {
+                "SectionId": "5dcb31ae-41aa-44eb-87fd-0492c11e0312",
+                "SectionDesc": "Data Source 3",
+                "SectionNo": null,
+                "Repeatable": false,
+                "SectionIdentifier": null,
+                "ToolTip": "",
+                "Sections": [],
+                "Rows": [
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Question": {
+                                        "QuestionId": "79ed493c-3702-41e5-98ec-5d34a745e512",
+                                        "QuestionDesc": "Deployed to Entity (DTE)",
+                                        "QuestionTypeId": 22,
+                                        "Layout": "05-01-12",
+                                        "QuestionNo": 1,
+                                        "QuestionIdentifier": "OGs",
+                                        "Tooltip": null,
+                                        "QuestionVisibility": "E",
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "\\S"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "",
+                                                    "OptionId": "1ea5ec57-8668-4317-9b52-ae5fddae7112",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "|||AIXXX0XXX",
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "",
+                                                    "OptionId": "9f2a04a2-372d-4f87-957f-db3434a2f312",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "|||Accenture Applied Intelligence",
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": []
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    },
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Question": {
+                                        "QuestionId": "ea5822e7-3cf6-4769-927b-f265cb440f12",
+                                        "QuestionDesc": "How much is the cost?",
+                                        "QuestionTypeId": 2,
+                                        "Layout": "01-01-12",
+                                        "QuestionNo": "2",
+                                        "QuestionIdentifier": "ProjectedAnnualCompensation",
+                                        "Tooltip": null,
+                                        "QuestionVisibility": "E",
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "\\S"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "$0 USD",
+                                                    "OptionId": "c8fa65da-03f1-4579-87d5-69cfbca7fc12",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "$50 USD",
+                                                    "OptionId": "f3ccf10e-5036-4a0a-a249-6b25d9fe3012",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "$100 USD",
+                                                    "OptionId": "1c6a7622-f322-4bc8-887c-ae2e36c9d312",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "$150 USD",
+                                                    "OptionId": "709b5053-6af3-4541-8304-5111a72eb512",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "$200 USD",
+                                                    "OptionId": "12ffb9ad-78a3-4276-99a1-f1be4bb2dd12",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "$250 USD",
+                                                    "OptionId": "dc5f53a5-b4c7-4b4e-a4cd-8719659e6612",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "Greater than $250 USD",
+                                                    "OptionId": "56536fe4-133e-4830-84a0-0db5871b3212",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": []
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    },
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Question": {
+                                        "QuestionId": "2192f364-8e4d-42d2-84b8-911c472a6c12",
+                                        "QuestionDesc": "Is the data ready?",
+                                        "QuestionTypeId": 8,
+                                        "Layout": "04-01-12",
+                                        "QuestionNo": "3",
+                                        "QuestionIdentifier": null,
+                                        "Tooltip": "Only individual persons who will be engaged directly should select \"Individual.\"  \"Company\" includes all of the following: sole proprietorship, government agency, non-profit organization, partnership, private corporation, publicly traded corporation, organization partly or wholly owned by a government, government-controlled or affiliated organization, etc.",
+                                        "QuestionVisibility": "E",
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "\\S"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "Yes",
+                                                    "OptionId": "94e37316-21d8-46f8-805e-8db896e37a12",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "No",
+                                                    "OptionId": "008df817-6b2f-45d5-a199-2d6b27c43a12",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": []
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    },
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Question": {
+                                        "QuestionId": "3030c089-53c0-447c-b2f5-2f2fc3550c12",
+                                        "QuestionDesc": "Please provide the reasons.",
+                                        "QuestionTypeId": 6,
+                                        "Layout": "07-01-12",
+                                        "QuestionNo": "4",
+                                        "QuestionIdentifier": "ExpectedDurationOfContract",
+                                        "Tooltip": null,
+                                        "QuestionVisibility": "E",
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "\\S"
+                                            },
+                                            {
+                                                "ValidationTypeId": 1,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "^[\\s\\S]{0,5000}$"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "",
+                                                    "OptionId": "3c9d613c-1382-4eb1-bf42-95bf896a3912",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": [
+                                            {
+                                                "DependencyTypeId": 1,
+                                                "DependencySource": [
+                                                    {
+                                                        "SourceQuestionId": "2192f364-8e4d-42d2-84b8-911c472a6c12",
+                                                        "OptionId": "008df817-6b2f-45d5-a199-2d6b27c43a12"
+                                                    }
+                                                ],
+                                                "FrontFormula": "obj[2].Section.Rows[2].Cols[0].Question.Question.OptionResponses[1].OptionResponse.ResponseTxt == 'true'"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    },
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Question": {
+                                        "QuestionId": "6933aeac-0b9b-41a8-a391-1f2b22820812",
+                                        "QuestionDesc": "This could include, but is not limited to, the following (check any boxes that apply):",
+                                        "QuestionTypeId": 7,
+                                        "Layout": "02-01-12",
+                                        "QuestionNo": 5,
+                                        "QuestionIdentifier": null,
+                                        "Tooltip": null,
+                                        "QuestionVisibility": "E",
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "\\S"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "A potential conflict of interest",
+                                                    "OptionId": "6aae8c6c-e7e5-406c-8afe-0baceb1c3b12",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": "A conflict of interest could include when  an executive, Board member, or key employee of the Business Development Agent, or their family member, is an Accenture employee, public official or  commercial client who might influence Accenture business.",
+                                                    "ResponseTxt": "",
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "Any history of providing inaccurate or incomplete information",
+                                                    "OptionId": "13e0f4d0-684e-470a-98bf-a1176d6ecc12",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "",
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "Ambivalence toward or a general disregard for regulatory requirements, particularly as those requirements relate to bribery",
+                                                    "OptionId": "9cd6ad2f-b2f1-472b-aa8f-e21c629ca412",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "",
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "Links to organized crime or otherwise disreputable groups",
+                                                    "OptionId": "8e0c3575-6e57-47c8-82b1-e3bc329d2512",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "",
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "History of criminal or civil litigation and/or regulatory enforcement actions",
+                                                    "OptionId": "91b30624-652c-4c96-b914-4304d884b312",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "",
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "Any other information suggesting that the Business Development Agent will not comply with law in connection with the services being performed for Accenture",
+                                                    "OptionId": "af216255-45c6-4f5e-b259-a3abb437e212",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "",
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": []
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    },
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Question": {
+                                        "QuestionId": "0aad3090-02ff-4269-a348-11519ede9c12",
+                                        "QuestionDesc": "<b>Intermediary Name</b><br>Legal Name of Business Development Agent, Company or Individual",
+                                        "QuestionTypeId": 4,
+                                        "Layout": "04-01-12",
+                                        "QuestionNo": 6,
+                                        "QuestionIdentifier": "CaseName",
+                                        "Tooltip": null,
+                                        "QuestionVisibility": "E",
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 1,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "^[\\s\\S]{0,50}$"
+                                            },
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "\\S"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "",
+                                                    "OptionId": "f98a030f-d718-435e-ae03-b69fc4182f12",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "test9261043",
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": []
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    },
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Question": {
+                                        "QuestionId": "0cb7e65f-99ec-4927-abf0-677185b67f12",
+                                        "QuestionDesc": "Please provide your EID.",
+                                        "QuestionTypeId": 14,
+                                        "Layout": "02-01-12",
+                                        "QuestionNo": 7,
+                                        "QuestionIdentifier": "sponserPeoplePicker",
+                                        "Tooltip": null,
+                                        "QuestionVisibility": "E",
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "\\S"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "",
+                                                    "OptionId": "ae561524-f193-4a50-8dd8-ab830e5d3b12",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "T09493.ECH.001@ds.dev.accenture.com",
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "",
+                                                    "OptionId": "7a8fb223-3c45-4094-95d3-0285e1fb9f12",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "T09493.ECH.001",
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": []
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    }
+                ],
+                "SectionValidStatus": false
+            }
+        },
+        {
+            "Section": {
+                "SectionId": "5dcb31ae-41aa-44eb-87fd-0492c11e0336",
+                "SectionDesc": "Data Source 4",
+                "SectionNo": null,
+                "Repeatable": false,
+                "SectionIdentifier": null,
+                "ToolTip": "",
+                "Sections": [],
+                "Rows": [
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Question": {
+                                        "QuestionId": "0cb7e65f-99ec-4927-abf0-677185b67f04",
+                                        "QuestionDesc": "Please provide your EID.",
+                                        "QuestionTypeId": 14,
+                                        "Layout": "02-01-12",
+                                        "QuestionNo": 1,
+                                        "QuestionIdentifier": "sponserPeoplePicker",
+                                        "Tooltip": null,
+                                        "QuestionVisibility": "E",
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "\\S"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "",
+                                                    "OptionId": "ae561524-f193-4a50-8dd8-ab830e5d3bd0",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "T09493.ECH.001@ds.dev.accenture.com",
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "",
+                                                    "OptionId": "7a8fb223-3c45-4094-95d3-0285e1fb9f58",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "T09493.ECH.001",
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": []
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    },
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Question": {
+                                        "QuestionId": "ea5822e7-3cf6-4769-927b-f265cb440fd0",
+                                        "QuestionDesc": "How much is the cost?",
+                                        "QuestionTypeId": 2,
+                                        "Layout": "01-01-12",
+                                        "QuestionNo": "3",
+                                        "QuestionIdentifier": "ProjectedAnnualCompensation",
+                                        "Tooltip": null,
+                                        "QuestionVisibility": "E",
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "\\S"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "$0 USD",
+                                                    "OptionId": "c8fa65da-03f1-4579-87d5-69cfbca7fcd5",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "$50 USD",
+                                                    "OptionId": "f3ccf10e-5036-4a0a-a249-6b25d9fe300c",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "$100 USD",
+                                                    "OptionId": "1c6a7622-f322-4bc8-887c-ae2e36c9d3e5",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "$150 USD",
+                                                    "OptionId": "709b5053-6af3-4541-8304-5111a72eb52e",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "$200 USD",
+                                                    "OptionId": "12ffb9ad-78a3-4276-99a1-f1be4bb2dd67",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "$250 USD",
+                                                    "OptionId": "dc5f53a5-b4c7-4b4e-a4cd-8719659e6627",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "Greater than $250 USD",
+                                                    "OptionId": "56536fe4-133e-4830-84a0-0db5871b32d9",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": []
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    },
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Question": {
+                                        "QuestionId": "2192f364-8e4d-42d2-84b8-911c472a6cfd",
+                                        "QuestionDesc": "Is the data ready?",
+                                        "QuestionTypeId": 8,
+                                        "Layout": "04-01-12",
+                                        "QuestionNo": "4",
+                                        "QuestionIdentifier": null,
+                                        "Tooltip": "Only individual persons who will be engaged directly should select \"Individual.\"  \"Company\" includes all of the following: sole proprietorship, government agency, non-profit organization, partnership, private corporation, publicly traded corporation, organization partly or wholly owned by a government, government-controlled or affiliated organization, etc.",
+                                        "QuestionVisibility": "E",
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "\\S"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "Yes",
+                                                    "OptionId": "94e37316-21d8-46f8-805e-8db896e37af7",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "No",
+                                                    "OptionId": "008df817-6b2f-45d5-a199-2d6b27c43a75",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": []
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    },
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Question": {
+                                        "QuestionId": "3030c089-53c0-447c-b2f5-2f2fc3550c53",
+                                        "QuestionDesc": "Please provide the reasons.",
+                                        "QuestionTypeId": 6,
+                                        "Layout": "07-01-12",
+                                        "QuestionNo": "5",
+                                        "QuestionIdentifier": "ExpectedDurationOfContract",
+                                        "Tooltip": null,
+                                        "QuestionVisibility": "E",
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "\\S"
+                                            },
+                                            {
+                                                "ValidationTypeId": 1,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "^[\\s\\S]{0,5000}$"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "",
+                                                    "OptionId": "3c9d613c-1382-4eb1-bf42-95bf896a39b6",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": null,
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": [
+                                            {
+                                                "DependencyTypeId": 1,
+                                                "DependencySource": [
+                                                    {
+                                                        "SourceQuestionId": "2192f364-8e4d-42d2-84b8-911c472a6cfd",
+                                                        "OptionId": "008df817-6b2f-45d5-a199-2d6b27c43a75"
+                                                    }
+                                                ],
+                                                "FrontFormula": "obj[0].Section.Rows[3].Cols[0].Question.Question.OptionResponses[1].OptionResponse.ResponseTxt == 'true'"
+                                            }
+                                        ]
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    },
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Question": {
+                                        "QuestionId": "6933aeac-0b9b-41a8-a391-1f2b22820810",
+                                        "QuestionDesc": "This could include, but is not limited to, the following (check any boxes that apply):",
+                                        "QuestionTypeId": 7,
+                                        "Layout": "02-01-12",
+                                        "QuestionNo": 6,
+                                        "QuestionIdentifier": null,
+                                        "Tooltip": null,
+                                        "QuestionVisibility": "E",
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "\\S"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "A potential conflict of interest",
+                                                    "OptionId": "6aae8c6c-e7e5-406c-8afe-0baceb1c3bbf",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": "A conflict of interest could include when  an executive, Board member, or key employee of the Business Development Agent, or their family member, is an Accenture employee, public official or  commercial client who might influence Accenture business.",
+                                                    "ResponseTxt": "",
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "Any history of providing inaccurate or incomplete information",
+                                                    "OptionId": "13e0f4d0-684e-470a-98bf-a1176d6ecc88",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "",
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "Ambivalence toward or a general disregard for regulatory requirements, particularly as those requirements relate to bribery",
+                                                    "OptionId": "9cd6ad2f-b2f1-472b-aa8f-e21c629ca423",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "",
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "Links to organized crime or otherwise disreputable groups",
+                                                    "OptionId": "8e0c3575-6e57-47c8-82b1-e3bc329d257a",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "",
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "History of criminal or civil litigation and/or regulatory enforcement actions",
+                                                    "OptionId": "91b30624-652c-4c96-b914-4304d884b3ef",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "",
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "Any other information suggesting that the Business Development Agent will not comply with law in connection with the services being performed for Accenture",
+                                                    "OptionId": "af216255-45c6-4f5e-b259-a3abb437e2ae",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "",
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": []
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    },
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Question": {
+                                        "QuestionId": "0aad3090-02ff-4269-a348-11519ede9c65",
+                                        "QuestionDesc": "<b>Intermediary Name</b><br>Legal Name of Business Development Agent, Company or Individual",
+                                        "QuestionTypeId": 4,
+                                        "Layout": "04-01-12",
+                                        "QuestionNo": 7,
+                                        "QuestionIdentifier": "CaseName",
+                                        "Tooltip": null,
+                                        "QuestionVisibility": "E",
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 1,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "The length must less than 50",
+                                                "FrontFormula": "^[\\s\\S]{0,50}$"
+                                            },
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "Required",
+                                                "FrontFormula": "\\S"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "",
+                                                    "OptionId": "f98a030f-d718-435e-ae03-b69fc4182f7d",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "test9261043",
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": []
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    },
+                    {
+                        "Cols": [
+                            {
+                                "Col": 12,
+                                "Question": {
+                                    "Question": {
+                                        "QuestionId": "79ed493c-3702-41e5-98ec-5d34a745e5d0",
+                                        "QuestionDesc": "Deployed to Entity (DTE)",
+                                        "QuestionTypeId": 22,
+                                        "Layout": "05-01-12",
+                                        "QuestionNo": 8,
+                                        "QuestionIdentifier": "OGs",
+                                        "Tooltip": null,
+                                        "QuestionVisibility": "E",
+                                        "Validation": [
+                                            {
+                                                "ValidationTypeId": 5,
+                                                "ValidationCondition": [],
+                                                "ErrorMsg": "",
+                                                "FrontFormula": "\\S"
+                                            }
+                                        ],
+                                        "OptionResponses": [
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "",
+                                                    "OptionId": "1ea5ec57-8668-4317-9b52-ae5fddae710b",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "|||AIXXX0XXX",
+                                                    "Dependency": []
+                                                }
+                                            },
+                                            {
+                                                "OptionResponse": {
+                                                    "OptionDesc": "",
+                                                    "OptionId": "9f2a04a2-372d-4f87-957f-db3434a2f355",
+                                                    "PlaceHolder": null,
+                                                    "ToolTip": null,
+                                                    "ResponseTxt": "|||Accenture Applied Intelligence",
+                                                    "Dependency": []
+                                                }
+                                            }
+                                        ],
+                                        "Dependency": []
+                                    }
+                                },
+                                "Rows": []
+                            }
+                        ]
+                    }
+                ],
+                "SectionValidStatus": false
+            }
+        }
+    ]
+}

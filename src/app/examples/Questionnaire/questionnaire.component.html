@@ -1,0 +1,68 @@
+<p class="title">Questionnaire</p>
+<ul id="dataSourceList">
+    <!-- <li class="dataSource" [ngClass]="{'isActiv': tabIndex === 1}" (click)="changeTab(1);">Data Source 1</li>
+    <li class="dataSource" [ngClass]="{'isActiv': tabIndex === 2}" (click)="changeTab(2);">Data Source 2</li>
+    <li class="dataSource" [ngClass]="{'isActiv': tabIndex ===3}" (click)="changeTab(3);">Data Source 3</li> -->
+
+    <li *ngFor="let item of sections; let indexNum=index" class="dataSource" [ngClass]="{'isActiv': tabIndex === indexNum}" (click)="changeTab(indexNum);">
+        Data Source {{indexNum + 1}}
+    </li>
+</ul>
+
+<div *ngFor="let data of sections; let i=index">
+    <section class="mySection" *ngIf='tabIndex === i'>
+        <p class="sectionTitle">Section Title - {{data.Section.SectionDesc}}</p>
+        <div *ngFor="let row of data.Section.Rows;" class="col">
+            <ng-container dynamicField [config]="row.Cols[0]" [autoSave]="autoSave" [isAutoSave]="isAutoSave"
+                [tabIndex]="tabIndex">
+            </ng-container>
+        </div>
+        <p-messages key="tab + 'i'" [(value)]="msgs"></p-messages>
+        <button id="btn_submit1" [disabled]="!dependencyService.getAllvalidatedFn(i)" (click)="showSuccessTab()"
+            [ngClass]="{'ro-sign-off-button': dependencyService.getAllvalidatedFn(i) , 'ro-sign-off-button-disabled': !dependencyService.getAllvalidatedFn(i) || msgs.length>0}">Submit</button>
+    </section>
+</div>
+
+
+<!-- Data Source 1 -->
+<!-- <section class="mySection" *ngIf='tabIndex === 1'>
+    <p class="sectionTitle">Section Title - {{sections[0].Section.SectionDesc}}</p>
+    <div *ngFor="let row of sections[0].Section.Rows;" class="col">
+        <ng-container dynamicField [config]="row.Cols[0]" [autoSave]="autoSave" [isAutoSave]="isAutoSave"
+            [tabIndex]="tabIndex">
+        </ng-container>
+    </div>
+    <p-messages key="tab1" [(value)]="msgs"></p-messages>
+    <button id="btn_submit1" [disabled]="!dependencyService.getAllvalidatedFn(0)" (click)="showSuccessTab1()"
+        [ngClass]="{'ro-sign-off-button': dependencyService.getAllvalidatedFn(0) , 'ro-sign-off-button-disabled': !dependencyService.getAllvalidatedFn(0) || msgs.length>0}">Submit</button>
+</section> -->
+
+
+<!-- Data Source 2 -->
+<!-- <section class="mySection" *ngIf='tabIndex === 2'>
+    <p class="sectionTitle">Section Title - {{sections[1].Section.SectionDesc}}</p>
+    <div *ngFor="let row of sections[1].Section.Rows;" class="col">
+        <ng-container dynamicField [config]="row.Cols[0]" [autoSave]="autoSave" [isAutoSave]="isAutoSave">
+        </ng-container>
+    </div>
+    <p-messages key="tab2" [(value)]="msgs"></p-messages>
+    <button id="btn_submit2" [disabled]="!dependencyService.getAllvalidatedFn(1)" (click)="showSuccessTab2()"
+        [ngClass]="{'ro-sign-off-button': dependencyService.getAllvalidatedFn(1) , 'ro-sign-off-button-disabled': !dependencyService.getAllvalidatedFn(1) || msgs.length>0}">Submit</button>
+</section> -->
+
+<!-- Data Source 3 -->
+<!-- <section class="mySection" *ngIf='tabIndex === 3'>
+    <p class="sectionTitle">Section Title - {{sections[2].Section.SectionDesc}}</p>
+    <div *ngFor="let row of sections[2].Section.Rows;" class="col">
+        <ng-container dynamicField [config]="row.Cols[0]" [autoSave]="autoSave" [isAutoSave]="isAutoSave">
+        </ng-container>
+    </div>
+    <p-messages key="tab3" [(value)]="msgs"></p-messages>
+    <button id="btn_submit3" [disabled]="!dependencyService.getAllvalidatedFn(2)" (click)="showSuccessTab3()"
+        [ngClass]="{'ro-sign-off-button': dependencyService.getAllvalidatedFn(2) , 'ro-sign-off-button-disabled': !dependencyService.getAllvalidatedFn(2) || msgs.length>0}">Submit</button>
+</section> -->
+
+
+<div id="successInfo">
+    Auto Save Sucess
+</div>

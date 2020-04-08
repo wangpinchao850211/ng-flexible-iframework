@@ -1,0 +1,125 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "../node_modules/primeicons/primeicons.css";
+@import "../node_modules/primeng/resources/themes/nova-light/theme.css";
+@import "../node_modules/primeng/resources/primeng.min.css";
+@import './assets/base.scss';
+html {
+    font-size: 100px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: .25rem;
+    color: #000;
+    width: 100%;
+    height: 100%;
+}
+
+// primeNG style
+body .ui-widget {
+    font-size: .14rem;
+}
+
+body .ui-panelmenu .ui-panelmenu-header>a {
+    position: relative;
+}
+
+body .ui-panelmenu .ui-panelmenu-header>a .ui-panelmenu-icon {
+    position: absolute;
+    right: 0.3em;
+    top: 30%;
+}
+
+body .ui-panelmenu .ui-panelmenu-header>a {
+    padding: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: .14rem;
+}
+
+body .pi {
+    font-size: .2rem;
+}
+
+body .ui-panelmenu .ui-panelmenu-header {
+    height: .4rem;
+}
+//  tab style
+.ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem a {
+    float: none;
+    display: inline-block;
+    padding: 0;
+}
+// tab active
+body .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem.ui-state-active {
+    background-color: #409eff;
+    border: 1px solid #409eff;
+}
+body .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem.ui-state-active .tab-item-link{
+    color: white;
+}
+body .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem.ui-state-active .tab-item-close{
+    color: white;
+}
+
+// tab ul
+body .ui-tabmenu .ui-tabmenu-nav {
+    max-width: 99%;
+    height: 100%;
+    margin: 0 auto;
+    white-space: nowrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+    @include mixin-min-scroll;
+}
+// tab li
+.ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem {
+    float: none;
+    display: inline-block;
+}
+
+@media only screen and (max-width: 1920px) and (min-width:1680px) {}
+
+@media only screen and (max-width: 1680px) and (min-width:1600px) {}
+
+@media only screen and (max-width: 1600px) and (min-width:1440px) {}
+
+@media only screen and (max-width: 1440px) and (min-width:1360px) {}
+
+@media only screen and (max-width: 1360px) and (min-width:1280px) {}
+
+@media only screen and (max-width: 1280px) and (min-width:1080px) {}
+
+@media only screen and (max-width: 1080px) and (min-width:960px) {}
+
+@media only screen and (max-width: 960px) and (min-width:800px) {}
+
+@media only screen and (max-width: 800px) and (min-width:720px) {}
+
+@media only screen and (max-width: 720px) and (min-width:640px) {}
+
+@media only screen and (max-width: 640px) and (min-width:600px) {}
+
+@media only screen and (max-width: 600px) and (min-width:540px) {}
+
+@media only screen and (max-width: 540px) and (min-width:480px) {}
+
+@media only screen and (max-width: 480px) and (min-width:414px) {}
+
+@media only screen and (max-width: 414px) and (min-width:400px) {}
+
+@media only screen and (max-width: 400px) and (min-width:375px) {}
+
+@media only screen and (max-width: 375px) and (min-width:360px) {}
+
+@media only screen and (max-width: 360px) and (min-width:320px) {}
+
+@media only screen and (max-width: 320px) and (min-width:240px) {}
+
+@media only screen and (max-width: 240px) {}

@@ -1,0 +1,44 @@
+// Color variable
+$color-azure-blue: #2473C3;
+$color-white: #fff;
+$color-black: #000;
+$color-grey-blue: #AAC1CE;
+$color-purple: #B894DB;
+$color-aqua: #82D2EB;
+$color-blue-pearl: #98B9E9;
+$color-teal: #77CCCE;
+$color-blush: #FF8D8D;
+$color-honey: #FFD272;
+$color-tangerine: #FFAD75;
+$color-true-blue: #1E5D95;
+$color-powder-blue: #EAF3FA;
+$color-super-light-grey: #F5F6F8;
+$color-regular: #4D5D72;
+$color-grey: #65758B;
+$color-mask: #fafafa;
+// container width height
+$full-width: 100%;
+$full-height: 100%;
+$Adaptive-height: 100vh;
+$menu-width: 3rem;
+$fold-menu-width: .7rem;
+//scsscomponent
+$ul-style: circle;
+
+@mixin mixin-min-scroll {
+    &::-webkit-scrollbar-track{
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        border-radius: 10px;
+        background-color: #F5F5F5;
+    }
+    &::-webkit-scrollbar{
+        width: 4px;
+        height: 4px;
+        background-color: #F5F5F5;
+    }
+    &::-webkit-scrollbar-thumb{
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        background: rgba(0,0,0,.26);
+    }
+}

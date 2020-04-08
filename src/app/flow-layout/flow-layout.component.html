@@ -1,0 +1,41 @@
+<div class="container-layout">
+    <aside class="asild-menu" [ngClass]="{'asild-menu':fold, 'fold-asild-menu': !fold}">
+        <p class="title" *ngIf="fold">
+            Menu
+        </p>
+        <div class="menu" [ngClass]="{'menu':fold, 'menu-mini': !fold}">
+            <p-panelMenu [multiple]="false" [model]="items" [style]="{'width':'100%'}"></p-panelMenu>
+        </div>
+        <span class="fold" *ngIf="fold" (click)="folding()">
+        <img  src="/assets/images/double_arrow_left.svg" alt="double_arrow_left"/>
+        </span>
+        <span class="fold" *ngIf="!fold" (click)="unfolding()">
+        <img  src="/assets/images/double_arrow_right.svg" alt="double_arrow_right"/>
+        </span>
+    </aside>
+    <section class="main" [ngClass]="{'main':fold, 'fold-main': !fold}">
+        <header class="main-header" *ngIf="showHeader">
+            <p class="title">
+                Header
+            </p>
+        </header>
+        <div class="tab-bar-wrapper">
+            <p-tabMenu [model]="tabItems" [activeItem]="getActiveItem()">
+                <ng-template pTemplate="item" let-item let-i="index">
+                    <a class="tab-item-link" (click)="switchTab($event, item)">
+                        <span class="tab-item-text">{{item.name}}</span>
+                    </a>
+                    <i *ngIf="item.url!=='/flowlayout/markdown'" (click)="closeTab($event, item)" class="tab-item-close pi pi-times"></i>
+                </ng-template>
+            </p-tabMenu>
+        </div>
+        <section class="main-content">
+            <router-outlet></router-outlet>
+        </section>
+        <footer class="main-footer" *ngIf="showFooter">
+            <p class="title">
+                Footer
+            </p>
+        </footer>
+    </section>
+</div>
