@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AuthenticationService } from '../authentication/authentication.service';
+import { AuthService } from '../../common/services/auth.service';
 import { retry, timeout } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
@@ -17,12 +17,12 @@ export class UseraccessService {
     IsTGCStakeholder: false
   };
   private profile;
-  constructor(private auth: AuthenticationService,
+  constructor(private auth: AuthService,
               private httpClient: HttpClient) { }
 
   get UserProfile() {
-    if (this.auth.Token) {
-      const base64Url = this.auth.Token.split('.')[1];
+    if (this.auth.token) {
+      const base64Url = this.auth.token.split('.')[1];
       const base64 = base64Url.replace('-', '+').replace('_', '/');
       return JSON.parse(window.atob(base64));
     }
@@ -30,11 +30,11 @@ export class UseraccessService {
   }
 
   get eid() {
-    return this.auth.getCachedUser.profile.upn.split('@')[0];
+    return this.auth.getEid();
   }
 
   get email() {
-    return this.auth.getCachedUser.profile.upn.split('@')[0] + '@accenture.com';
+    return this.auth.getEmail();
   }
 
   GetUserPermission() {

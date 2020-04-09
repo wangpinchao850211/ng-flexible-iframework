@@ -13,7 +13,6 @@ export enum MenuToTabMapping {
     Rxjs = '/flowlayout/rxjs',
     LazyLoad = '/flowlayout/lazyload',
     PrimeNGUI = '/flowlayout/primeng-ui',
-    Ajax = '/flowlayout/ajax',
     Questionnaire = '/flowlayout/questionnaire',
     pipe = '/flowlayout/pipe',
     injectablecomponent = '/flowlayout/injectablecomponent',

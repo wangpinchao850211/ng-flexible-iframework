@@ -15,12 +15,17 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { TabMenuModule } from 'primeng/tabmenu';
 import {TooltipModule} from 'primeng/tooltip';
 import { HttpClient, HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { httpInterceptorProviders } from '../app/common/http-interceptors/index';
-import { AjaxComponent } from './examples/ajax/ajax.component';
 import { AjaxService } from './common/ajax/ajax.service';
 import { HttpErrorHandler } from './common/services/http-error-handler.service';
 import { LoggerService } from './common/services/logger.service';
 import { RouterNavigationModule } from './examples/router-navigation/router-navigation.module';
+
+import { LoginLayoutComponent } from './login/layout/layout.component';
+import { LoginComponent } from './login/login/login.component';
+import { SetPasswordComponent } from './login/set-password/set-password.component';
+import { PromptMessageComponent } from './login/prompt-message/prompt-message.component';
 
 // External plugins
 import { MarkdownModule, MarkedOptions, MarkedRenderer } from 'ngx-markdown';
@@ -34,6 +39,7 @@ import { GalleriaModule } from 'primeng/galleria';
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers, initState } from './reducers';
 import { HtmlComponent } from './webKnowledge/html/html.component';
+import { DeniedComponent } from './login/denied/denied.component';
 
 
 export function markedOptions(): MarkedOptions {
@@ -60,10 +66,16 @@ export function markedOptions(): MarkedOptions {
     RxjsLibraryComponent,
     MarkdownComponent,
     PrimeNGUiComponent,
-    AjaxComponent,
-    HtmlComponent
+    LoginLayoutComponent,
+    LoginComponent,
+    SetPasswordComponent,
+    PromptMessageComponent,
+    HtmlComponent,
+    DeniedComponent
   ],
-  entryComponents: [],
+  entryComponents: [
+    PromptMessageComponent
+  ],
   imports: [
     BrowserModule,
     FileUploadModule,
@@ -78,6 +90,7 @@ export function markedOptions(): MarkedOptions {
     PipeComponentModel,
     InjectableFromComponentModel,
     CommonModule,
+    ReactiveFormsModule,
     HttpClientModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'My-Xsrf-Cookie',

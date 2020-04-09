@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { ConstParams } from 'src/app/common/ConstParams';
 import { from, Observable } from 'rxjs';
+import { AuthService } from '../common/services/auth.service';
 import { LayoutService } from 'src/app/common/services/layout.service';
 import * as _ from 'lodash';
 import { Store, select } from '@ngrx/store';
@@ -169,6 +170,7 @@ export class FlowLayoutComponent implements OnInit {
     this.initLayout();
   }
   constructor(
+    private auth: AuthService,
     private store: Store<{tab: MenuTab}>,
     private renderer: Renderer2,
     private el: ElementRef,
@@ -179,14 +181,14 @@ export class FlowLayoutComponent implements OnInit {
   ) {
     // 刷新页面保留current tab
     const currentUrl = this.routeInfo.snapshot['_routerState'].url;
-    // console.log(currentUrl);
+    console.log(currentUrl);
     if (currentUrl !== '/flowlayout/markdown') {
       const urlName = getNameByUrl(currentUrl);
       this.store.dispatch(addTab({url: currentUrl, name: urlName, isSelect: true}));
     }
     this.updateMenuTab$ = this.store.pipe(select('tab'));
     this.updateMenuTab$.subscribe((data) => {
-      // console.log(data);
+      console.log(data);
       this.initTab(data);
     });
   }
@@ -277,5 +279,9 @@ export class FlowLayoutComponent implements OnInit {
     // dispatch remove
     this.store.dispatch(removeTab(tab));
     ev.preventDefault();
+  }
+
+  layout() {
+    this.auth.logout();
   }
 }

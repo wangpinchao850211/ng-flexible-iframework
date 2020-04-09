@@ -14,7 +14,7 @@ export const environment = {
     tenant: 'f3211d0e-125b-42c3-86db-322b19a65a22',
     localLoginUrl: '设置此项可将用户重定向到自定义登录页',
     expireOffsetSeconds: 120,
-    noaccess_groups: 'FCSG.All.Test;FCSG.All',
+    noaccess_groups: 'noaccess1;noaccess2',
     response_type: 'id_token',
     storage: {
       TOKEN_KEYS: 'thirdpart_token_keys',

@@ -71,7 +71,14 @@
     .main-header{
         height: .5rem;
         background: $color-grey;
+        overflow: hidden;
+        .layout-button{
+            height: .5rem;
+            float: right;
+            margin-right: 10px;
+        }
     }
+
     .tab-bar-wrapper{
         width: 100%;
         height: .6rem;

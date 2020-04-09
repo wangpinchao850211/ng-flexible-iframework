@@ -5,7 +5,6 @@ export default class storage {
   constructor() {}
 
   static _getItem(key) {
-    console.log(key);
     return this.Storage.getItem(key);
   }
   static _setItem(key, value) {
