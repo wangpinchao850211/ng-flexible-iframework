@@ -75,18 +75,6 @@ export class FlowLayoutComponent implements OnInit {
                 }
             },
             {
-                label: 'Ajax',
-                icon: 'pi pi-fw pi-ticket',
-                command: (event) => {
-                    this.store.dispatch(addTab({
-                    url: getUrlByName('Ajax'),
-                    name: 'Ajax',
-                    isSelect: true
-                    }));
-                    this.router.navigate([getUrlByName('Ajax')]);
-                }
-            },
-            {
                 label: 'RouterNavigation',
                 icon: 'pi pi-fw pi-ticket',
                 command: (event) => {

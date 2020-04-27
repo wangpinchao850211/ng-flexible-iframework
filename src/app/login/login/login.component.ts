@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
       console.log(value);
       console.log(this.loginForm.valid);
     });
-    console.log(this.loginForm.valid);
   }
 
   formInit() {
@@ -131,11 +130,9 @@ export class LoginComponent implements OnInit {
             // 调用全局message。提示成功消息
             this.storage.resolveToken(data);
             this.router.navigate(['flowlayout/markdown']);
-
         } else {
             // 调用全局message。提示错误消息
         }
-
       });
     }
   }

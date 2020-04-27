@@ -28,8 +28,7 @@ export class AuthenticationGuard implements CanActivate, CanActivateChild, CanLo
     const value: boolean = this.auth.checkAuthenicated(route, state);
     console.log(value);
     if (!value) {
-        this.auth.startURL = state.url;
-        this.auth.logout();
+        this.auth.startURL = state.url; // 存储路由跳转的源路由路径
         return false;
     } else {
         return true;

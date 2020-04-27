@@ -17,6 +17,8 @@ import { DeniedComponent } from './login/denied/denied.component';
 import { AuthenticationGuard } from './core/authentication/authentication.guard';
 
 import { HtmlComponent } from './webKnowledge/html/html.component';
+import { LoginGuard } from './core/authentication/login.guard';
+import { CanDeactivateGuard } from './core/authentication/can-deactivate.guard';
 
 const routes: Routes = [
   // { path: '', redirectTo: 'flowlayout/markdown', pathMatch: 'full' },
@@ -24,6 +26,7 @@ const routes: Routes = [
   {
     path: 'passport',
     component: LoginLayoutComponent,
+    // canActivate: [ LoginGuard ], 没用loginGuard，使用的是CanDeactivateGuard
     children: [
         {
           path: 'login',
@@ -51,6 +54,7 @@ const routes: Routes = [
     path: 'flowlayout',
     component: FlowLayoutComponent,
     canActivate: [AuthenticationGuard],
+    canDeactivate: [CanDeactivateGuard],
     children: [
       { path: 'markdown', component: MarkdownComponent },
       { path: 'rxjs', component: RxjsLibraryComponent },
@@ -67,6 +71,7 @@ const routes: Routes = [
       path: 'TeLayout',
       component: FlowLayoutComponent,
       canActivate: [AuthenticationGuard],
+      canDeactivate: [CanDeactivateGuard],
       children: [
           {
             path: 'html',

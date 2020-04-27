@@ -3,7 +3,7 @@ import * as JWT from 'jwt-decode';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import storage from './storage';
-import { Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { Router, ActivatedRouteSnapshot, RouterStateSnapshot, ActivatedRoute } from '@angular/router';
 
 @Injectable({
     providedIn: 'root'
@@ -19,7 +19,7 @@ export class AuthService {
     public expireOffset = environment.OAuth.expireOffsetSeconds;
     public responseType = environment.OAuth.response_type;
 
-    public whiteUrList = ['/login', '/setPassword', '/activation', '/404'];
+    public whiteUrList = ['/passport/login', '/passport/setPassword', '/passport/forgetPassWord', '/404'];
     public startURL = '/passport/login'; // 存储当前location
     public authData = {
         isAuthenticated: false, // 当前系统是否存在token
@@ -32,10 +32,11 @@ export class AuthService {
     public UserRole: any;
     public redirectUrl: any;
     constructor(
-        private router: Router
+        private router: Router,
+        private routeInfo: ActivatedRoute,
     ) {
         // this.expiredTime = storage._getItem(this.EXPIRATION_KEY)?storage._getItem(this.EXPIRATION_KEY): null;
-        // this.updateDataFromCache();
+        this.updateDataFromCache();
     }
 
     getToken(resource) {
@@ -49,15 +50,12 @@ export class AuthService {
     }
 
     checkAuthenicated(activatedRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        console.log(activatedRoute);
         let url: string = state.url;
-        console.log(url);
+        // console.log(url);
         if (url.includes('flowlayout') || url.includes('TeLayout') ) {
-            console.log(this.authData.isAuthenticated)
-            console.log(this.isLoginIn);
-            return this.authData.isAuthenticated && this.isLoginIn
+            return this.authData.isAuthenticated && this.isLoginIn;
         } else {
-            return true
+            return true;
         }
     }
 
@@ -72,7 +70,7 @@ export class AuthService {
         storage._clear();
         this.sourceClear();
         console.log(this.startURL);
-        this.router.navigate([this.startURL]);
+        this.router.navigate(['/passport/login']);
     }
     sourceClear() {
         this.token = '';
@@ -91,7 +89,7 @@ export class AuthService {
             return null;
         }
 
-        if (expiredTime && (expiredTime > this.getNow() + parseInt(`${this.expireOffset}`))) {
+        if (expiredTime && (expiredTime > this.getNow() + parseInt(`${this.expireOffset}`)*1000)) {
             this.token = token;
             return token;
         } else { // 存在过期token，清除
@@ -137,7 +135,7 @@ export class AuthService {
         console.log(claims);
         // exp 效期先在前端设置，当jwt通了挪到后台
         const starTime = Date.now();
-        claims.exp = starTime + 60 * 600 * 1000;
+        claims.exp = starTime + 182 * 60 * 1000; // 效期3小时
         claims.iat = starTime;
         claims.Eid = claims.username.split('@')[0];
         console.log(claims);
@@ -154,28 +152,36 @@ export class AuthService {
         const interval = window.setInterval(() => {
             console.log(this.getNow());
             console.log(this.expiredTime);
-            if (!this.expiredTime || this.expiredTime < (this.getNow() + parseInt('120'))) {
-                // 跳转到login页, 清除session
-                storage._clear();
-                this.router.navigate(['/passport/login']);
+            if (!this.expiredTime || this.expiredTime < (this.getNow() + parseInt('120')*1000)) {
+                // 超出时间戳上限，登出
+                console.log('监听结束，登出');
+                this.logout();
                 clearInterval(interval);
             }
         }, 5000);
     }
+
     updateDataFromCache() { // 闭环了！！！
         this.token = this.token ? this.token : this.getCacheToken(this.clientID);
         console.log(this.token);
         this.authData.isAuthenticated = this.token != null && this.token.length > 0;
+        // console.log(this.authData.isAuthenticated);
         if (this.authData.isAuthenticated) {
           this.isLoginIn = true;
           storage._setItem('isLoginIn', this.isLoginIn);
-          this.initStorageSource();
-          // 初始化init数据接口，跳转到this.startURL
+          this.initStorageSource(); // 初始化init数据接口
+          // 如果有权限，还跳到了login页面，让其自动跳入里面页面
+          const currentUrl = this.routeInfo.snapshot['_routerState'].url;
+          // 获取当前浏览器路径
+          if (this.whiteUrList.includes(currentUrl)) {
+              this.router.navigate(['/flowlayout/markdown']);
+          }
         } else { // 没有token，判断this.startURL是否属于白名单
+        //   console.log(`start: ${this.startURL}`);
           if (this.whiteUrList.includes(this.startURL)) {
             this.router.navigate([this.startURL]);
           } else { // 没有权限，并且不是白名单，登出 或者 renewToken
-            this.logout()
+            this.logout();
           }
         }
     }
