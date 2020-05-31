@@ -86,3 +86,50 @@
         background: white;
     }
 }
+
+.main-menu {
+    display: block;
+    // position: fixed;
+    // top: 60px;
+    // left: 0px;
+    // width: 220px;
+    // bottom: 0px;
+    background-color: #67759b;
+    .menu-item {
+        // font-size: 20px;
+        a {
+            // padding: 0px 20px 0px 30px;
+            // display: block;
+            // line-height: 50px;
+            color: #ececec;
+        }
+    }
+    ::ng-deep {
+        .ui-panelmenu {
+            .ui-panelmenu-panel {
+                outline: none;
+                // margin-top: 0px;
+                .ui-panelmenu-header {
+                    outline: none;
+                    .ui-panelmenu-header-link {
+                        outline: none;
+                        // padding: 16px 10px 16px 26px !important;
+                        .ui-panelmenu-icon {
+                            // float: right;
+                            // margin-top: 3px;
+                        }
+                    }
+                }
+                
+                .ui-menuitem {
+                    .ui-menuitem-link {
+                        // padding: 16px 10px 16px 26px !important;
+                        .ui-menuitem-icon {
+                            vertical-align: middle !important;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -30,6 +30,8 @@ import { PromptMessageComponent } from './login/prompt-message/prompt-message.co
 // External plugins
 import { MarkdownModule, MarkedOptions, MarkedRenderer } from 'ngx-markdown';
 import { PrimeNGUiComponent } from './examples/prime-ng-ui/prime-ng-ui.component';
+import {CheckboxModule} from 'primeng/checkbox';
+import {DropdownModule} from 'primeng/dropdown';
 import { CoreModule } from './core/core.module';
 import { PipeComponentModel } from '../app/examples/pipe/Module';
 import { InjectableFromComponentModel } from './examples/injectable/Module';
@@ -84,6 +86,8 @@ export function markedOptions(): MarkedOptions {
     TooltipModule,
     AccordionModule,
     PanelMenuModule,
+    CheckboxModule,
+    DropdownModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     CoreModule,

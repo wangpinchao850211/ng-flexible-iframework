@@ -30,6 +30,7 @@ img{
     height: 100%!important;
 }
 
+// 自适应tooltip
 .table-wrapper{
     width: 40%;
     height: 72px;
@@ -43,6 +44,14 @@ img{
     font-size: 20px;
     margin-bottom: 8px;
     cursor: pointer;
+}
+.table-wrapper>span{
+    display: inline-block;
+    width: auto;
+    max-width: 100%;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow-x: hidden;
 }
 
 .wrapperList{
