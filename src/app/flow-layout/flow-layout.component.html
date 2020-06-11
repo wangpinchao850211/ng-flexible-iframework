@@ -4,7 +4,7 @@
             Menu
         </p>
         <div class="menu" [ngClass]="{'menu':fold, 'menu-mini': !fold}">
-            <p-panelMenu [multiple]="false" [model]="items" [style]="{'width':'100%'}" class="main-menu"></p-panelMenu>
+            <p-panelMenu [multiple]="true" [model]="items" [style]="{'width':'100%'}" class="main-menu"></p-panelMenu>
         </div>
         <span class="fold" *ngIf="fold" (click)="folding()">
         <img  src="/assets/images/double_arrow_left.svg" alt="double_arrow_left"/>

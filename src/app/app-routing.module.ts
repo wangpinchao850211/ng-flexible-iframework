@@ -74,7 +74,7 @@ const routes: Routes = [
       canDeactivate: [CanDeactivateGuard],
       children: [
           {
-            path: 'html',
+            path: 'books',
             component: HtmlComponent
           },
       ]

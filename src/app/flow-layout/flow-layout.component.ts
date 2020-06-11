@@ -30,11 +30,17 @@ export class FlowLayoutComponent implements OnInit {
                 icon: 'pi pi-pw pi-file',
                 command: (event) => {
                     console.log(event);
+                    
+                    const el = event.originalEvent.target;
+                    console.log(el);
+                    this.changeMenuActiveColor(el);
+
                     this.store.dispatch(addTab({
-                    url: getUrlByName('Markdown'),
-                    name: 'Markdown',
-                    isSelect: true
+                      url: getUrlByName('Markdown'),
+                      name: 'Markdown',
+                      isSelect: true
                     }));
+
                     this.router.navigate([getUrlByName('Markdown')]);
                 }
             },
@@ -42,10 +48,15 @@ export class FlowLayoutComponent implements OnInit {
                 label: 'Rxjs',
                 icon: 'pi pi-fw pi-ticket',
                 command: (event) => {
+                    
+                    const el = event.originalEvent.target;
+                    console.log(el);
+                    this.changeMenuActiveColor(el);
+
                     this.store.dispatch(addTab({
-                    url: getUrlByName('Rxjs'),
-                    name: 'Rxjs',
-                    isSelect: true
+                      url: getUrlByName('Rxjs'),
+                      name: 'Rxjs',
+                      isSelect: true
                     }));
                     this.router.navigate([getUrlByName('Rxjs')]);
                 }
@@ -54,10 +65,15 @@ export class FlowLayoutComponent implements OnInit {
                 label: 'LazyLoad',
                 icon: 'pi pi-fw pi-ticket',
                 command: (event) => {
+                    
+                    const el = event.originalEvent.target;
+                    console.log(el);
+                    this.changeMenuActiveColor(el);
+
                     this.store.dispatch(addTab({
-                    url: getUrlByName('LazyLoad'),
-                    name: 'LazyLoad',
-                    isSelect: true
+                      url: getUrlByName('LazyLoad'),
+                      name: 'LazyLoad',
+                      isSelect: true
                     }));
                     this.router.navigate([getUrlByName('LazyLoad')]);
                 }
@@ -66,10 +82,15 @@ export class FlowLayoutComponent implements OnInit {
                 label: 'PrimeNG-UI',
                 icon: 'pi pi-fw pi-tags',
                 command: (event) => {
+                    
+                    const el = event.originalEvent.target;
+                    console.log(el);
+                    this.changeMenuActiveColor(el);
+
                     this.store.dispatch(addTab({
-                    url: getUrlByName('PrimeNGUI'),
-                    name: 'PrimeNGUI',
-                    isSelect: true
+                      url: getUrlByName('PrimeNGUI'),
+                      name: 'PrimeNGUI',
+                      isSelect: true
                     }));
                     this.router.navigate([getUrlByName('PrimeNGUI')]);
                 }
@@ -78,10 +99,15 @@ export class FlowLayoutComponent implements OnInit {
                 label: 'RouterNavigation',
                 icon: 'pi pi-fw pi-ticket',
                 command: (event) => {
+                    
+                    const el = event.originalEvent.target;
+                    console.log(el);
+                    this.changeMenuActiveColor(el);
+
                     this.store.dispatch(addTab({
-                    url: getUrlByName('RouterNavigation'),
-                    name: 'RouterNavigation',
-                    isSelect: true
+                      url: getUrlByName('RouterNavigation'),
+                      name: 'RouterNavigation',
+                      isSelect: true
                     }));
                     this.router.navigate([getUrlByName('RouterNavigation')]);
                 }
@@ -90,30 +116,48 @@ export class FlowLayoutComponent implements OnInit {
                 label: 'Questionnaire',
                 icon: 'pi pi-fw pi-ticket',
                 command: (event) => {
-                this.store.dispatch(addTab({
-                    url: getUrlByName('Questionnaire'),
-                    name: 'Questionnaire',
-                    isSelect: true
-                }));
-                this.router.navigate([getUrlByName('Questionnaire')]);
+                    console.log(event);
+                    
+                    const el = event.originalEvent.target;
+                    console.log(el);
+                    this.changeMenuActiveColor(el);
+
+                    this.store.dispatch(addTab({
+                        url: getUrlByName('Questionnaire'),
+                        name: 'Questionnaire',
+                        isSelect: true
+                    }));
+                    this.router.navigate([getUrlByName('Questionnaire')]);
                 }
             },
             {
                 label: 'pipe',
                 icon: 'pi pi-fw pi-ticket',
                 command: (event) => {
-                this.store.dispatch(addTab({
-                    url: getUrlByName('pipe'),
-                    name: 'pipe',
-                    isSelect: true
-                }));
-                this.router.navigate([getUrlByName('pipe')]);
+                    console.log(event);
+
+                    const el = event.originalEvent.target;
+                    console.log(el);
+                    this.changeMenuActiveColor(el);
+
+                    this.store.dispatch(addTab({
+                        url: getUrlByName('pipe'),
+                        name: 'pipe',
+                        isSelect: true
+                    }));
+                    this.router.navigate([getUrlByName('pipe')]);
                 }
             },
             {
                 label:'injectablecomponent',
                 icon: 'pi pi-fw pi-microsoft',
                 command: (event) => {
+                    console.log(event);
+
+                    const el = event.originalEvent.target;
+                    console.log(el);
+                    this.changeMenuActiveColor(el);
+
                     this.store.dispatch(addTab({
                     url: getUrlByName('injectablecomponent'),
                     name: 'injectablecomponent',
@@ -129,21 +173,44 @@ export class FlowLayoutComponent implements OnInit {
           icon: 'pi pi-pw pi-file',
           items: [
             {
-                label: 'html',
+                label: 'books',
                 icon: 'pi pi-pw pi-file',
                 command: (event) => {
                     console.log(event);
+                    const el = event.originalEvent.target;
+                    console.log(el);
+                    this.changeMenuActiveColor(el);
                     this.store.dispatch(addTab({
-                    url: getUrlByName('html'),
-                    name: 'html',
+                    url: getUrlByName('books'),
+                    name: 'books',
                     isSelect: true
                     }));
-                    this.router.navigate([getUrlByName('html')]);
+                    this.router.navigate([getUrlByName('books')]);
                 }
             },
           ]
       }
   ];
+
+  changeMenuActiveColor(el) {
+    const parent = this.render.parentNode(el);
+    console.log(parent);
+    const siblings = parent.parentNode.children;
+    console.log(siblings);
+
+    for (const iterator of siblings) {
+      this.render.setStyle(iterator, 'backgroundColor', '#fff');
+      this.render.setStyle(iterator, 'borderLeftWidth', '0px');
+      this.render.setStyle(iterator, 'borderLeftStyle', 'solid');
+      this.render.setStyle(iterator, 'borderLeftColor', '#fff');
+    }
+
+    this.render.setStyle(parent, 'backgroundColor', '#8dcdff');
+    this.render.setStyle(parent, 'borderLeftWidth', '5px');
+    this.render.setStyle(parent, 'borderLeftStyle', 'solid');
+    this.render.setStyle(parent, 'borderLeftColor', '#005b9f');
+  }
+  
   getActiveItem() {
     return this.tabItems.filter(i => i.isSelect)[0];
   };
@@ -158,6 +225,7 @@ export class FlowLayoutComponent implements OnInit {
     this.initLayout();
   }
   constructor(
+    private render: Renderer2,
     private auth: AuthService,
     private store: Store<{tab: MenuTab}>,
     private renderer: Renderer2,

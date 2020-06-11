@@ -16,5 +16,5 @@ export enum MenuToTabMapping {
     Questionnaire = '/flowlayout/questionnaire',
     pipe = '/flowlayout/pipe',
     injectablecomponent = '/flowlayout/injectablecomponent',
-    html = '/TeLayout/html',
+    books = '/TeLayout/books',
 }

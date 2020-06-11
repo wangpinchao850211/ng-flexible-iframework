@@ -1,7 +1,7 @@
 // Color variable
 $color-azure-blue: #2473C3;
 $color-white: #fff;
-$color-black: #000;
+$color-black: rgba(0, 0, 0, 0.3);
 $color-grey-blue: #AAC1CE;
 $color-purple: #B894DB;
 $color-aqua: #82D2EB;
@@ -14,13 +14,14 @@ $color-true-blue: #1E5D95;
 $color-powder-blue: #EAF3FA;
 $color-super-light-grey: #F5F6F8;
 $color-regular: #4D5D72;
-$color-grey: #65758B;
+$color-grey: rgba(3, 12, 39, 0.6);
 $color-mask: #fafafa;
 // container width height
 $full-width: 100%;
 $full-height: 100%;
 $Adaptive-height: 100vh;
-$menu-width: 3rem;
+// $menu-width: 3rem;
+$menu-width: 20%;
 $fold-menu-width: .7rem;
 //scsscomponent
 $ul-style: circle;
