@@ -1,26 +1,18 @@
 <div class="container-layout">
+
     <aside class="asild-menu" [ngClass]="{'asild-menu':fold, 'fold-asild-menu': !fold}">
-        <p class="title" *ngIf="fold">
-            Menu
-        </p>
-        <div class="menu" [ngClass]="{'menu':fold, 'menu-mini': !fold}">
-            <p-panelMenu [multiple]="true" [model]="items" [style]="{'width':'100%'}" class="main-menu"></p-panelMenu>
-        </div>
-        <span class="fold" *ngIf="fold" (click)="folding()">
-        <img  src="/assets/images/double_arrow_left.svg" alt="double_arrow_left"/>
-        </span>
-        <span class="fold" *ngIf="!fold" (click)="unfolding()">
-        <img  src="/assets/images/double_arrow_right.svg" alt="double_arrow_right"/>
-        </span>
+        <app-wpc-menu [fold]="fold" [menu]="items" (collapse)="folding($event, data)" (expand)="unfolding($event, data)"></app-wpc-menu>
     </aside>
+
     <section class="main" [ngClass]="{'main':fold, 'fold-main': !fold}">
+
         <header class="main-header" *ngIf="showHeader">
-            <p class="title">
-                Header
-                <button class="pramary-button layout-button" (click)="layout()">layout</button>
-            </p>
+            <app-wpc-header></app-wpc-header>
         </header>
+
         <div class="tab-bar-wrapper">
+            <!-- <app-wpc-tab [tabItems]="tabItems" (activeItem)="getActiveItem()" (switchTab)="switchTab($event, item)" (closeTab)="closeTab($event, item)"></app-wpc-tab> -->
+            
             <p-tabMenu [model]="tabItems" [activeItem]="getActiveItem()">
                 <ng-template pTemplate="item" let-item let-i="index">
                     <a class="tab-item-link" (click)="switchTab($event, item)">
@@ -30,13 +22,14 @@
                 </ng-template>
             </p-tabMenu>
         </div>
+
         <section class="main-content">
             <router-outlet></router-outlet>
         </section>
+
         <footer class="main-footer" *ngIf="showFooter">
-            <p class="title">
-                Footer
-            </p>
+            <app-wpc-footer></app-wpc-footer>
         </footer>
+
     </section>
 </div>

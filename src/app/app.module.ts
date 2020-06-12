@@ -46,6 +46,10 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers, initState } from './reducers';
 import { CardComponent } from './webKnowledge/card/card.component';
 import { ListComponent } from './webKnowledge/list/list.component';
+import { WpcMenuComponent } from './flow-layout/share/wpc-menu/wpc-menu.component';
+import { WpcHeaderComponent } from './flow-layout/share/wpc-header/wpc-header.component';
+import { WpcFooterComponent } from './flow-layout/share/wpc-footer/wpc-footer.component';
+import { WpcTabComponent } from './flow-layout/share/wpc-tab/wpc-tab.component';
 
 export function markedOptions(): MarkedOptions {
   const renderer = new MarkedRenderer();
@@ -90,7 +94,11 @@ const primeModule = [
     BooksComponent,
     DeniedComponent,
     CardComponent,
-    ListComponent
+    ListComponent,
+    WpcMenuComponent,
+    WpcHeaderComponent,
+    WpcFooterComponent,
+    WpcTabComponent
   ],
   entryComponents: [
     PromptMessageComponent

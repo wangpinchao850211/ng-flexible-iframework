@@ -4,7 +4,7 @@ import { LayoutService } from 'src/app/common/services/layout.service';
 @Component({
   selector: 'app-rxjs-library',
   templateUrl: './rxjs-library.component.html',
-  styleUrls: ['./rxjs-library.component.scss', '../../themes/markdown.scss']
+  styleUrls: ['./rxjs-library.component.scss', '../../../assets/markdown.scss']
 })
 export class RxjsLibraryComponent implements OnInit {
 

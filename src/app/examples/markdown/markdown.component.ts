@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-markdown',
   templateUrl: './markdown.component.html',
-  styleUrls: ['./markdown.component.scss', '../../themes/markdown.scss']
+  styleUrls: ['./markdown.component.scss', '../../../assets/markdown.scss']
 })
 export class MarkdownComponent implements OnInit {
 

@@ -1,0 +1,8 @@
+<p-tabMenu [model]="tabItems" [activeItem]="getActiveItem()">
+    <ng-template pTemplate="item" let-item let-i="index">
+        <a class="tab-item-link" (click)="switchtab($event, item)">
+            <span class="tab-item-text">{{item.name}}</span>
+        </a>
+        <i *ngIf="item.url!=='/flowlayout/rxjs'" (click)="closetab($event, item)" class="tab-item-close pi pi-times"></i>
+    </ng-template>
+</p-tabMenu>

@@ -2,7 +2,6 @@ import { Component, OnInit, HostListener, ElementRef, Renderer2 } from '@angular
 import { Router, ActivatedRoute } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { from, Observable } from 'rxjs';
-import { AuthService } from '../common/services/auth.service';
 import { LayoutService } from 'src/app/common/services/layout.service';
 import * as _ from 'lodash';
 import { Store, select } from '@ngrx/store';
@@ -190,9 +189,7 @@ export class FlowLayoutComponent implements OnInit {
   }
   constructor(
     private render: Renderer2,
-    private auth: AuthService,
     private store: Store<{tab: MenuTab}>,
-    private renderer: Renderer2,
     private el: ElementRef,
     private layoutService: LayoutService,
     private router: Router,
@@ -236,16 +233,16 @@ export class FlowLayoutComponent implements OnInit {
   }
 
   setHtmlSize() {
-    const html = this.renderer.selectRootElement('html', true);
+    const html = this.render.selectRootElement('html', true);
     const width = window.innerWidth;
     const fontSize = 100 / 1920 * width;
     // console.log(fontSize);
-    this.renderer.setStyle(html, 'font-size', `${fontSize}px`);
-    this.renderer.setStyle(html, 'height', '100%');
+    this.render.setStyle(html, 'font-size', `${fontSize}px`);
+    this.render.setStyle(html, 'height', '100%');
   }
 
   initLayout() {
-    const bodyWidth = this.renderer.selectRootElement('body', true).offsetWidth;
+    const bodyWidth = this.render.selectRootElement('body', true).offsetWidth;
     if (bodyWidth < 960) {
       this.items = _.cloneDeep(this.itemsResouce); // 初始化调取添加左侧菜单
       this.getMiniStyle();
@@ -254,12 +251,15 @@ export class FlowLayoutComponent implements OnInit {
     }
   }
 
-  folding() {
+  folding(ev) {
+    console.log(ev);
     this.getMiniStyle();
   }
-  unfolding() {
+  unfolding(ev) {
+    console.log(ev);
     this.getCommonStyle();
   }
+
   getMiniStyle() {
     this.fold = false;
     this.showHeader = false;
@@ -301,7 +301,5 @@ export class FlowLayoutComponent implements OnInit {
     ev.preventDefault();
   }
 
-  layout() {
-    this.auth.logout();
-  }
+  
 }
