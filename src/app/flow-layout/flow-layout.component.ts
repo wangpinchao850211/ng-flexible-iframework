@@ -185,7 +185,7 @@ export class FlowLayoutComponent implements OnInit {
   @HostListener('window:resize')
   onWindowResize() {
     this.layoutService.changeLayoutSize(`${window.innerHeight}px`);
-    this.setHtmlSize();
+    // this.setHtmlSize(); rem布局核心
     this.initLayout();
   }
   constructor(
@@ -216,7 +216,7 @@ export class FlowLayoutComponent implements OnInit {
   ngOnInit() {
     // 初始化布局页面
     this.initLayout();
-    this.setHtmlSize();
+    // this.setHtmlSize(); rem布局核心
   }
 
   initTab(menutabList) {
