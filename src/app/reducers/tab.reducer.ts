@@ -9,8 +9,8 @@ export interface State {
 
 export const initTabListState: State = {
   tab: [{
-    url: '/flowlayout/markdown', 
-    name: "Markdown", 
+    url: '/flowlayout/rxjs', 
+    name: "Rxjs", 
     isSelect: true
   }]
 }

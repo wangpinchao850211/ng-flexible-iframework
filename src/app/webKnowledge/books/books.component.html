@@ -1,0 +1,26 @@
+<div class="books-list">
+    <div class="choose-wrapper">
+        <p-radioButton name="groupname" value="List" label="List" [(ngModel)]="listLayout.selectedValue" (onClick)="radioClick($event)"></p-radioButton>
+    </div>
+    <div class="choose-wrapper">
+        <p-radioButton name="groupname" value="Card" label="Card" [(ngModel)]="listLayout.selectedValue" (onClick)="radioClick($event)"></p-radioButton>
+    </div>
+
+    <!--  else 貌似在angular8版本不好用了！ -->
+    <ng-container *ngIf="changeLayout">
+        <ng-container *ngTemplateOutlet="Card"></ng-container>
+    </ng-container>
+    <ng-container *ngIf="!changeLayout">
+        <ng-container *ngTemplateOutlet="List"></ng-container>
+    </ng-container>
+
+    <ng-template #Card >
+        <!-- 加载card组件 -->
+        <app-card></app-card>
+    </ng-template>
+    <ng-template #List>
+        <!-- 加载list组件 -->
+        <app-list></app-list>
+    </ng-template>
+    
+</div>

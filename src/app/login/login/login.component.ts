@@ -129,7 +129,7 @@ export class LoginComponent implements OnInit {
         if ( errno === 0 ) {
             // 调用全局message。提示成功消息
             this.storage.resolveToken(data);
-            this.router.navigate(['flowlayout/markdown']);
+            this.router.navigate(['flowlayout/rxjs']);
         } else {
             // 调用全局message。提示错误消息
         }

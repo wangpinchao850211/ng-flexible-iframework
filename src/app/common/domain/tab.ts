@@ -11,10 +11,8 @@ export enum MenuToTabMapping {
     RouterNavigation = '/flowlayout/routerNaigation',
     Markdown = '/flowlayout/markdown',
     Rxjs = '/flowlayout/rxjs',
-    LazyLoad = '/flowlayout/lazyload',
     PrimeNGUI = '/flowlayout/primeng-ui',
     Questionnaire = '/flowlayout/questionnaire',
     pipe = '/flowlayout/pipe',
-    injectablecomponent = '/flowlayout/injectablecomponent',
     books = '/TeLayout/books',
 }

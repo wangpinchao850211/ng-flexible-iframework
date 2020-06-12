@@ -1,7 +1,6 @@
 import { Component, OnInit, HostListener, ElementRef, Renderer2 } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MenuItem } from 'primeng/api';
-import { ConstParams } from 'src/app/common/ConstParams';
 import { from, Observable } from 'rxjs';
 import { AuthService } from '../common/services/auth.service';
 import { LayoutService } from 'src/app/common/services/layout.service';
@@ -25,26 +24,7 @@ export class FlowLayoutComponent implements OnInit {
           label: 'frameWorkBasic',
           icon: 'pi pi-pw pi-file',
           items: [
-            {
-                label: 'Markdown',
-                icon: 'pi pi-pw pi-file',
-                command: (event) => {
-                    console.log(event);
-                    
-                    const el = event.originalEvent.target;
-                    console.log(el);
-                    this.changeMenuActiveColor(el);
-
-                    this.store.dispatch(addTab({
-                      url: getUrlByName('Markdown'),
-                      name: 'Markdown',
-                      isSelect: true
-                    }));
-
-                    this.router.navigate([getUrlByName('Markdown')]);
-                }
-            },
-            {
+              {
                 label: 'Rxjs',
                 icon: 'pi pi-fw pi-ticket',
                 command: (event) => {
@@ -62,20 +42,22 @@ export class FlowLayoutComponent implements OnInit {
                 }
             },
             {
-                label: 'LazyLoad',
-                icon: 'pi pi-fw pi-ticket',
+                label: 'Markdown',
+                icon: 'pi pi-pw pi-file',
                 command: (event) => {
+                    console.log(event);
                     
                     const el = event.originalEvent.target;
                     console.log(el);
                     this.changeMenuActiveColor(el);
 
                     this.store.dispatch(addTab({
-                      url: getUrlByName('LazyLoad'),
-                      name: 'LazyLoad',
+                      url: getUrlByName('Markdown'),
+                      name: 'Markdown',
                       isSelect: true
                     }));
-                    this.router.navigate([getUrlByName('LazyLoad')]);
+
+                    this.router.navigate([getUrlByName('Markdown')]);
                 }
             },
             {
@@ -146,24 +128,6 @@ export class FlowLayoutComponent implements OnInit {
                         isSelect: true
                     }));
                     this.router.navigate([getUrlByName('pipe')]);
-                }
-            },
-            {
-                label:'injectablecomponent',
-                icon: 'pi pi-fw pi-microsoft',
-                command: (event) => {
-                    console.log(event);
-
-                    const el = event.originalEvent.target;
-                    console.log(el);
-                    this.changeMenuActiveColor(el);
-
-                    this.store.dispatch(addTab({
-                    url: getUrlByName('injectablecomponent'),
-                    name: 'injectablecomponent',
-                    isSelect: true
-                    }));
-                    this.router.navigate([getUrlByName('injectablecomponent')]);
                 }
             }
           ]
@@ -238,7 +202,7 @@ export class FlowLayoutComponent implements OnInit {
     // 刷新页面保留current tab
     const currentUrl = this.routeInfo.snapshot['_routerState'].url;
     console.log(currentUrl);
-    if (currentUrl !== '/flowlayout/markdown') {
+    if (currentUrl !== '/flowlayout/rxjs') {
       const urlName = getNameByUrl(currentUrl);
       this.store.dispatch(addTab({url: currentUrl, name: urlName, isSelect: true}));
     }
@@ -262,10 +226,10 @@ export class FlowLayoutComponent implements OnInit {
     const currentUrl = this.routeInfo.snapshot['_routerState'].url;
     // console.log(currentUrl);
     this.tabItems.some((i) => {
-      if (i.isSelect && i.url !== '/flowlayout/markdown' && i.url !== currentUrl) {
+      if (i.isSelect && i.url !== '/flowlayout/rxjs' && i.url !== currentUrl) {
         this.router.navigate([i.url]);
       }
-      if (this.tabItems.length === 1 && i.url === '/flowlayout/markdown') {
+      if (this.tabItems.length === 1 && i.url === '/flowlayout/rxjs') {
         this.router.navigate([i.url]);
       }
     });

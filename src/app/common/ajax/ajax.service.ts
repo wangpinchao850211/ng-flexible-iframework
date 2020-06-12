@@ -17,9 +17,9 @@ export class AjaxService {
         this.handleError = httpErrorHandler.createHandleError('AjaxService');
     }
 
-    doGet(params: any): Observable<any> {
+    doGet(uri: string, params: any): Observable<any> {
         console.log(params);
-        return this.http.get(this.baseUrl, { params: params }).pipe(
+        return this.http.get(this.baseUrl+uri, { params: params }).pipe(
             catchError(this.handleError<any[]>('doGet', []))
         );
     }

@@ -150,8 +150,8 @@ export class AuthService {
         // 第一步 将token解析存储到session
         // this.resolveToken(this.token);
         const interval = window.setInterval(() => {
-            console.log(this.getNow());
-            console.log(this.expiredTime);
+            // console.log(this.getNow());
+            // console.log(this.expiredTime);
             if (!this.expiredTime || this.expiredTime < (this.getNow() + parseInt('120')*1000)) {
                 // 超出时间戳上限，登出
                 console.log('监听结束，登出');
@@ -174,7 +174,7 @@ export class AuthService {
           const currentUrl = this.routeInfo.snapshot['_routerState'].url;
           // 获取当前浏览器路径
           if (this.whiteUrList.includes(currentUrl)) {
-              this.router.navigate(['/flowlayout/markdown']);
+              this.router.navigate(['/flowlayout/rxjs']);
           }
         } else { // 没有token，判断this.startURL是否属于白名单
         //   console.log(`start: ${this.startURL}`);

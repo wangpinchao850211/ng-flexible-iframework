@@ -1,48 +1,51 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { CommonModule, HashLocationStrategy, LocationStrategy } from '@angular/common';
-import { AccordionModule } from 'primeng/accordion';     // accordion and accordion tab
-import { PanelMenuModule } from 'primeng/panelmenu';
+import { HttpClient, HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FlowLayoutComponent } from './flow-layout/flow-layout.component';
-import { RxjsLibraryComponent } from './examples/rxjs-library/rxjs-library.component';
-import { MarkdownComponent } from './examples/markdown/markdown.component';
-import { RadioButtonModule } from 'primeng/radiobutton';
-import { FileUploadModule } from 'primeng/fileupload';
-import { TabMenuModule } from 'primeng/tabmenu';
-import {TooltipModule} from 'primeng/tooltip';
-import { HttpClient, HttpClientModule, HttpClientXsrfModule } from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { httpInterceptorProviders } from '../app/common/http-interceptors/index';
-import { AjaxService } from './common/ajax/ajax.service';
-import { HttpErrorHandler } from './common/services/http-error-handler.service';
-import { LoggerService } from './common/services/logger.service';
-import { RouterNavigationModule } from './examples/router-navigation/router-navigation.module';
 
 import { LoginLayoutComponent } from './login/layout/layout.component';
 import { LoginComponent } from './login/login/login.component';
 import { SetPasswordComponent } from './login/set-password/set-password.component';
 import { PromptMessageComponent } from './login/prompt-message/prompt-message.component';
+import { DeniedComponent } from './login/denied/denied.component';
+
+import { FlowLayoutComponent } from './flow-layout/flow-layout.component';
+import { RxjsLibraryComponent } from './examples/rxjs-library/rxjs-library.component';
+import { MarkdownComponent } from './examples/markdown/markdown.component';
+import { PrimeNGUiComponent } from './examples/prime-ng-ui/prime-ng-ui.component';
+import { PipeComponentModel } from '../app/examples/pipe/Module';
+import { RouterNavigationModule } from './examples/router-navigation/router-navigation.module';
+import { BooksComponent } from './webKnowledge/books/books.component';
+
+import { CoreModule } from './core/core.module';
+import { httpInterceptorProviders } from '../app/common/http-interceptors/index';
+import { AjaxService } from './common/ajax/ajax.service';
+import { HttpErrorHandler } from './common/services/http-error-handler.service';
+import { LoggerService } from './common/services/logger.service';
 
 // External plugins
 import { MarkdownModule, MarkedOptions, MarkedRenderer } from 'ngx-markdown';
-import { PrimeNGUiComponent } from './examples/prime-ng-ui/prime-ng-ui.component';
-import {CheckboxModule} from 'primeng/checkbox';
-import {DropdownModule} from 'primeng/dropdown';
-import { CoreModule } from './core/core.module';
-import { PipeComponentModel } from '../app/examples/pipe/Module';
-import { InjectableFromComponentModel } from './examples/injectable/Module';
+// primeng
+import { AccordionModule } from 'primeng/accordion';     // accordion and accordion tab
+import { PanelMenuModule } from 'primeng/panelmenu';
+import { RadioButtonModule } from 'primeng/radiobutton';
+import { FileUploadModule } from 'primeng/fileupload';
+import { TabMenuModule } from 'primeng/tabmenu';
+import { TooltipModule } from 'primeng/tooltip';
+import { CheckboxModule } from 'primeng/checkbox';
+import { DropdownModule } from 'primeng/dropdown';
 import { GalleriaModule } from 'primeng/galleria';
 
 // 全局管理
 import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers, initState } from './reducers';
-import { HtmlComponent } from './webKnowledge/html/html.component';
-import { DeniedComponent } from './login/denied/denied.component';
-
+import { CardComponent } from './webKnowledge/card/card.component';
+import { ListComponent } from './webKnowledge/list/list.component';
 
 export function markedOptions(): MarkedOptions {
   const renderer = new MarkedRenderer();
@@ -61,6 +64,18 @@ export function markedOptions(): MarkedOptions {
   };
 }
 
+const primeModule = [
+    FileUploadModule,
+    RadioButtonModule,
+    TabMenuModule,
+    TooltipModule,
+    AccordionModule,
+    PanelMenuModule,
+    CheckboxModule,
+    DropdownModule,
+    GalleriaModule,
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -72,30 +87,25 @@ export function markedOptions(): MarkedOptions {
     LoginComponent,
     SetPasswordComponent,
     PromptMessageComponent,
-    HtmlComponent,
-    DeniedComponent
+    BooksComponent,
+    DeniedComponent,
+    CardComponent,
+    ListComponent
   ],
   entryComponents: [
     PromptMessageComponent
   ],
   imports: [
     BrowserModule,
-    FileUploadModule,
-    RadioButtonModule,
-    TabMenuModule,
-    TooltipModule,
-    AccordionModule,
-    PanelMenuModule,
-    CheckboxModule,
-    DropdownModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    CoreModule,
-    PipeComponentModel,
-    InjectableFromComponentModel,
     CommonModule,
+    CoreModule,
+    AppRoutingModule,
+    PipeComponentModel,
+    RouterNavigationModule,
     ReactiveFormsModule,
     HttpClientModule,
+    ...primeModule,
+    BrowserAnimationsModule,
     HttpClientXsrfModule.withOptions({
       cookieName: 'My-Xsrf-Cookie',
       headerName: 'My-Xsrf-Header'
@@ -107,8 +117,7 @@ export function markedOptions(): MarkedOptions {
         useFactory: markedOptions
       }
     }),
-    RouterNavigationModule,
-    GalleriaModule,
+    
     StoreModule.forRoot(reducers, {
       initialState: initState,
       metaReducers,
