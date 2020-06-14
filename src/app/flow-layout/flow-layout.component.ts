@@ -27,7 +27,7 @@ export class FlowLayoutComponent implements OnInit {
                 label: 'Rxjs',
                 icon: 'pi pi-fw pi-ticket',
                 command: (event) => {
-                    
+
                     const el = event.originalEvent.target;
                     console.log(el);
                     this.changeMenuActiveColor(el);
@@ -45,7 +45,7 @@ export class FlowLayoutComponent implements OnInit {
                 icon: 'pi pi-pw pi-file',
                 command: (event) => {
                     console.log(event);
-                    
+
                     const el = event.originalEvent.target;
                     console.log(el);
                     this.changeMenuActiveColor(el);
@@ -63,7 +63,7 @@ export class FlowLayoutComponent implements OnInit {
                 label: 'PrimeNG-UI',
                 icon: 'pi pi-fw pi-tags',
                 command: (event) => {
-                    
+
                     const el = event.originalEvent.target;
                     console.log(el);
                     this.changeMenuActiveColor(el);
@@ -80,7 +80,7 @@ export class FlowLayoutComponent implements OnInit {
                 label: 'RouterNavigation',
                 icon: 'pi pi-fw pi-ticket',
                 command: (event) => {
-                    
+
                     const el = event.originalEvent.target;
                     console.log(el);
                     this.changeMenuActiveColor(el);
@@ -98,7 +98,7 @@ export class FlowLayoutComponent implements OnInit {
                 icon: 'pi pi-fw pi-ticket',
                 command: (event) => {
                     console.log(event);
-                    
+
                     const el = event.originalEvent.target;
                     console.log(el);
                     this.changeMenuActiveColor(el);
@@ -173,14 +173,16 @@ export class FlowLayoutComponent implements OnInit {
     this.render.setStyle(parent, 'borderLeftStyle', 'solid');
     this.render.setStyle(parent, 'borderLeftColor', '#005b9f');
   }
-  
+
   getActiveItem() {
     return this.tabItems.filter(i => i.isSelect)[0];
   };
+
   tabItems:Array<MenuTab> = [];
   fold: boolean = true;
   showHeader: boolean = true;
   showFooter: boolean = true;
+  showSetting: boolean = false;
   @HostListener('window:resize')
   onWindowResize() {
     this.layoutService.changeLayoutSize(`${window.innerHeight}px`);
@@ -281,7 +283,8 @@ export class FlowLayoutComponent implements OnInit {
     this.items = _.cloneDeep(this.itemsResouce);
   }
 
-  switchTab(ev: Event, menuTab: MenuTab) {
+  switchTab(item) {
+    const menuTab: MenuTab = item;
     const currentTab = {
       url: menuTab.url,
       name: menuTab.name,
@@ -289,17 +292,45 @@ export class FlowLayoutComponent implements OnInit {
     }
     this.store.dispatch(addTab(currentTab));
     this.router.navigate([menuTab.url]);
-    ev.preventDefault();
   }
-  closeTab(ev: Event, tab: MenuTab) {
-    console.log(tab);
+
+  closeTab(item) {
+    const tab: MenuTab = item;
     if (this.tabItems.length === 1) {
       return;
     }
     // dispatch remove
     this.store.dispatch(removeTab(tab));
-    ev.preventDefault();
   }
 
-  
+  showSettingDialog(ev: Event) {
+    console.log(ev);
+    this.showSetting = !this.showSetting;
+    // 原生动画
+    // const el = document.getElementById('hiddenBase');
+    const el = document.getElementById('wpc-theme');
+    this.render.setStyle(el, 'right', '-300px');
+
+    let distance = 50;
+    if (this.showSetting) {
+      const timer = setInterval(() => {
+        el.style.right = -el.clientWidth + distance + 'px';
+        distance += 50;
+        if (distance >= el.clientWidth) {
+          clearInterval(timer);
+        }
+      }, 100);
+    } else {
+      const timer = setInterval(() => {
+        el.style.right = -distance + 'px';
+        if (distance >= el.clientWidth) {
+          clearInterval(timer);
+        } else {
+          distance += 50;
+        }
+      }, 100);
+    }
+    
+  }
+
 }

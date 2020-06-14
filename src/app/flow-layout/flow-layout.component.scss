@@ -56,3 +56,49 @@
         background: white;
     }
 }
+
+::ng-deep {
+    body .pi {
+        font-size: 30px;
+    }
+}
+
+@keyframes rotating{
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#wpc-theme {
+    position: fixed;
+    right: -1px;
+    top: 160px;
+    .theme-button-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 48px;
+        height: 48px;
+        line-height: 48px;
+        text-align: center;
+        cursor: pointer;
+        border-radius: 0;
+        margin: 0;
+        pointer-events: auto;
+        opacity: 0.9;
+        z-index: 998;
+        background-color: #f44336;
+        color: white;
+        i {
+            animation: rotating 3s linear infinite;
+        }
+    }
+    .theme-dialog{
+        width: 300px;
+        height: 100vh;
+        border: 1px solid blue;
+    }
+}

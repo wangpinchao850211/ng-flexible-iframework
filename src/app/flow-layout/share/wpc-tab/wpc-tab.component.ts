@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
 
 @Component({
   selector: 'app-wpc-tab',
@@ -8,7 +8,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class WpcTabComponent implements OnInit {
 
   @Input() tabItems;
-  @Output() activeItem = new EventEmitter<any>();
+  @Input() activeItem;
   @Output() switchTab = new EventEmitter<any>();
   @Output() closeTab = new EventEmitter<any>();
   constructor() { }
@@ -16,23 +16,20 @@ export class WpcTabComponent implements OnInit {
   ngOnInit() {
   }
 
-  getActiveItem() {
-    this.activeItem.emit();
+  ngOnChanges(changes: SimpleChanges): void {
+      console.log(changes);
   }
 
   switchtab($event, item){
-    const Observal = {
-      $event,
-      item
-    }
-    this.switchTab.emit(Observal);
+    console.log(item);
+    this.switchTab.emit(item);
+    $event.preventDefault(); // 阻止冒泡
   }
+
   closetab($event, item) {
-    const Observal = {
-      $event,
-      item
-    }
-    this.closeTab.emit(Observal);
+    console.log(item);
+    this.closeTab.emit(item);
+    $event.preventDefault();// 阻止冒泡
   }
 
 }

@@ -1,7 +1,7 @@
 <div class="container-layout">
 
     <aside class="asild-menu" [ngClass]="{'asild-menu':fold, 'fold-asild-menu': !fold}">
-        <app-wpc-menu [fold]="fold" [menu]="items" (collapse)="folding($event, data)" (expand)="unfolding($event, data)"></app-wpc-menu>
+        <app-wpc-menu [fold]="fold" [menu]="items" (collapse)="folding($event)" (expand)="unfolding($event)"></app-wpc-menu>
     </aside>
 
     <section class="main" [ngClass]="{'main':fold, 'fold-main': !fold}">
@@ -11,16 +11,7 @@
         </header>
 
         <div class="tab-bar-wrapper">
-            <!-- <app-wpc-tab [tabItems]="tabItems" (activeItem)="getActiveItem()" (switchTab)="switchTab($event, item)" (closeTab)="closeTab($event, item)"></app-wpc-tab> -->
-            
-            <p-tabMenu [model]="tabItems" [activeItem]="getActiveItem()">
-                <ng-template pTemplate="item" let-item let-i="index">
-                    <a class="tab-item-link" (click)="switchTab($event, item)">
-                        <span class="tab-item-text">{{item.name}}</span>
-                    </a>
-                    <i *ngIf="item.url!=='/flowlayout/rxjs'" (click)="closeTab($event, item)" class="tab-item-close pi pi-times"></i>
-                </ng-template>
-            </p-tabMenu>
+            <app-wpc-tab [tabItems]="tabItems" [activeItem]="getActiveItem()" (switchTab)="switchTab($event)" (closeTab)="closeTab($event)"></app-wpc-tab>
         </div>
 
         <section class="main-content">
@@ -33,3 +24,13 @@
 
     </section>
 </div>
+
+<div id="wpc-theme" (click)="showSettingDialog($event)">
+    <span class="theme-button-icon" *ngIf="!showSetting">
+        <i class="pi pi-cog"></i>
+    </span>
+    
+    <div class="theme-dialog" *ngIf="showSetting">
+    </div>
+</div>
+

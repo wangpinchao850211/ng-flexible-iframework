@@ -1,4 +1,4 @@
-<p-tabMenu [model]="tabItems" [activeItem]="getActiveItem()">
+<p-tabMenu [model]="tabItems" [activeItem]="activeItem">
     <ng-template pTemplate="item" let-item let-i="index">
         <a class="tab-item-link" (click)="switchtab($event, item)">
             <span class="tab-item-text">{{item.name}}</span>
