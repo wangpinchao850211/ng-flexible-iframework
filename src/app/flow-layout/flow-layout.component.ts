@@ -182,7 +182,7 @@ export class FlowLayoutComponent implements OnInit {
   fold: boolean = true;
   showHeader: boolean = true;
   showFooter: boolean = true;
-  showSetting: boolean = false;
+  
   @HostListener('window:resize')
   onWindowResize() {
     this.layoutService.changeLayoutSize(`${window.innerHeight}px`);
@@ -301,36 +301,6 @@ export class FlowLayoutComponent implements OnInit {
     }
     // dispatch remove
     this.store.dispatch(removeTab(tab));
-  }
-
-  showSettingDialog(ev: Event) {
-    console.log(ev);
-    this.showSetting = !this.showSetting;
-    // 原生动画
-    // const el = document.getElementById('hiddenBase');
-    const el = document.getElementById('wpc-theme');
-    this.render.setStyle(el, 'right', '-300px');
-
-    let distance = 50;
-    if (this.showSetting) {
-      const timer = setInterval(() => {
-        el.style.right = -el.clientWidth + distance + 'px';
-        distance += 50;
-        if (distance >= el.clientWidth) {
-          clearInterval(timer);
-        }
-      }, 100);
-    } else {
-      const timer = setInterval(() => {
-        el.style.right = -distance + 'px';
-        if (distance >= el.clientWidth) {
-          clearInterval(timer);
-        } else {
-          distance += 50;
-        }
-      }, 100);
-    }
-    
   }
 
 }

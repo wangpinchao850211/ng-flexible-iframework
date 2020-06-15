@@ -1,0 +1,135 @@
+<div id="wpc-theme" (click)="showSettingDialog($event)">
+    <span class="theme-button-setting" *ngIf="!showSetting">
+        <i class="pi pi-cog"></i>
+    </span>
+    <div class="theme-dialog">
+        <h3>
+            Theme Options
+            <span class="theme-button-close" (click)="closeSettingDialog($event)">
+                <i class="pi pi-times"></i>
+            </span>
+        </h3>
+        <form [formGroup]="form">
+            <app-theme-solt [title]="list[0].name">
+                <div class="content">
+                    <div class="p-col-12 form-row">
+                        <p-radioButton name="Default Light" value="Default Light" label="Default Light" formControlName="colorTheme"></p-radioButton>
+                    </div>
+                    <div class="p-col-12 form-row">
+                        <p-radioButton name="Yellow Light" value="Yellow Light" label="Yellow Light" formControlName="colorTheme"></p-radioButton>
+                    </div>
+                    <div class="p-col-12 form-row">
+                        <p-radioButton name="Blue-Gray Dark" value="Blue-Gray Dark" label="Blue-Gray Dark" formControlName="colorTheme"></p-radioButton>
+                    </div>
+                    <div class="p-col-12 form-row">
+                        <p-radioButton name="Pink Dark" value="Pink Dark" label="Pink Dark" formControlName="colorTheme"></p-radioButton>
+                    </div>
+                </div>
+            </app-theme-solt>
+            <div formGroupName="layout">
+                <app-theme-solt [title]="list[1].name">
+                    <div class="content">
+                        <div class="p-col-12 form-row">
+                            <p-radioButton name="Vertical Layout #1" value="Vertical Layout #1" label="Vertical Layout #1" formControlName="style"></p-radioButton>
+                        </div>
+                        <div class="p-col-12 form-row">
+                            <p-radioButton name="Vertical Layout #2" value="Vertical Layout #2" label="Vertical Layout #2" formControlName="style"></p-radioButton>
+                        </div>
+                        <div class="p-col-12 form-row">
+                            <p-radioButton name="Horizontal Layout #1" value="Horizontal Layout #1" label="Horizontal Layout #1" formControlName="style"></p-radioButton>
+                        </div>
+                    </div>
+                    <div class="content-children">
+                        <ng-container *ngIf="list[1].children.length">
+                            <ng-container *ngFor="let item of list[1].children; let i = index;">
+                                <app-theme-solt [title]="item.name">
+                                    <div class="content">
+                                        <ng-container [ngSwitch]="i">
+                                            <ng-container *ngSwitchCase="0">
+                                                <div class="p-col-12 form-row">
+                                                    <p-radioButton name="Fullwidth" value="Fullwidth" label="Fullwidth" formControlName="width"></p-radioButton>
+                                                </div>
+                                                <div class="p-col-12 form-row">
+                                                    <p-radioButton name="Boxed" value="Boxed" label="Boxed" formControlName="width"></p-radioButton>
+                                                </div>
+                                            </ng-container>
+                                            <ng-container *ngSwitchCase="1">
+                                                <div formGroupName="navbar">
+                                                    <div class="p-col-12 form-row">
+                                                        <p-inputSwitch formControlName="hidden"></p-inputSwitch>
+                                                    </div>
+                                                    <div class="p-col-12 form-row">
+                                                        <p-inputSwitch formControlName="folded"></p-inputSwitch>
+                                                    </div>
+                                                    <div class="p-col-12 form-row">Position:</div>
+                                                    <div class="p-col-12 form-row">
+                                                        <p-radioButton name="navbarLeft" value="Left" label="Left" formControlName="position"></p-radioButton>
+                                                    </div>
+                                                    <div class="p-col-12 form-row">
+                                                        <p-radioButton name="navbarRight" value="Right" label="Right" formControlName="position"></p-radioButton>
+                                                    </div>
+                                                    <div class="p-col-12 form-row">Background:</div>
+                                                    <div class="p-col-12 form-row">
+                                                        颜色选择器
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+                                            <ng-container *ngSwitchCase="2">
+                                                <div formGroupName="toolbar">
+                                                    <div class="p-col-12 form-row">
+                                                        <p-inputSwitch formControlName="hidden"></p-inputSwitch>
+                                                    </div>
+                                                    <div class="p-col-12 form-row">Position:</div>
+                                                    <div class="p-col-12 form-row">
+                                                        <p-radioButton name="toolbarAbove" value="Above" label="Above" formControlName="position"></p-radioButton>
+                                                    </div>
+                                                    <div class="p-col-12 form-row">
+                                                        <p-radioButton name="toolbarBelowStatic" value="Below Static" label="Below Static" formControlName="position"></p-radioButton>
+                                                    </div>
+                                                    <div class="p-col-12 form-row">
+                                                        <p-radioButton name="toolbarBelowFixed" value="Below Fixed" label="Below Fixed" formControlName="position"></p-radioButton>
+                                                    </div>
+                                                    <div class="p-col-12 form-row">
+                                                        <p-checkbox label="Use custom background color" formControlName="customBackgroundColor"></p-checkbox>
+                                                    </div>
+                                                    <div class="p-col-12 form-row">Background:</div>
+                                                    <div class="p-col-12 form-row">
+                                                        颜色选择器
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+                                            <ng-container *ngSwitchCase="3">
+                                                <div formGroupName="footer">
+                                                    <div class="p-col-12 form-row">
+                                                        <p-inputSwitch formControlName="hidden"></p-inputSwitch>
+                                                    </div>
+                                                    <div class="p-col-12 form-row">Position:</div>
+                                                    <div class="p-col-12 form-row">
+                                                        <p-radioButton name="footerAbove" value="Above" label="Above" formControlName="position"></p-radioButton>
+                                                    </div>
+                                                    <div class="p-col-12 form-row">
+                                                        <p-radioButton name="footerBelowStatic" value="Below Static" label="Below Static" formControlName="position"></p-radioButton>
+                                                    </div>
+                                                    <div class="p-col-12 form-row">
+                                                        <p-radioButton name="footerBelowFixed" value="Below Fixed" label="Below Fixed" formControlName="position"></p-radioButton>
+                                                    </div>
+                                                    <div class="p-col-12 form-row">
+                                                        <p-checkbox label="Use custom background color" formControlName="customBackgroundColor"></p-checkbox>
+                                                    </div>
+                                                    <div class="p-col-12 form-row">Background:</div>
+                                                    <div class="p-col-12 form-row">
+                                                        颜色选择器
+                                                    </div>
+                                                </div>
+                                            </ng-container>
+                                        </ng-container>
+                                    </div>
+                                </app-theme-solt>
+                            </ng-container>
+                        </ng-container>               
+                    </div>
+                </app-theme-solt>
+            </div>
+        </form>
+    </div>
+</div>

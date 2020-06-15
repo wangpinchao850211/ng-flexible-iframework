@@ -25,12 +25,4 @@
     </section>
 </div>
 
-<div id="wpc-theme" (click)="showSettingDialog($event)">
-    <span class="theme-button-icon" *ngIf="!showSetting">
-        <i class="pi pi-cog"></i>
-    </span>
-    
-    <div class="theme-dialog" *ngIf="showSetting">
-    </div>
-</div>
-
+<app-wpc-options></app-wpc-options>

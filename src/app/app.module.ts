@@ -39,6 +39,7 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { TooltipModule } from 'primeng/tooltip';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DropdownModule } from 'primeng/dropdown';
+import { InputSwitchModule } from 'primeng/inputswitch';
 import { GalleriaModule } from 'primeng/galleria';
 
 // 全局管理
@@ -50,6 +51,8 @@ import { WpcMenuComponent } from './flow-layout/share/wpc-menu/wpc-menu.componen
 import { WpcHeaderComponent } from './flow-layout/share/wpc-header/wpc-header.component';
 import { WpcFooterComponent } from './flow-layout/share/wpc-footer/wpc-footer.component';
 import { WpcTabComponent } from './flow-layout/share/wpc-tab/wpc-tab.component';
+import { WpcOptionsComponent } from './themes/wpc-options/wpc-options.component';
+import { ThemeSoltComponent } from './themes/theme-solt/theme-solt.component';
 
 export function markedOptions(): MarkedOptions {
   const renderer = new MarkedRenderer();
@@ -77,6 +80,7 @@ const primeModule = [
     PanelMenuModule,
     CheckboxModule,
     DropdownModule,
+    InputSwitchModule,
     GalleriaModule,
 ];
 
@@ -98,7 +102,9 @@ const primeModule = [
     WpcMenuComponent,
     WpcHeaderComponent,
     WpcFooterComponent,
-    WpcTabComponent
+    WpcTabComponent,
+    WpcOptionsComponent,
+    ThemeSoltComponent
   ],
   entryComponents: [
     PromptMessageComponent

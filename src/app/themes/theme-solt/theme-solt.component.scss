@@ -1,0 +1,15 @@
+.options-wrapper{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #848484;
+    position: relative;
+    .options-title{
+        display: inline-block;
+        position: absolute;
+        top: -20px;
+        padding: 10px;
+        background-color: #303030;
+    }
+}
