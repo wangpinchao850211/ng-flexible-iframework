@@ -33,7 +33,7 @@ export class WpcOptionsComponent implements OnInit {
         },
       ]
     }
-    
+
   ];
   selectedValue: string = 'val1';
 
@@ -70,7 +70,7 @@ export class WpcOptionsComponent implements OnInit {
               background           : new FormControl(),
               customBackgroundColor: new FormControl('Use custom background color'),
               hidden               : new FormControl(),
-              position             : new FormControl('Below Static')
+              footerPosition             : new FormControl('Below Static')
           })
       })
     });
