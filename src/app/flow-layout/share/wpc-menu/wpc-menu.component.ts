@@ -7,6 +7,7 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 })
 export class WpcMenuComponent implements OnInit {
 
+  @Input() showTitle;
   @Input() fold;
   @Input() menu;
   @Output() collapse = new EventEmitter<any>();

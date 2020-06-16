@@ -192,6 +192,13 @@ export class FlowLayoutComponent implements OnInit, OnDestroy {
   fold: boolean = true;
   showHeader: boolean = true;
   showFooter: boolean = true;
+
+  // theme layout
+  layout = {
+    config: {
+      type: 'Vertical Layout #1'
+    }
+  }
   
   @HostListener('window:resize')
   onWindowResize() {
@@ -239,12 +246,46 @@ export class FlowLayoutComponent implements OnInit, OnDestroy {
   updateColor() {
     this.themeColor$ = this.store.pipe(select('color')).subscribe((color) => {
       console.log(`更新主题颜色：${color['color']}`);
+      const key = color['color'];
+      let currentColor = '';
+      switch (key) {
+        case 'Default Light':
+          currentColor = '#039be5'; // #f5f5f5
+          break;
+        case 'Yellow Light':
+          currentColor = '#fdd835'; // #f5f5f5
+          break;
+        case 'Blue-Gray Dark':
+          currentColor = '#607d8b'; // #303030
+          break;
+        case 'Pink Dark':
+          currentColor = '#e91e63'; // #303030
+          break;
+        default:
+          break;
+      }
+      // 开始更新页面的主题颜色：考虑下执行方案
     });
   }
 
   updateLayout() {
     this.themeStyle$ = this.store.pipe(select('layout')).subscribe((layout) => {
       console.log(`变更布局：${layout['layout']}`);
+      const key = layout['layout'];
+      switch (key) {
+        case 'Vertical Layout #1':
+          this.layout.config.type = 'VL#1';
+          break;
+        case 'Vertical Layout #2':
+          this.layout.config.type = 'VL#2';
+          break;
+        case 'Horizontal Layout #1':
+          this.layout.config.type = 'HL#1';
+          break;
+        default:
+          break;
+      }
+
     });
   }
 
