@@ -1,22 +1,32 @@
-import { Component, OnInit, HostListener, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, HostListener, ElementRef, Renderer2, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MenuItem } from 'primeng/api';
-import { from, Observable } from 'rxjs';
+import { from, Observable, Subscription } from 'rxjs';
 import { LayoutService } from 'src/app/common/services/layout.service';
 import * as _ from 'lodash';
 import { Store, select } from '@ngrx/store';
 import { MenuTab } from 'src/app/common/domain/tab';
+import { StoreState } from '../common/domain/store';
 import { addTab, removeTab } from 'src/app/action/tab.action';
 import { getUrlByName, getNameByUrl } from 'src/app/common/utils';
 import { PlatformLocation } from '@angular/common';
+
 
 @Component({
   selector: 'app-flow-layout',
   templateUrl: './flow-layout.component.html',
   styleUrls: ['./flow-layout.component.scss']
 })
-export class FlowLayoutComponent implements OnInit {
-  updateMenuTab$: Observable<MenuTab>
+export class FlowLayoutComponent implements OnInit, OnDestroy {
+  updateMenuTab$: Observable<MenuTab>;
+  // 定制主题store Observable
+  themeColor$: Subscription;
+  themeStyle$: Subscription;
+  themeWidth$: Subscription;
+  navbarTheme$: Subscription;
+  toolbarTheme$: Subscription;
+  footerTheme$: Subscription;
+
   items: MenuItem[];
   itemsResouce: MenuItem[] = [
       {
@@ -191,7 +201,7 @@ export class FlowLayoutComponent implements OnInit {
   }
   constructor(
     private render: Renderer2,
-    private store: Store<{tab: MenuTab}>,
+    private store: Store<StoreState>, // 注意StoreState中必须填上新的store interface
     private el: ElementRef,
     private layoutService: LayoutService,
     private router: Router,
@@ -210,12 +220,71 @@ export class FlowLayoutComponent implements OnInit {
       console.log(data);
       this.initTab(data);
     });
+
+    // theme color
+    this.updateColor(); 
+    // theme style
+    this.updateLayout();
+    // layout width
+    this.updateBoxWidth();
+    // theme Navbar
+    this.updateNavbar(); 
+    // theme Toolbar
+    this.updateToolbar();
+    // layout Footer
+    this.updateFooter();
+
+  }
+
+  updateColor() {
+    this.themeColor$ = this.store.pipe(select('color')).subscribe((color) => {
+      console.log(`更新主题颜色：${color['color']}`);
+    });
+  }
+
+  updateLayout() {
+    this.themeStyle$ = this.store.pipe(select('layout')).subscribe((layout) => {
+      console.log(`变更布局：${layout['layout']}`);
+    });
+  }
+
+  updateBoxWidth() {
+    this.themeWidth$ = this.store.pipe(select('width')).subscribe((width) => {
+      console.log(`变更外层宽度：${width['boxWidth']}`);
+    });
+  }
+  updateNavbar() {
+    this.navbarTheme$ = this.store.pipe(select('navbar')).subscribe((navbar) => {
+      console.log(`变更navbar布局：`);
+      console.log(navbar);
+    });
+  }
+  updateToolbar() {
+    this.toolbarTheme$ = this.store.pipe(select('toolbar')).subscribe((toolbar) => {
+      console.log(`变更toolbar布局：`);
+      console.log(toolbar);
+    });
+  }
+  updateFooter() {
+    this.footerTheme$ = this.store.pipe(select('footer')).subscribe((footer) => {
+      console.log(`变更footer布局：`);
+      console.log(footer);
+    });
   }
 
   ngOnInit() {
     // 初始化布局页面
     this.initLayout();
     // this.setHtmlSize(); rem布局核心
+  }
+
+  ngOnDestroy() {
+    this.themeColor$.unsubscribe();
+    this.themeStyle$.unsubscribe();
+    this.themeWidth$.unsubscribe();
+    this.navbarTheme$.unsubscribe();
+    this.toolbarTheme$.unsubscribe();
+    this.footerTheme$.unsubscribe();
   }
 
   initTab(menutabList) {

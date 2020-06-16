@@ -56,52 +56,63 @@
                                             <ng-container *ngSwitchCase="1">
                                                 <div formGroupName="navbar">
                                                     <div class="p-col-12 form-row">
-                                                        <p-inputSwitch formControlName="hidden"></p-inputSwitch>
+                                                        <p-inputSwitch formControlName="Nhidden"></p-inputSwitch>
+                                                        <span class="switchLabel"> Hide </span>
                                                     </div>
                                                     <div class="p-col-12 form-row">
                                                         <p-inputSwitch formControlName="folded"></p-inputSwitch>
+                                                        <span class="switchLabel"> Folded </span>
                                                     </div>
                                                     <div class="p-col-12 form-row">Position:</div>
                                                     <div class="p-col-12 form-row">
-                                                        <p-radioButton name="position" value="Left" label="Left" formControlName="position"></p-radioButton>
+                                                        <p-radioButton name="navbarPosition" value="Left" label="Left" formControlName="navbarPosition"></p-radioButton>
                                                     </div>
                                                     <div class="p-col-12 form-row">
-                                                        <p-radioButton name="position" value="Right" label="Right" formControlName="position"></p-radioButton>
+                                                        <p-radioButton name="navbarPosition" value="Right" label="Right" formControlName="navbarPosition"></p-radioButton>
                                                     </div>
                                                     <div class="p-col-12 form-row">Background:</div>
                                                     <div class="p-col-12 form-row">
-                                                        颜色选择器
+                                                        <div class="palette" #navbarPaletteColor>
+                                                            <input type="color" formControlName="Nbackground">
+                                                            <i class="pi pi-palette wpc-palette"></i>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </ng-container>
                                             <ng-container *ngSwitchCase="2">
                                                 <div formGroupName="toolbar">
                                                     <div class="p-col-12 form-row">
-                                                        <p-inputSwitch formControlName="hidden"></p-inputSwitch>
+                                                        <p-inputSwitch formControlName="Thidden"></p-inputSwitch>
+                                                        <span class="switchLabel"> Hide </span>
                                                     </div>
                                                     <div class="p-col-12 form-row">Position:</div>
                                                     <div class="p-col-12 form-row">
-                                                        <p-radioButton name="position" value="Above" label="Above" formControlName="position"></p-radioButton>
+                                                        <p-radioButton name="toolbarPosition" value="Above" label="Above" formControlName="toolbarPosition"></p-radioButton>
                                                     </div>
                                                     <div class="p-col-12 form-row">
-                                                        <p-radioButton name="position" value="Below Static" label="Below Static" formControlName="position"></p-radioButton>
+                                                        <p-radioButton name="toolbarPosition" value="Below Static" label="Below Static" formControlName="toolbarPosition"></p-radioButton>
                                                     </div>
                                                     <div class="p-col-12 form-row">
-                                                        <p-radioButton name="position" value="Below Fixed" label="Below Fixed" formControlName="position"></p-radioButton>
+                                                        <p-radioButton name="toolbarPosition" value="Below Fixed" label="Below Fixed" formControlName="toolbarPosition"></p-radioButton>
                                                     </div>
                                                     <div class="p-col-12 form-row">
-                                                        <p-checkbox label="Use custom background color" formControlName="customBackgroundColor"></p-checkbox>
+                                                        <p-checkbox label="Use custom background color" formControlName="TcustomBackgroundColor"></p-checkbox>
                                                     </div>
                                                     <div class="p-col-12 form-row">Background:</div>
                                                     <div class="p-col-12 form-row">
-                                                        颜色选择器
+                                                        <div class="palette" #toolbarPaletteColor>
+                                                            <input #colorSelector type="color" formControlName="Tbackground">
+                                                            <i class="pi pi-palette wpc-palette"></i>
+                                                        </div>
+                                                        
                                                     </div>
                                                 </div>
                                             </ng-container>
                                             <ng-container *ngSwitchCase="3">
                                                 <div formGroupName="footer">
                                                     <div class="p-col-12 form-row">
-                                                        <p-inputSwitch formControlName="hidden"></p-inputSwitch>
+                                                        <p-inputSwitch formControlName="Fhidden"></p-inputSwitch>
+                                                        <span class="switchLabel"> Hide </span>
                                                     </div>
                                                     <div class="p-col-12 form-row">Position:</div>
                                                     <div class="p-col-12 form-row">
@@ -114,11 +125,14 @@
                                                         <p-radioButton name="footerPosition" value="Below Fixed" label="Below Fixed" formControlName="footerPosition"></p-radioButton>
                                                     </div>
                                                     <div class="p-col-12 form-row">
-                                                        <p-checkbox label="Use custom background color" formControlName="customBackgroundColor"></p-checkbox>
+                                                        <p-checkbox label="Use custom background color" formControlName="FcustomBackgroundColor"></p-checkbox>
                                                     </div>
                                                     <div class="p-col-12 form-row">Background:</div>
                                                     <div class="p-col-12 form-row">
-                                                        颜色选择器
+                                                        <div class="palette" #footerPaletteColor>
+                                                            <input #colorSelector type="color" formControlName="Fbackground">
+                                                            <i class="pi pi-palette wpc-palette"></i>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </ng-container>

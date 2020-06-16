@@ -7,17 +7,41 @@ import {
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
 import * as tabMenu from './tab.reducer';
+import * as themeColor from './themeColor.reducer';
+import * as themeStyle from './themeLayout.reducer';
+import * as themeWidth from './themeBoxWidth.reducer';
+import * as navbarTheme from './navbarTheme.reducer';
+import * as toolbarTheme from './toolbarTheme.reducer';
+import * as footerTheme from './footerTheme.reducer';
 
 export interface State {
   tab: tabMenu.State,
+  color: themeColor.State,
+  layout: themeStyle.State,
+  width: themeWidth.State,
+  navbar: navbarTheme.State,
+  toolbar: toolbarTheme.State,
+  footer: footerTheme.State
 }
 
 export const initState = {
   tab: tabMenu.initTabListState,
+  color: themeColor.initThemeColor,
+  layout: themeStyle.initThemeLayout,
+  width: themeWidth.initThemeWidth,
+  navbar: navbarTheme.initNavbarTheme,
+  toolbar: toolbarTheme.initToolbarTheme,
+  footer: footerTheme.initFooterTheme
 };
 
 export const reducers: ActionReducerMap<State> = {
   tab: tabMenu.tabReducer,
+  color: themeColor.themeColorReducer,
+  layout: themeStyle.themeStyleReducer,
+  width: themeWidth.themeWidthReducer,
+  navbar: navbarTheme.navbarThemeReducer,
+  toolbar: toolbarTheme.toolbarThemeReducer,
+  footer: footerTheme.footerThemeReducer
 };
 
 // console.log all actions
