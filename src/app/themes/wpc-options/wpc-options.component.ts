@@ -1,4 +1,4 @@
-import { Component, OnInit, Renderer2, ElementRef } from '@angular/core';
+import { Component, OnInit, Renderer2, ElementRef, ViewChild } from '@angular/core';
 import { domAnimation } from 'src/app/common/services/nativeDomAnimation';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Store, select } from '@ngrx/store';
@@ -50,6 +50,12 @@ export class WpcOptionsComponent implements OnInit {
 
   ];
   selectedValue: string = 'val1';
+
+  // change nav color icon
+  @ViewChild('navbarPaletteColor', {static: false}) navColorIcon: ElementRef;
+  @ViewChild('toolbarPaletteColor', {static: false}) toolColorIcon: ElementRef;
+  @ViewChild('footerPaletteColor', {static: false}) footerColorIcon: ElementRef;
+  
 
   constructor(
     private render: Renderer2,
@@ -134,10 +140,10 @@ export class WpcOptionsComponent implements OnInit {
     //   })
     // });
     this.form = this._formBuilder.group({
-        colorTheme      : new FormControl('Default Light'),
+        colorTheme      : new FormControl(),
         layout          : this._formBuilder.group({
-          style    : new FormControl('Vertical Layout #1'),
-          width    : new FormControl('Fullwidth'),
+          style    : new FormControl(),
+          width    : new FormControl(),
           navbar   : this._formBuilder.group({
               Nbackground         : new FormControl(),
               folded             : new FormControl(),
@@ -186,25 +192,38 @@ export class WpcOptionsComponent implements OnInit {
     this.form.get('layout.navbar').valueChanges.subscribe((value) => {
       const changeKey = this.giveChangeKey(navbarOldValue, value);
       navbarOldValue = { ...value };
+      if (changeKey === 'Nbackground') { // 更改icon颜色同 nav 背景色
+        this.render.setStyle(this.navColorIcon.nativeElement, 'color', value.Nbackground);
+      }
       this.store.dispatch(navbar({navbar: value, falg: 1, falgKey: changeKey}));
     });
   }
+  resetNavBgColor() { // 重置颜色
+    const setValue = Object.assign({}, this.form.get('layout.navbar').value, {Nbackground: "#030c2799"});
+    this.render.setStyle(this.navColorIcon.nativeElement, 'color', "#8dcdff");
+    this.store.dispatch(navbar({navbar: setValue, falg: 1, falgKey: "Nbackground"}));
+  }
   toolbarChange() {
-    console.log(toolbarEntity);
     let toolbarOldValue = toolbarEntity; // 先是默认值
-    console.log(toolbarOldValue);
     this.form.get('layout.toolbar').valueChanges.subscribe((value) => {
-      console.log(toolbarOldValue);
       const changeKey = this.giveChangeKey(toolbarOldValue, value);
       toolbarOldValue = { ...value };// 存储历史值
-      console.log(changeKey);
+      // console.log(changeKey);
+      const isCustom = this.form.get('layout.toolbar.TcustomBackgroundColor').value;
+      if (changeKey === 'Tbackground') { // 当颜色有变更，就将use custom 去掉勾选
+        this.render.setStyle(this.toolColorIcon.nativeElement, 'color', value.Tbackground); // 为icon 加色
+        if (isCustom) {
+          this.form.get('layout.toolbar.TcustomBackgroundColor').patchValue(false);
+        }
+      } else if (changeKey === 'TcustomBackgroundColor' && isCustom ) {// 重置icon
+        this.render.setStyle(this.toolColorIcon.nativeElement, 'color', '#8dcdff');
+      }
       this.store.dispatch(toolbar({toolbar: value, falg: 1, falgKey: changeKey}));
     });
   }
   giveChangeKey(old, newVal) { // 给出变更key值
     let Key = '';
     for (const key in newVal) {
-      // debugger;
       const newValItem = newVal[key];
       if (newValItem !== old[key]) {
         Key = key;
@@ -215,9 +234,17 @@ export class WpcOptionsComponent implements OnInit {
   footerChange() {
     let footerOldValue = footerEntity;
     this.form.get('layout.footer').valueChanges.subscribe((value) => {
-      console.log(footerOldValue);
       const changeKey = this.giveChangeKey(footerOldValue, value);
-      console.log(changeKey);
+      // console.log(changeKey);
+      const isCustom = this.form.get('layout.footer.FcustomBackgroundColor').value;
+      if (changeKey === 'Fbackground') { // 当颜色有变更，就将use custom 去掉勾选
+        this.render.setStyle(this.footerColorIcon.nativeElement, 'color', value.Fbackground); // 为icon 加色
+        if (isCustom) {
+          this.form.get('layout.footer.FcustomBackgroundColor').patchValue(false);
+        }
+      } else if (changeKey === 'FcustomBackgroundColor' && isCustom ) {// 重置icon
+        this.render.setStyle(this.footerColorIcon.nativeElement, 'color', '#8dcdff');
+      }
       footerOldValue = { ...value };
       this.store.dispatch(footer({footer: value, falg: 1, falgKey: changeKey}));
     });

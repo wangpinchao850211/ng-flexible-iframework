@@ -1,12 +1,13 @@
 import { createReducer, on } from '@ngrx/store';
 import { themeColor } from '../action/theme.action';
+import { themeColorEntity } from '../common/domain/theme';
 
 export interface State {
     color: string;
 }
 
 export const initThemeColor: State = {
-    color: 'Default Light'
+    color: themeColorEntity
 }
 
 const _themeColorReducer = createReducer(initThemeColor,

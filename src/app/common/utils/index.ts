@@ -89,3 +89,40 @@ export function removeToEmpty (realParam: any):any {
     }
     return param;
 }
+
+/**
+ * @param sColor 入参 颜色16进制
+*/
+export function getRgbNum(sColor){ // 真正将16进制转成rgb的方法
+    if(sColor.length === 4){
+        var sColorNew = "#";
+        for(var i=1; i<4; i+=1){  //补全颜色值 例如：#eee,#fff等
+            sColorNew += sColor.slice(i,i+1).concat(sColor.slice(i,i+1));
+        }
+        sColor = sColorNew;
+    }
+    //处理六位颜色值
+    var sColorChange = [];
+    for(var i=1; i<7; i+=2){
+        //核心代码，通过parseInt将十六进制转为十进制，parseInt只有一个参数时是默认转为十进制的，第二个参数则是指定转为对应进制
+        sColorChange.push(parseInt("0x"+sColor.slice(i,i+2)));
+    }
+    // console.log(sColorChange);
+    return sColorChange;
+}
+
+/**
+ * @param rgb 入参 颜色rgb值
+*/
+export function judgeDarkOrLight(rgb) { // 判断深浅的方法
+    const r = rgb[0];
+    const g = rgb[1];
+    const b = rgb[2];
+    if(r*0.299 + g*0.578 + b*0.114 >= 192){ //浅色
+        console.log('浅色');
+        return '浅色';
+    }else{  //深色
+        console.log('深色');
+        return '深色';
+    }
+}

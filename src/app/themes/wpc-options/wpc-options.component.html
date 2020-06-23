@@ -67,7 +67,10 @@
                                                     <div class="p-col-12 form-row">
                                                         <p-radioButton name="navbarPosition" value="Right" label="Right" formControlName="navbarPosition"></p-radioButton>
                                                     </div>
-                                                    <div class="p-col-12 form-row">Background:</div>
+                                                    <div class="p-col-12 form-row">
+                                                        Background:
+                                                        <button class="pramary-button options-layout-button" (click)="resetNavBgColor($event)">reset</button>
+                                                    </div>
                                                     <div class="p-col-12 form-row">
                                                         <div class="palette" #navbarPaletteColor>
                                                             <input type="color" formControlName="Nbackground">
@@ -93,7 +96,8 @@
                                                         <p-radioButton name="toolbarPosition" value="Below Fixed" label="Below Fixed" formControlName="toolbarPosition"></p-radioButton>
                                                     </div>
                                                     <div class="p-col-12 form-row">
-                                                        <p-checkbox label="Use custom background color" formControlName="TcustomBackgroundColor"></p-checkbox>
+                                                        <p-checkbox name="TcustomBackgroundColor" label="Use custom bgColor" formControlName="TcustomBackgroundColor" binary="true"></p-checkbox>
+                                                        <!-- 一定注意：prime 加 binary="true" -->
                                                     </div>
                                                     <div class="p-col-12 form-row">Background:</div>
                                                     <div class="p-col-12 form-row">
@@ -121,7 +125,9 @@
                                                         <p-radioButton name="footerPosition" value="Below Fixed" label="Below Fixed" formControlName="footerPosition"></p-radioButton>
                                                     </div>
                                                     <div class="p-col-12 form-row">
-                                                        <p-checkbox label="Use custom background color" formControlName="FcustomBackgroundColor"></p-checkbox>
+                                                        <p-checkbox name="FcustomBackgroundColor" label="Use custom bgColor" formControlName="FcustomBackgroundColor"
+                                                        binary="true"></p-checkbox>
+                                                        
                                                     </div>
                                                     <div class="p-col-12 form-row">Background:</div>
                                                     <div class="p-col-12 form-row">

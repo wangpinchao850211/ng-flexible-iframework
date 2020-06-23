@@ -1,14 +1,14 @@
 import { Component, OnInit, HostListener, ElementRef, Renderer2, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MenuItem } from 'primeng/api';
-import { from, Observable, Subscription } from 'rxjs';
+import { from, Observable, Subscription, config } from 'rxjs';
 import { LayoutService } from 'src/app/common/services/layout.service';
 import * as _ from 'lodash';
 import { Store, select } from '@ngrx/store';
 import { MenuTab } from 'src/app/common/domain/tab';
 import { StoreState } from '../common/domain/store';
 import { addTab, removeTab } from 'src/app/action/tab.action';
-import { getUrlByName, getNameByUrl } from 'src/app/common/utils';
+import { getUrlByName, getNameByUrl, getRgbNum, judgeDarkOrLight } from 'src/app/common/utils';
 import { PlatformLocation } from '@angular/common';
 import { ThemeBasicStore, navEntity, toolbarEntity, footerEntity } from '../common/domain/theme';
 import { basicThemeStore, navbar, toolbar, footer } from '../action/theme.action';
@@ -31,6 +31,9 @@ export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
 
   // theme form 初始化数据
   storeInitForm: ThemeBasicStore;
+  // theme Color
+  currentColor = '';
+  @ViewChild('outletBg', {static: false}) outletBg: ElementRef;
   // theme layout
   layout = {
     config: {
@@ -263,25 +266,39 @@ export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
     this.themeColor$ = this.store.pipe(select('color')).subscribe((color) => {
       console.log(`更新主题颜色：${color['color']}`);
       const key = color['color'];
-      let currentColor = '';
       switch (key) {
         case 'Default Light':
-          currentColor = '#039be5'; // #f5f5f5
+          this.currentColor = '#039be5'; // #f5f5f5
           break;
         case 'Yellow Light':
-          currentColor = '#fdd835'; // #f5f5f5
+          this.currentColor = '#fdd835'; // #f5f5f5
           break;
         case 'Blue-Gray Dark':
-          currentColor = '#607d8b'; // #303030
+          this.currentColor = '#607d8b'; // #303030
           break;
         case 'Pink Dark':
-          currentColor = '#e91e63'; // #303030
+          this.currentColor = '#e91e63'; // #303030
           break;
         default:
           break;
       }
       // 开始更新页面的主题颜色：考虑下执行方案
+      this.setCurrentColor();
     });
+  }
+
+  setCurrentColor() {
+    // console.log(this.currentColor);
+    const currentRgb = getRgbNum(this.currentColor);
+    // console.log(currentRgb);
+    if (this.outletBg) {
+      this.render.setStyle(this.outletBg.nativeElement, 'backgroundColor', this.currentColor);
+      if (judgeDarkOrLight(currentRgb) === '浅色') {
+        this.render.setStyle(this.outletBg.nativeElement, 'color', 'white');
+      } else if (judgeDarkOrLight(currentRgb) === '深色') {
+        this.render.setStyle(this.outletBg.nativeElement, 'color', 'black');
+      }
+    }
   }
 
   updateLayout() {
@@ -314,6 +331,9 @@ export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
         default:
           break;
       }
+      setTimeout(() => {
+        this.setCurrentColor();
+      },0);
     });
   }
 
@@ -394,7 +414,11 @@ export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
           case 'Nbackground':
             if (navbar['navbar'].Nbackground) {
               // 设置颜色
+              // console.log(navbar['navbar'].Nbackground);
+              const navBgColor = navbar['navbar'].Nbackground;
+              this.render.setStyle(this.aside.nativeElement, 'backgroundColor', navBgColor);
             }
+
             break;
           default:
             break;
@@ -425,7 +449,6 @@ export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
         this.resetHeader();
         this.resetFooter();
       }
-      
       console.log(`变更toolbar布局：`);
       console.log(toolbar);
       if (toolbar['falg'] > 0) { // 初始化不变更
@@ -447,12 +470,15 @@ export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
             break;
           case 'TcustomBackgroundColor':
             if (toolbar['toolbar'].TcustomBackgroundColor) {
-              // 设置custom颜色
+              // 重置custom颜色
+              this.render.setStyle(this.header.nativeElement, 'backgroundColor', '#030c2799');
             }      
             break;
           case 'Tbackground':
             if (toolbar['toolbar'].Tbackground) {
               // 设置颜色
+              const toolBgColor = toolbar['toolbar'].Tbackground;
+              this.render.setStyle(this.header.nativeElement, 'backgroundColor', toolBgColor);
             }
             break;
           default:
@@ -616,7 +642,6 @@ export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
         this.resetHeader();
         this.resetFooter();
       }
-      
       console.log(`变更footer布局：`);
       console.log(footer);
       if (footer['falg'] > 0) { // 初始化不变更
@@ -633,14 +658,15 @@ export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
           case 'footerPosition':
             this.updateFooterPosition(footer);
             break;
-          case 'TcustomBackgroundColor':
-            if (footer['footer'].TcustomBackgroundColor) {
-              // 设置custom颜色
-            }      
+          case 'FcustomBackgroundColor':
+            if (footer['footer'].FcustomBackgroundColor) {// 重置custom颜色
+              this.render.setStyle(this.footer.nativeElement, 'backgroundColor', '#030c2799');
+            }
             break;
-          case 'Tbackground':
-            if (footer['footer'].Tbackground) {
-              // 设置颜色
+          case 'Fbackground':
+            if (footer['footer'].Fbackground) {// 设置颜色
+              const footerBgColor = footer['footer'].Fbackground;
+              this.render.setStyle(this.footer.nativeElement, 'backgroundColor', footerBgColor);
             }
             break;
           default:

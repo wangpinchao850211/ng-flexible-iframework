@@ -1,12 +1,13 @@
 import { createReducer, on } from '@ngrx/store';
 import { layoutWidth } from '../action/theme.action';
+import { themeWidthEntity } from '../common/domain/theme';
 
 export interface State {
     boxWidth: string;
 }
 
 export const initThemeWidth: State = {
-    boxWidth: 'Fullwidth'
+    boxWidth: themeWidthEntity
 }
 
 const _themeWidthReducer = createReducer(initThemeWidth,

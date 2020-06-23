@@ -1,5 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { layoutStyle } from '../action/theme.action';
+import { themelayoutEntity } from '../common/domain/theme';
 
 export interface State {
     layout: string;
@@ -7,7 +8,7 @@ export interface State {
 }
 
 export const initThemeLayout: State = {
-    layout: 'Vertical Layout #1',
+    layout: themelayoutEntity,
     falg: 0
 }
 

@@ -78,6 +78,10 @@
             height: 85%;
             overflow: auto;
             @include mixin-hidden-scroll;
+            .options-layout-button{
+                margin-left: 66px;
+                padding: 3px 5px;
+            }
         }
     }
 }

@@ -12,7 +12,7 @@
                     <div class="tab-bar-wrapper">
                         <app-wpc-tab [tabItems]="tabItems" [activeItem]="getActiveItem()" (switchTab)="switchTab($event)" (closeTab)="closeTab($event)"></app-wpc-tab>
                     </div>
-                    <div class="outlet">
+                    <div class="outlet" #outletBg>
                         <router-outlet></router-outlet>
                     </div>
                 </section>
@@ -35,7 +35,7 @@
                     <div class="tab-bar-wrapper">
                         <app-wpc-tab [tabItems]="tabItems" [activeItem]="getActiveItem()" (switchTab)="switchTab($event)" (closeTab)="closeTab($event)"></app-wpc-tab>
                     </div>
-                    <div class="outlet">
+                    <div class="outlet" #outletBg>
                         <router-outlet></router-outlet>
                     </div>
                 </section>

@@ -7,14 +7,14 @@ export interface ThemeNavbar {
 
 export interface ThemeToolbar {
     Tbackground: string,
-    TcustomBackgroundColor: string,
+    TcustomBackgroundColor: boolean,
     Thidden: boolean,
     toolbarPosition: string
 }
 
 export interface ThemeFooter {
     Fbackground: string,
-    FcustomBackgroundColor: string,
+    FcustomBackgroundColor: boolean,
     Fhidden: boolean,
     footerPosition: string
 }
@@ -32,6 +32,10 @@ export interface ThemeBasicStore {
     layout: layoutTheme
 }
 
+export const themeColorEntity = 'Blue-Gray Dark';
+export const themelayoutEntity = 'Vertical Layout #1';
+export const themeWidthEntity = 'Fullwidth';
+
 export const navEntity = {
     Nbackground: '#030c2799',
     folded: false,
@@ -41,14 +45,14 @@ export const navEntity = {
 
 export const toolbarEntity = {
     Tbackground: '#030c2799',
-    TcustomBackgroundColor: 'Use custom background color',
+    TcustomBackgroundColor: false, // prime check formControl绑定还得看
     Thidden: false,
     toolbarPosition: 'Below Fixed'
 }
 
 export const footerEntity = {
     Fbackground: '#030c2799',
-    FcustomBackgroundColor: 'Use custom background color',
+    FcustomBackgroundColor: false,
     Fhidden: false,
     footerPosition: 'Below Fixed'
 }
