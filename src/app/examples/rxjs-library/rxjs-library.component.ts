@@ -223,7 +223,7 @@ Iterator接口部署在对象的Symbol.Iterator属性上, 可以调用这个属�
     private layoutService: LayoutService
   ) {
     this.layoutService.onChangeLayoutSize().subscribe((val) => {
-        console.log(val);
+        // console.log(val);
     });
   }
 

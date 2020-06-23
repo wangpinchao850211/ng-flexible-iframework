@@ -1,71 +1,57 @@
 @import '~src/assets/base.scss';
 
-.menu {
-    width: $full-width;
-    position: relative;
-}
-.menu-mini {
-    width: $full-width;
-    margin-top: .5rem;
-    position: relative;
-}
-.fold {
-    // 折叠按钮
-    position: absolute;
-    right: 5%;
-    // bottom: .5rem;
-    // width: .3rem;
-    // height: .3rem;
-    bottom: 16px;
-    width: 24px;
-    height: 30px;
-    cursor: pointer;
-    img {
-        position: absolute;
-        top: 0;
-        width: $full-width;
-        height: $full-height;
-    }
-}
-// 响应式写法
-body .ui-widget {
-    // font-size: .14rem;
-}
-body .pi {
-    // font-size: .2rem;
-}
-
-::ng-deep {
-    body .ui-corner-all { // 点击不出现圆角
-        border-radius: 0px;
-    }
-}
-
-.main-menu {
-    display: block;
-    position: absolute;
-    top: 0px;
-    left: 0px;
+@mixin menuPrimeNgBase {
     width: 100%;
-    background-color: #67759b;
-    .menu-item {
-        font-size: 20px;
-        a {
-            padding: 0px 20px 0px 30px;
-            display: block;
-            line-height: 50px;
-            color: #ececec;
+    position: relative;
+    background-color: $color-grey;
+    .main-menu {
+        display: block;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        background-color: #67759b;
+        .menu-item {
+            font-size: 20px;
+            a {
+                padding: 0px 20px 0px 30px;
+                display: block;
+                line-height: 50px;
+                color: #ececec;
+            }
+        }
+        ::ng-deep {
+            .ui-panelmenu {
+                .ui-panelmenu-panel {
+                    outline: none;
+                    margin-top: 0px;
+                    .ui-panelmenu-header {
+                        outline: none;
+                        .ui-panelmenu-header-link {
+                            outline: none;
+                        }
+                    }
+                    .ui-menuitem {
+                        .ui-menuitem-link {
+                            outline: none;
+                            .ui-menuitem-icon {
+                                vertical-align: middle !important;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
+}
+
+.menu {
+    @include menuPrimeNgBase;
     ::ng-deep {
         .ui-panelmenu {
             .ui-panelmenu-panel {
-                outline: none;
-                margin-top: 0px;
                 .ui-panelmenu-header {
-                    outline: none;
                     .ui-panelmenu-header-link {
-                        outline: none;
                         padding: 16px 10px 16px 26px !important;
                         .ui-panelmenu-icon {
                             float: right;
@@ -73,32 +59,72 @@ body .pi {
                         }
                     }
                 }
-                
                 .ui-menuitem {
                     .ui-menuitem-link {
                         padding: 16px 10px 16px 26px !important;
+                    }
+                }
+            }
+        }
+    }
+}
+.menu-mini {
+    @include menuPrimeNgBase;
+    ::ng-deep {
+        .ui-panelmenu {
+            .ui-panelmenu-panel {
+                .ui-panelmenu-header {
+                    .ui-panelmenu-header-link {
+                        padding: 4px !important;
+                        text-align: center;
+                        .ui-panelmenu-icon {
+                            display: none;
+                        }
+                        .ui-menuitem-icon{
+                            font-size: 20px;
+                        }
+                    }
+                }
+                .ui-menuitem {
+                    .ui-menuitem-link {
+                        padding: 4px !important;
+                        text-align: center;
                         .ui-menuitem-icon {
-                            vertical-align: middle !important;
+                            font-size: 20px;
                         }
                     }
                 }
             }
-            .ui-panelmenu-header { // 响应式写法
-                // height: .4rem;
-                a {
-                    // position: relative;
-                    // padding: 0;
-                    // height: 100%;
-                    // display: flex;
-                    // align-items: center;
-                    // font-size: .14rem;
-                    // .ui-panelmenu-icon {
-                    //     position: absolute;
-                    //     right: 0.3em;
-                    //     top: 30%;
-                    // }
-                }
-            }
         }
+    }
+}
+
+@mixin collapsed {// 折叠按钮
+    position: absolute;
+    bottom: 16px;
+    width: 24px;
+    height: 30px;
+    cursor: pointer;
+    img {
+        position: absolute;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.fold {
+    @include collapsed();
+    right: 5%;
+}
+
+.rightArrow {
+    @include collapsed();
+    left: 5%;
+}
+
+::ng-deep {
+    body .ui-corner-all { // 点击不出现圆角
+        border-radius: 0px;
     }
 }

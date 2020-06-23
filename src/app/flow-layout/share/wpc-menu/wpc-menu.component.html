@@ -1,12 +1,23 @@
-<p class="title" *ngIf="fold && showTitle">
+<p class="title" *ngIf="isShowTitle">
     Menu
 </p>
 <div class="menu" [ngClass]="{'menu':fold, 'menu-mini': !fold}">
     <p-panelMenu [multiple]="true" [model]="menu" [style]="{'width':'100%'}" class="main-menu"></p-panelMenu>
 </div>
-<span class="fold" *ngIf="fold" (click)="collapsed()">
-<img  src="/assets/images/double_arrow_left.svg" alt="double_arrow_left"/>
-</span>
-<span class="fold" *ngIf="!fold" (click)="expanded()">
-<img  src="/assets/images/double_arrow_right.svg" alt="double_arrow_right"/>
-</span>
+<ng-container *ngIf="arrow">
+    <span class="fold" *ngIf="fold" (click)="collapsed()">
+        <img  src="/assets/images/double_arrow_left.svg" alt="double_arrow_left"/>
+    </span>
+    <span class="fold" *ngIf="!fold" (click)="expanded()">
+        <img  src="/assets/images/double_arrow_right.svg" alt="double_arrow_right"/>
+    </span>
+</ng-container>
+
+<ng-container *ngIf="!arrow">
+    <span class="rightArrow" *ngIf="fold" (click)="collapsed()">
+        <img  src="/assets/images/double_arrow_right.svg" alt="double_arrow_right"/>
+    </span>
+    <span class="rightArrow" *ngIf="!fold" (click)="expanded()">
+        <img  src="/assets/images/double_arrow_left.svg" alt="double_arrow_left"/>
+    </span>
+</ng-container>

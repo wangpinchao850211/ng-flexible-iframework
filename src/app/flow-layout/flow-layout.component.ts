@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, ElementRef, Renderer2, OnDestroy } from '@angular/core';
+import { Component, OnInit, HostListener, ElementRef, Renderer2, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { from, Observable, Subscription } from 'rxjs';
@@ -10,6 +10,8 @@ import { StoreState } from '../common/domain/store';
 import { addTab, removeTab } from 'src/app/action/tab.action';
 import { getUrlByName, getNameByUrl } from 'src/app/common/utils';
 import { PlatformLocation } from '@angular/common';
+import { ThemeBasicStore, navEntity, toolbarEntity, footerEntity } from '../common/domain/theme';
+import { basicThemeStore, navbar, toolbar, footer } from '../action/theme.action';
 
 
 @Component({
@@ -17,7 +19,7 @@ import { PlatformLocation } from '@angular/common';
   templateUrl: './flow-layout.component.html',
   styleUrls: ['./flow-layout.component.scss']
 })
-export class FlowLayoutComponent implements OnInit, OnDestroy {
+export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   updateMenuTab$: Observable<MenuTab>;
   // 定制主题store Observable
   themeColor$: Subscription;
@@ -26,6 +28,31 @@ export class FlowLayoutComponent implements OnInit, OnDestroy {
   navbarTheme$: Subscription;
   toolbarTheme$: Subscription;
   footerTheme$: Subscription;
+
+  // theme form 初始化数据
+  storeInitForm: ThemeBasicStore;
+  // theme layout
+  layout = {
+    config: {
+      type: 'VL#1'
+    }
+  }
+  // layout width
+  @ViewChild('cotainer', {static: false}) cotainer: ElementRef;
+  widthKey: string; // 存储width的值
+  // navbarTheme
+  showMenu: boolean = true;
+  showTitle: boolean = true;
+  @ViewChild('aside', {static: false}) aside: ElementRef;
+  collapsedArrow: boolean = true;
+  // toolbarTheme
+  showHeader: boolean = true;
+  @ViewChild('Vcotainer', {static: false}) Vcotainer: ElementRef;
+  @ViewChild('Hcotainer', {static: false}) Hcotainer: ElementRef;
+  @ViewChild('header', {static: false}) header: ElementRef;
+  // footerTheme
+  @ViewChild('footer', {static: false}) footer: ElementRef;
+  showFooter: boolean = true;
 
   items: MenuItem[];
   itemsResouce: MenuItem[] = [
@@ -190,15 +217,6 @@ export class FlowLayoutComponent implements OnInit, OnDestroy {
 
   tabItems:Array<MenuTab> = [];
   fold: boolean = true;
-  showHeader: boolean = true;
-  showFooter: boolean = true;
-
-  // theme layout
-  layout = {
-    config: {
-      type: 'Vertical Layout #1'
-    }
-  }
   
   @HostListener('window:resize')
   onWindowResize() {
@@ -228,20 +246,18 @@ export class FlowLayoutComponent implements OnInit, OnDestroy {
       this.initTab(data);
     });
 
-    // theme color
-    this.updateColor(); 
-    // theme style
-    this.updateLayout();
-    // layout width
-    this.updateBoxWidth();
-    // theme Navbar
-    this.updateNavbar(); 
-    // theme Toolbar
-    this.updateToolbar();
-    // layout Footer
-    this.updateFooter();
-
+    // 存储初始化theme form数据
+    this.store.pipe(select('themeData')).subscribe((data) => {
+      console.log(data);
+      this.storeInitForm = _.cloneDeep(data['themeData']);
+    });
   }
+
+  /**
+   * theme 定制业务指南，需要闲暇时先整理出来，
+   * 然后有空根据业务在重新梳理逻辑，
+   * 这样会清晰得处理dom操作，避免漏洞
+   * */ 
 
   updateColor() {
     this.themeColor$ = this.store.pipe(select('color')).subscribe((color) => {
@@ -270,53 +286,418 @@ export class FlowLayoutComponent implements OnInit, OnDestroy {
 
   updateLayout() {
     this.themeStyle$ = this.store.pipe(select('layout')).subscribe((layout) => {
+      if (this.layout.config.type === 'VL#1') { // 只有verl布局重置
+        // 重置menu，footer
+        this.resetMenu();
+        this.resetHeader();
+        this.resetFooter();
+      }
       console.log(`变更布局：${layout['layout']}`);
       const key = layout['layout'];
       switch (key) {
         case 'Vertical Layout #1':
           this.layout.config.type = 'VL#1';
-          break;
-        case 'Vertical Layout #2':
-          this.layout.config.type = 'VL#2';
+          this.showTitle = true;
+          // 从新dispatch store初始化navba，toolbar，footer
+          if (layout['falg'] > 0) {
+            this.initNavToolFooter();
+          }
           break;
         case 'Horizontal Layout #1':
           this.layout.config.type = 'HL#1';
+          this.showTitle = false;
+          // 从新dispatch store初始化navba人，toolbar，footer
+          if (layout['falg'] > 0) {
+            this.initNavToolFooter();
+          }
           break;
         default:
           break;
       }
-
     });
+  }
+
+  initNavToolFooter() {
+    const resetNav = navEntity;
+    const resetFooter = footerEntity;
+    const resetToolbar = toolbarEntity;
+    this.store.dispatch(navbar({navbar: resetNav, falg: 2, falgKey: ''}));
+    this.store.dispatch(toolbar({toolbar: resetToolbar, falg: 2, falgKey: ''}));
+    this.store.dispatch(footer({footer: resetFooter, falg: 2, falgKey: ''}));
   }
 
   updateBoxWidth() {
     this.themeWidth$ = this.store.pipe(select('width')).subscribe((width) => {
+      if (this.layout.config.type === 'VL#1') { // 只有verl布局重置
+        // 重置menu，footer
+        this.resetMenu();
+        this.resetHeader();
+        this.resetFooter();
+      }
       console.log(`变更外层宽度：${width['boxWidth']}`);
+      this.widthKey = width['boxWidth'];
+      this.setCurrentWidth(this.cotainer);
     });
   }
+
+  setCurrentWidth(el: ElementRef) {
+    if (this.widthKey === 'Fullwidth') {
+      this.setFullWidth(el);
+    } else if (this.widthKey === 'Boxed') {
+      this.setBoxedWidth(el);
+    }
+  }
+
+  setFullWidth(el: ElementRef) {
+    this.render.setStyle(el.nativeElement, 'max-width', '100vw');
+    this.render.setStyle(el.nativeElement, 'margin', '0');
+    this.render.setStyle(el.nativeElement, 'box-shadow', 'none');
+  }
+
+  setBoxedWidth(el: ElementRef) {
+    this.render.setStyle(el.nativeElement, 'max-width', '1200px');
+    this.render.setStyle(el.nativeElement, 'margin', '0 auto');
+    this.render.setStyle(el.nativeElement, 'box-shadow', '0 5px 5px -3px rgba(0,0,0,.2), 0 8px 10px 1px rgba(0,0,0,.14), 0 3px 14px 2px rgba(0,0,0,.12)');
+  }
+
   updateNavbar() {
     this.navbarTheme$ = this.store.pipe(select('navbar')).subscribe((navbar) => {
+      if (this.layout.config.type === 'VL#1') { // 只有verl布局重置
+        // 重置menu，footer
+        this.resetMenu();
+        this.resetHeader();
+        this.resetFooter();
+      }
+      
       console.log(`变更navbar布局：`);
       console.log(navbar);
+      if (navbar['falg'] > 0) { // 初始化不变更
+        switch (navbar['falgKey']) {
+          case 'Nhidden':
+            if (navbar['navbar'].Nhidden) {
+              console.log(this.aside.nativeElement);
+              this.render.addClass(this.aside.nativeElement, 'hidden-menu');
+            } else {
+              this.render.removeClass(this.aside.nativeElement, 'hidden-menu');
+            }
+            break;
+          case 'folded':
+            if (navbar['navbar'].folded) {
+              this.getMiniStyle();
+            } else {
+              this.getCommonStyle();
+            }
+            break;
+          case 'navbarPosition':
+            this.updaeNavbarPosition(navbar);
+            break;
+          case 'Nbackground':
+            if (navbar['navbar'].Nbackground) {
+              // 设置颜色
+            }
+            break;
+          default:
+            break;
+        }
+      }
     });
   }
+
+  updaeNavbarPosition(navbar) {
+    if (navbar['navbar'].navbarPosition === 'Right') {
+      this.collapsedArrow = false;
+      if (this.aside) {
+        this.render.setStyle(this.aside.nativeElement, 'order', '2');
+      }
+    } else {
+      this.collapsedArrow = true;
+      if (this.aside) {
+        this.render.setStyle(this.aside.nativeElement, 'order', '0');
+      }
+    }
+  }
+
   updateToolbar() {
     this.toolbarTheme$ = this.store.pipe(select('toolbar')).subscribe((toolbar) => {
+      // 重置menu，footer
+      if (this.layout.config.type === 'VL#1') { // 只有verl布局重置
+        this.resetMenu();
+        this.resetHeader();
+        this.resetFooter();
+      }
+      
       console.log(`变更toolbar布局：`);
       console.log(toolbar);
+      if (toolbar['falg'] > 0) { // 初始化不变更
+        switch (toolbar['falgKey']) {
+          case 'Thidden':
+            if (toolbar['toolbar'].Thidden) {
+              this.showHeader = false;
+            } else {
+              this.showHeader = true;
+            }
+            this.showTitle = true;
+            this.fixedMenu();
+            // 显隐变更时 重置store Above值
+            this.resetAbove(toolbar['toolbar']);
+            this.resetHeader();
+            break;
+          case 'toolbarPosition':
+            this.updateToolbarPosition(toolbar);
+            break;
+          case 'TcustomBackgroundColor':
+            if (toolbar['toolbar'].TcustomBackgroundColor) {
+              // 设置custom颜色
+            }      
+            break;
+          case 'Tbackground':
+            if (toolbar['toolbar'].Tbackground) {
+              // 设置颜色
+            }
+            break;
+          default:
+            break;
+        }
+      }
     });
   }
+
+  resetAbove(t) {
+    this.store.dispatch(toolbar({
+      toolbar: {
+        Tbackground: t.Tbackground,
+        TcustomBackgroundColor: t.TcustomBackgroundColor,
+        Thidden: t.Thidden,
+        toolbarPosition: 'Below Fixed'
+      },
+      falg: 3, // 特殊得3
+      falgKey: 'toolbarPosition'
+    }));
+  }
+
+  resetFooterAbove(f) {
+    this.store.dispatch(footer({
+      footer: {
+        Fbackground: f.Fbackground,
+        FcustomBackgroundColor: f.FcustomBackgroundColor,
+        Fhidden: f.Fhidden,
+        footerPosition: 'Below Fixed'
+      },
+      falg: 3, // 特殊得3
+      falgKey: 'footerPosition'
+    }));
+  }
+
+  updateToolbarPosition(toolbar) {
+    if (toolbar['toolbar'].toolbarPosition === 'Below Static') {
+      if (this.layout.config.type === 'VL#1') {
+        const child = this.Vcotainer.nativeElement.children[1].children[1];
+        console.log(child);
+        this.render.setStyle(this.Vcotainer.nativeElement, 'overflow-y', 'auto');
+        this.render.setStyle(child, 'overflow-y', 'visible');
+        this.render.setStyle(child, 'padding-bottom', '60px');
+        // 定位menu
+        this.fixedMenu();
+        // 定位footer
+        this.fixedFooter();
+        this.showTitle = true;
+      } else if (this.layout.config.type === 'HL#1'){
+        const child = this.Hcotainer.nativeElement.children[1]; // main节点
+        this.render.setStyle(this.Hcotainer.nativeElement, 'overflow-y', 'auto');
+        this.render.setStyle(child, 'overflow-y', 'visible');
+        this.showTitle = false;
+        this.fixedFooter();
+      }
+    } else if (toolbar['toolbar'].toolbarPosition === 'Below Fixed') {
+      if (this.layout.config.type === 'VL#1') {
+        const child = this.Vcotainer.nativeElement.children[1].children[1];
+        this.render.setStyle(this.Vcotainer.nativeElement, 'overflow-y', 'hidden');
+        this.render.setStyle(child, 'overflow-y', 'auto');
+        this.showTitle = true;
+        if (this.widthKey === 'Boxed') {
+          // this.fixedFooter();
+        }
+
+      } else if (this.layout.config.type === 'HL#1'){
+        const child = this.Hcotainer.nativeElement.children[1]; // main节点
+        this.render.setStyle(this.Hcotainer.nativeElement, 'overflow-y', 'visible');
+        this.render.setStyle(child, 'overflow-y', 'hidden');
+        this.showTitle = false;
+        this.fixedFooter();
+      }
+    } else if (toolbar['toolbar'].toolbarPosition === 'Above') {
+      if (this.layout.config.type === 'VL#1') {
+        this.fixedHeader();
+        this.showTitle = false;
+      } else if (this.layout.config.type === 'HL#1'){ 
+        // 有待详细梳理下theme操作业务！！
+      }
+    }
+  }
+
+  fixedHeader() {
+    if (this.header) {
+      if (this.widthKey === 'Boxed') {
+        this.render.setStyle(this.header.nativeElement, 'width', '100%');
+      } else if (this.widthKey === 'Fullwidth') {
+        this.render.setStyle(this.header.nativeElement, 'width', '100vw');
+      }
+      this.render.setStyle(this.header.nativeElement, 'position', 'absolute');
+      this.render.setStyle(this.header.nativeElement, 'left', '0px');
+      this.render.setStyle(this.header.nativeElement, 'top', '0px');
+      this.render.setStyle(this.header.nativeElement, 'zIndex', '100');
+      this.render.setStyle(this.Vcotainer.nativeElement, 'margin-top', '60px');
+      this.render.setStyle(this.footer.nativeElement, 'margin-bottom', '60px');
+      this.render.setStyle(this.aside.nativeElement, 'position', 'relative');
+    }
+  }
+  resetHeader() {
+    if (this.header) {
+      this.render.setStyle(this.header.nativeElement, 'position', 'static');
+      this.render.setStyle(this.header.nativeElement, 'width', '100%');
+      this.render.setStyle(this.header.nativeElement, 'left', '0px');
+      this.render.setStyle(this.header.nativeElement, 'top', '0px');
+      this.render.setStyle(this.header.nativeElement, 'zIndex', 'auto'); // zIndex 默认值
+      if (this.Vcotainer) {
+        this.render.setStyle(this.Vcotainer.nativeElement, 'margin-top', '0px');
+      }
+      if (this.footer) {
+        this.render.setStyle(this.footer.nativeElement, 'margin-bottom', '0px');
+      }
+    }
+  }
+
+  fixedMenu() {
+    if (this.Vcotainer) {
+      this.render.setStyle(this.aside.nativeElement, 'position', 'fixed');
+      this.render.setStyle(this.aside.nativeElement, 'height', '100vh');
+      if (this.widthKey === 'Boxed') {
+        this.render.setStyle(this.Vcotainer.nativeElement.children[1], 'margin-left', '25.6%');
+      } else if (this.widthKey === 'Fullwidth') {
+        this.render.setStyle(this.Vcotainer.nativeElement.children[1], 'margin-left', '20%');
+      }
+    }
+  }
+
+  resetMenu() {
+    if (this.Vcotainer) {
+      this.render.setStyle(this.Vcotainer.nativeElement.children[1], 'margin-left', '0');
+      this.render.setStyle(this.aside.nativeElement, 'position', 'relative');
+      this.render.setStyle(this.aside.nativeElement, 'height', 'auto');
+    }
+  }
+
+  fixedFooter() {
+    if (this.footer) {
+      this.render.setStyle(this.footer.nativeElement, 'position', 'absolute');
+      this.render.setStyle(this.footer.nativeElement, 'bottom', '0px');
+      this.render.setStyle(this.footer.nativeElement, 'right', '0px');
+      this.render.setStyle(this.footer.nativeElement, 'width', '80%');
+    }
+    if (this.widthKey === 'Boxed') {
+      // this.resetFooter();
+      // this.render.setStyle(this.footer.nativeElement, 'width', '74.4%');
+    }
+  }
+  resetFooter() {
+    if (this.footer) {
+      this.render.setStyle(this.footer.nativeElement, 'position', 'static');
+      this.render.setStyle(this.footer.nativeElement, 'bottom', '0px');
+      this.render.setStyle(this.footer.nativeElement, 'width', '100%');
+      this.render.setStyle(this.footer.nativeElement, 'height', '60px');
+    }
+  }
+
   updateFooter() {
     this.footerTheme$ = this.store.pipe(select('footer')).subscribe((footer) => {
+      // 重置menu，footer
+      if (this.layout.config.type === 'VL#1') { // 只有verl布局重置
+        this.resetMenu();
+        this.resetHeader();
+        this.resetFooter();
+      }
+      
       console.log(`变更footer布局：`);
       console.log(footer);
+      if (footer['falg'] > 0) { // 初始化不变更
+        switch (footer['falgKey']) {
+          case 'Fhidden':
+            if (footer['footer'].Fhidden) {
+              this.showFooter = false;
+            } else {
+              this.showFooter = true;
+            }
+            // 显隐变更时 重置store Above值
+            // this.resetFooterAbove(footer['footer']);
+            break;
+          case 'footerPosition':
+            this.updateFooterPosition(footer);
+            break;
+          case 'TcustomBackgroundColor':
+            if (footer['footer'].TcustomBackgroundColor) {
+              // 设置custom颜色
+            }      
+            break;
+          case 'Tbackground':
+            if (footer['footer'].Tbackground) {
+              // 设置颜色
+            }
+            break;
+          default:
+            break;
+        }
+      }
     });
+  }
+  updateFooterPosition(footer) {
+    if (footer['footer'].footerPosition === 'Below Static') {
+      if (this.layout.config.type === 'VL#1') {
+        const child = this.Vcotainer.nativeElement.children[1].children[1];
+      } else if (this.layout.config.type === 'HL#1'){
+        const child = this.Hcotainer.nativeElement.children[1]; // main节点
+      }
+    } else if (footer['footer'].footerPosition === 'Below Fixed') {
+      this.resetFooter();
+    } else if (footer['footer'].footerPosition === 'Above') {
+      if (this.layout.config.type === 'VL#1') {
+        if (this.footer) {
+          this.render.setStyle(this.footer.nativeElement, 'position', 'absolute');
+          this.render.setStyle(this.footer.nativeElement, 'bottom', '0px');
+          this.render.setStyle(this.footer.nativeElement, 'right', '0px');
+          this.render.setStyle(this.footer.nativeElement, 'width', '100%');
+        }
+      } else if (this.layout.config.type === 'HL#1'){ 
+        // 有待详细梳理下theme操作业务！！
+        if (this.footer) {
+          this.render.setStyle(this.footer.nativeElement, 'position', 'absolute');
+          this.render.setStyle(this.footer.nativeElement, 'bottom', '0px');
+          this.render.setStyle(this.footer.nativeElement, 'right', '0px');
+          this.render.setStyle(this.footer.nativeElement, 'width', '100%');
+        }
+      }
+    }
   }
 
   ngOnInit() {
     // 初始化布局页面
     this.initLayout();
     // this.setHtmlSize(); rem布局核心
+  }
+
+  ngAfterViewInit() { // 在AfterViewInit里方可获取到元素
+    // theme color
+    this.updateColor(); 
+    // theme style
+    this.updateLayout();
+    // layout width, 
+    this.updateBoxWidth();
+    // theme Navbar
+    this.updateNavbar(); 
+    // theme Toolbar
+    this.updateToolbar();
+    // layout Footer
+    this.updateFooter();
+
   }
 
   ngOnDestroy() {
@@ -366,16 +747,54 @@ export class FlowLayoutComponent implements OnInit, OnDestroy {
   folding(ev) {
     console.log(ev);
     this.getMiniStyle();
+    setTimeout(() => {// 保证footer适应
+      this.resetHeader();
+      this.resetMenu();
+      this.resetFooter();
+      if (this.Vcotainer) {
+        if (this.widthKey === 'Fullwidth') {
+          // this.render.setStyle(this.footer.nativeElement, 'width', '100%');
+          // this.render.setStyle(this.Vcotainer.nativeElement.children[1], 'margin-left', '0px');
+        } else if (this.widthKey === 'Boxed') {
+          // this.render.setStyle(this.footer.nativeElement, 'width', '100%');
+        }
+      } else if (this.Hcotainer) {
+        if (this.widthKey === 'Fullwidth') {
+          console.log(this.footer.nativeElement);
+          // this.render.setStyle(this.Hcotainer.nativeElement.children[1].children[1], 'margin-left', '0px');
+          // this.render.setStyle(this.footer.nativeElement, 'width', '96.7%');
+        } else if (this.widthKey === 'Boxed') {
+          // this.render.setStyle(this.footer.nativeElement, 'width', '100%');
+        }
+      }
+    },0);
   }
+
   unfolding(ev) {
     console.log(ev);
     this.getCommonStyle();
+    setTimeout(() => {// 保证footer适应
+      if (this.Vcotainer) {
+        if (this.widthKey === 'Fullwidth') {
+          // this.render.setStyle(this.footer.nativeElement, 'width', '100%');
+          // this.render.setStyle(this.Vcotainer.nativeElement.children[1], 'margin-left', '0%');
+        } else if (this.widthKey === 'Boxed') {
+          // this.render.setStyle(this.footer.nativeElement, 'width', '100%');
+          this.render.setStyle(this.Vcotainer.nativeElement.children[1], 'margin-left', '25.6%');
+        }
+      } else if (this.Hcotainer) {
+        // this.render.setStyle(this.Hcotainer.nativeElement.children[1].children[1], 'margin-left', '50px');
+        if (this.widthKey === 'Fullwidth') {
+          // this.render.setStyle(this.footer.nativeElement, 'width', '80%');
+        } else if (this.widthKey === 'Boxed') {
+          // this.render.setStyle(this.footer.nativeElement, 'width', '100%');
+        }
+      }
+    },0);
   }
 
   getMiniStyle() {
     this.fold = false;
-    this.showHeader = false;
-    this.showFooter = false;
     this.removeMenuContent(this.items);
   }
   removeMenuContent(Items) {
@@ -388,8 +807,6 @@ export class FlowLayoutComponent implements OnInit, OnDestroy {
   }
   getCommonStyle() {
     this.fold = true;
-    this.showHeader = true;
-    this.showFooter = true;
     this.items = _.cloneDeep(this.itemsResouce);
   }
 

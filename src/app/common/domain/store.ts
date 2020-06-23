@@ -1,5 +1,5 @@
 import { MenuTab } from './tab';
-import { ThemeNavbar, ThemeToolbar, ThemeFooter } from './theme';
+import { ThemeNavbar, ThemeToolbar, ThemeFooter, ThemeBasicStore } from './theme';
 
 export interface StoreState {
     tab?: MenuTab, 
@@ -8,5 +8,6 @@ export interface StoreState {
     width?: string,
     navbar?: ThemeNavbar,
     toolbar?: ThemeToolbar,
-    footer?: ThemeFooter
+    footer?: ThemeFooter,
+    themeData?: ThemeBasicStore
 }

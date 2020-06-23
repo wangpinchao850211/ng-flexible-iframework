@@ -1,48 +1,50 @@
-<ng-container [ngSwitch]="layout.config.type">
+<div id="wrapper" [ngSwitch]="layout.config.type" #cotainer>
     <ng-container *ngSwitchCase="'VL#1'">
-        <div class="container-layout">
-            <aside class="asild-menu" [ngClass]="{'asild-menu':fold, 'fold-asild-menu': !fold}">
-                <app-wpc-menu [showTitle]="true" [fold]="fold" [menu]="items" (collapse)="folding($event)" (expand)="unfolding($event)"></app-wpc-menu>
+        <div class="verti-container-layout" #Vcotainer>
+            <aside class="asild-menu" [ngClass]="{'asild-menu':fold, 'fold-asild-menu': !fold}" #aside>
+                <app-wpc-menu [arrow]="collapsedArrow" [showTitle]="showTitle" [fold]="fold" [menu]="items" (collapse)="folding($event)" (expand)="unfolding($event)"></app-wpc-menu>
             </aside>
             <section class="main">
-                <header class="main-header" *ngIf="showHeader">
+                <header class="main-header" *ngIf="showHeader" #header>
                     <app-wpc-header></app-wpc-header>
                 </header>
-                <section class="main-content">
+                <section class="verti-main-content">
                     <div class="tab-bar-wrapper">
                         <app-wpc-tab [tabItems]="tabItems" [activeItem]="getActiveItem()" (switchTab)="switchTab($event)" (closeTab)="closeTab($event)"></app-wpc-tab>
                     </div>
-                    <router-outlet></router-outlet>
+                    <div class="outlet">
+                        <router-outlet></router-outlet>
+                    </div>
                 </section>
-                <footer class="main-footer" *ngIf="showFooter">
+                <footer class="main-footer" *ngIf="showFooter" #footer>
                     <app-wpc-footer></app-wpc-footer>
                 </footer>
             </section>
         </div>
     </ng-container>
-    <ng-container *ngSwitchCase="'VL#2'">
-    </ng-container>
     <ng-container *ngSwitchCase="'HL#1'">
-        <div class="horiz-container-layout">
-            <header class="main-header" *ngIf="showHeader">
+        <div class="horiz-container-layout" #Hcotainer>
+            <header class="main-header" *ngIf="showHeader" #header>
                 <app-wpc-header></app-wpc-header>
             </header>
-            <section class="main" [ngClass]="{'main':fold, 'fold-main': !fold}">
-                <aside class="asild-menu" [ngClass]="{'asild-menu':fold, 'fold-asild-menu': !fold}">
-                    <app-wpc-menu [showTitle]="false" [fold]="fold" [menu]="items" (collapse)="folding($event)" (expand)="unfolding($event)"></app-wpc-menu>
+            <section class="main">
+                <aside class="asild-menu" [ngClass]="{'asild-menu':fold, 'fold-asild-menu': !fold}" #aside>
+                    <app-wpc-menu [arrow]="collapsedArrow" [showTitle]="showTitle" [fold]="fold" [menu]="items" (collapse)="folding($event)" (expand)="unfolding($event)"></app-wpc-menu>
                 </aside>
-                <section class="main-content">
+                <section class="horiz-main-content">
                     <div class="tab-bar-wrapper">
                         <app-wpc-tab [tabItems]="tabItems" [activeItem]="getActiveItem()" (switchTab)="switchTab($event)" (closeTab)="closeTab($event)"></app-wpc-tab>
                     </div>
-                    <router-outlet></router-outlet>
+                    <div class="outlet">
+                        <router-outlet></router-outlet>
+                    </div>
                 </section>
             </section>
-            <footer class="main-footer" *ngIf="showFooter">
+            <footer class="main-footer" *ngIf="showFooter" #footer>
                 <app-wpc-footer></app-wpc-footer>
             </footer>
         </div>
     </ng-container>
-</ng-container>
+</div>
 
 <app-wpc-options></app-wpc-options>

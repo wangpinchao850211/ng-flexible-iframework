@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { BooksComponent } from 'src/app/webKnowledge/books/books.component';
 
 @Component({
   selector: 'app-wpc-menu',
@@ -7,7 +8,17 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 })
 export class WpcMenuComponent implements OnInit {
 
-  @Input() showTitle;
+  isShowTitle: boolean;
+  @Input() arrow
+  @Input() 
+  get showTitle() {
+    return this.isShowTitle;
+  };
+
+  set showTitle(val: boolean) {
+    this.isShowTitle = val;
+  };
+
   @Input() fold;
   @Input() menu;
   @Output() collapse = new EventEmitter<any>();

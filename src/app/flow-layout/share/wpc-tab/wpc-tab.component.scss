@@ -1,0 +1,44 @@
+@import '~src/assets/base.scss';
+::ng-deep {
+    //  tab style
+    .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem a {
+        float: none;
+        display: inline-block;
+        padding: 0;
+    }
+    body .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem .tab-item-close {
+        font-size: 14px!important;
+        margin-left: 5px;
+    }
+    // tab active
+    body .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem.ui-state-active {
+        background-color: #409eff;
+        border: 1px solid #409eff;
+    }
+    body .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem.ui-state-active .tab-item-link{
+        color: white;
+    }
+    body .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem.ui-state-active .tab-item-close{
+        color: white;
+        font-size: 14px!important;
+        margin-left: 5px;
+    }
+
+    // tab ul
+    body .ui-tabmenu .ui-tabmenu-nav {
+        max-width: 99%;
+        height: 100%;
+        margin: 0 auto;
+        white-space: nowrap;
+        overflow-y: hidden;
+        overflow-x: auto;
+        @include mixin-min-scroll;
+    }
+    // tab li
+    .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem {
+        float: none;
+        display: inline-block;
+    }
+}
+
+

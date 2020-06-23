@@ -1,64 +1,66 @@
 @import '~src/assets/base.scss';
 // scss混合
 @mixin menuBase($menuWidth: $menu-width) {
-    width: $menuWidth;
+    width: $menuWidth !important;
+    height: auto;
     background: $color-grey;
     position: relative;
     transition: all .2s;
     margin-right: 1px;
+    // order: 2;
 }
 
-@mixin mainBase {
+@mixin vertiMainBase {
     flex: 1;
     display: flex;
     flex-direction: column;
-    background: $color-grey-blue;
+    background: $color-mask;
 }
 
-.container-layout {
+@mixin horizMainBase {
+    width: 100%;
+    display: flex;
+    flex: 1;
+    background: $color-mask;
+}
+
+@mixin MainContent { // 中间内容展示区
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background: $color-mask;
+}
+
+#wrapper{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.verti-container-layout {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: row;
     box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-    // min-height: $full-height;
-    overflow-x: hidden;
-    .main, .fold-main {
-        @include mainBase;
+    // min-height: 100%;
+
+    // overflow-y: auto; // 控制=====》整体有滚动条
+    overflow-y: hidden; // 控制整体无滚动条，可实现header，footer定位 （内层有滚动条）
+
+    @include mixin-min-scroll;
+    .main {
+        @include vertiMainBase;
+        .verti-main-content {
+            width: 100%;
+
+            // overflow-y: visible; // 控制=====》整体有滚动条
+            overflow-y: auto; // 控制路由出口有滚动条，可实现header，footer定位（内层有滚动条）
+
+            @include MainContent;
+        }
     }
-}
-
-.asild-menu {
-    @include menuBase();
-}
-
-.fold-asild-menu {
-    @include menuBase($fold-menu-width);
-}
-
-.main-footer {
-    // height: .5rem;
-    height: 60px;
-    line-height: 60px;
-    background: $color-grey;
-}
-.main-header{
-    // height: .5rem;
-    height: 60px;
-    line-height: 60px;
-    background: $color-grey;
-    overflow: hidden;
-}
-.tab-bar-wrapper{
-    width: 100%;
-    height: auto;
-    overflow-x: hidden;
-    background: white;
-}
-.main-content {
-    // 主要内容区 (跳出选择器嵌套)
-    flex: 1;
-    background: $color-mask;
 }
 
 .horiz-container-layout{
@@ -67,12 +69,55 @@
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
+
+    // 实现header，footer是否固定
+    
+    overflow-y: visible; // 控制=====》内层有滚动条
+    // overflow-y: auto;  // 控制=====》整体有滚动条
+
+    @include mixin-min-scroll;
     .main {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        flex: 1;
-        overflow-y: auto;
-        background: $color-mask;
+        overflow-y: hidden; // // 控制=====》内层有滚动条
+        // overflow-y: visible; // 控制=====》整体有滚动条
+
+        @include horizMainBase;
+        .horiz-main-content { 
+            height: 100%;
+            @include MainContent;
+        }
     }
 }
+
+// 通用部位样式 start
+.asild-menu {
+    @include menuBase();
+}
+.hidden-menu {
+    width: 0px!important; // 注意这个位置添加!important与折叠方法都起效
+    overflow: hidden;
+    position: relative;
+}
+.fold-asild-menu {
+    @include menuBase($fold-menu-width);
+}
+
+.main-footer, .main-header {
+    height: 60px;
+    line-height: 60px;
+    background: $color-grey;
+}
+
+.tab-bar-wrapper{
+    width: 100%;
+    height: 50px;
+    overflow-x: hidden;
+    background: white;
+    position: relative;
+}
+
+.outlet{ // 控制路由出口有滚动条，可实现header，footer定位
+    flex: 1;
+    overflow-y: auto;
+    @include mixin-min-scroll;
+}
+// 通用部位样式 end

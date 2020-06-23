@@ -6,7 +6,7 @@ export interface State {
 }
 
 export const initThemeColor: State = {
-    color: '#030c2799'
+    color: 'Default Light'
 }
 
 const _themeColorReducer = createReducer(initThemeColor,

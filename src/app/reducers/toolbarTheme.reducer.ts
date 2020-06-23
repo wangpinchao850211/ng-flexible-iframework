@@ -1,24 +1,23 @@
 import { createReducer, on } from '@ngrx/store';
 import { toolbar } from '../action/theme.action';
-import { ThemeToolbar } from '../common/domain/theme';
+import { ThemeToolbar, toolbarEntity } from '../common/domain/theme';
 
 export interface State {
-    toolbar:  ThemeToolbar 
+    toolbar:  ThemeToolbar,
+    falg: number,
+    falgKey: string
 };
 
 export const initToolbarTheme: State = {
-    toolbar: {
-        Tbackground: '#030c2799',
-        TcustomBackgroundColor: 'Use custom background color',
-        Thidden: false,
-        toolbarPosition: 'Below Static'
-    }
+    toolbar: toolbarEntity,
+    falg: 0,
+    falgKey: ''
 }
 
 const _toolbarThemeReducer = createReducer(initToolbarTheme,
     on(toolbar, (state, response) => {
-        
         console.log(response);
+        console.log(state);
         return response;
     })
 );

@@ -1,18 +1,17 @@
 import { createReducer, on } from '@ngrx/store';
 import { footer } from '../action/theme.action';
-import { ThemeFooter } from '../common/domain/theme';
+import { ThemeFooter, footerEntity } from '../common/domain/theme';
 
 export interface State {
-    footer:  ThemeFooter 
+    footer:  ThemeFooter,
+    falg: number,
+    falgKey: string
 };
 
 export const initFooterTheme: State = {
-    footer: {
-        Fbackground: '#030c2799',
-        FcustomBackgroundColor: 'Use custom background color',
-        Fhidden: false,
-        footerPosition: 'Below Static'
-    }
+    footer: footerEntity,
+    falg: 0,
+    falgKey: ''
 }
 
 const _footerThemeReducer = createReducer(initFooterTheme,

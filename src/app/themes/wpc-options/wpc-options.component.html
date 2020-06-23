@@ -33,9 +33,6 @@
                             <p-radioButton name="style" value="Vertical Layout #1" label="Vertical Layout #1" formControlName="style"></p-radioButton>
                         </div>
                         <div class="p-col-12 form-row">
-                            <p-radioButton name="style" value="Vertical Layout #2" label="Vertical Layout #2" formControlName="style"></p-radioButton>
-                        </div>
-                        <div class="p-col-12 form-row">
                             <p-radioButton name="style" value="Horizontal Layout #1" label="Horizontal Layout #1" formControlName="style"></p-radioButton>
                         </div>
                     </div>
@@ -104,7 +101,6 @@
                                                             <input #colorSelector type="color" formControlName="Tbackground">
                                                             <i class="pi pi-palette wpc-palette"></i>
                                                         </div>
-                                                        
                                                     </div>
                                                 </div>
                                             </ng-container>
@@ -119,7 +115,7 @@
                                                         <p-radioButton name="footerPosition" value="Above" label="Above" formControlName="footerPosition"></p-radioButton>
                                                     </div>
                                                     <div class="p-col-12 form-row">
-                                                        <p-radioButton name="footerPosition" value="Below Static" label="Below Static" formControlName="footerPosition"></p-radioButton>
+                                                        <p-radioButton disabled="true" name="footerPosition" value="Below Static" label="Below Static" formControlName="footerPosition"></p-radioButton>
                                                     </div>
                                                     <div class="p-col-12 form-row">
                                                         <p-radioButton name="footerPosition" value="Below Fixed" label="Below Fixed" formControlName="footerPosition"></p-radioButton>
