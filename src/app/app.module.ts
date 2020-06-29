@@ -53,6 +53,7 @@ import { WpcFooterComponent } from './flow-layout/share/wpc-footer/wpc-footer.co
 import { WpcTabComponent } from './flow-layout/share/wpc-tab/wpc-tab.component';
 import { WpcOptionsComponent } from './themes/wpc-options/wpc-options.component';
 import { ThemeSoltComponent } from './themes/theme-solt/theme-solt.component';
+import { FilterBookPipe } from './common/pipes/searchBook.pipe';
 
 export function markedOptions(): MarkedOptions {
   const renderer = new MarkedRenderer();
@@ -104,7 +105,8 @@ const primeModule = [
     WpcFooterComponent,
     WpcTabComponent,
     WpcOptionsComponent,
-    ThemeSoltComponent
+    ThemeSoltComponent,
+    FilterBookPipe
   ],
   entryComponents: [
     PromptMessageComponent

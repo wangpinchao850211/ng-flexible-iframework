@@ -119,10 +119,10 @@ export function judgeDarkOrLight(rgb) { // 判断深浅的方法
     const g = rgb[1];
     const b = rgb[2];
     if(r*0.299 + g*0.578 + b*0.114 >= 192){ //浅色
-        console.log('浅色');
+        // console.log('浅色');
         return '浅色';
     }else{  //深色
-        console.log('深色');
+        // console.log('深色');
         return '深色';
     }
 }

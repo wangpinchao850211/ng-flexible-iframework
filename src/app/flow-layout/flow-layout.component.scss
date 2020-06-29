@@ -118,6 +118,8 @@
 .outlet{ // 控制路由出口有滚动条，可实现header，footer定位
     flex: 1;
     overflow-y: auto;
+    box-sizing: border-box;
+    border: 12px solid #dbdbdb;
     @include mixin-min-scroll;
 }
 // 通用部位样式 end
