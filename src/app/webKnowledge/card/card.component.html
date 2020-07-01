@@ -1,6 +1,10 @@
 <div class="card-wrapper">
+
     <div class="card-title" [ngStyle]="{'background-color': titBgColor()}">
-        <span>{{book.name}}</span>
+        <span>
+            {{book.name}}
+            <p-rating [ngModel]="filterRating(book.rating)" readonly="true" stars="5" [cancel]="false"></p-rating>
+        </span>
     </div>
     <div class="card-book-name">
         <div class="desc">{{book.desc}}</div>
@@ -9,4 +13,5 @@
     <div class="card-start-btn">
         <button>START</button>
     </div>
+
 </div>

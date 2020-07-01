@@ -3,14 +3,6 @@ import { AjaxService } from 'src/app/common/ajax/ajax.service';
 import { FormControl } from '@angular/forms';
 import { debounceTime } from 'rxjs/operators';
 
-interface Book {
-  id: string,
-  name: string,
-  rating: string,
-  desc: string,
-  categories: Array<any>
-}
-
 @Component({
   selector: 'app-books',
   templateUrl: './books.component.html',
@@ -23,20 +15,22 @@ export class BooksComponent implements OnInit, DoCheck {
   }
   differ: any;
   changeLayout: boolean = true;
-  books: Array<Book>;
+  books: Array<Book> = [];
   titleFilter: FormControl = new FormControl();
   keyWord: string;
-
   // booksUrl: string = 'assets/json/books.json'; 使用代理进行node请求，请求assets并没有成
   constructor(
     private differs: KeyValueDiffers,
     private http: AjaxService,
-
   ) {
     this.differ = differs.find({}).create();
     this.http.doGet('/wpcTechSummary/marklist', null).subscribe((res) => {
       console.log(res);
-      this.books = res.data.books;
+      res.data.books.forEach(item => {
+        this.books.push(new Book(item.id, item.name, item.rating, item.desc, item.categories));
+      });
+      console.log(this.books);
+      // this.books = res.data.books;
     });
   }
 
@@ -73,4 +67,17 @@ export class BooksComponent implements OnInit, DoCheck {
     }
   }
 
+}
+
+export class Book {
+
+  constructor(
+    public id:number,
+    public name:string,
+    public rating:number,
+    public desc:string,
+    public categories:Array<string>
+  ) {
+
+  }
 }

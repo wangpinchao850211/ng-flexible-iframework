@@ -1,1 +1,29 @@
-<p>list works!</p>
+<div class="list-wrapper">
+    <p-table [columns]="cols" [value]="books" [scrollable]="true" scrollHeight="46vh" autoLayout selectionMode="single" [(selection)]="selectedbook" dataKey="id"
+    (onRowSelect)="onRowSelect($event)" (onRowUnselect)="onRowUnselect($event)">
+        <!-- <ng-template pTemplate="caption">
+            List of Books
+        </ng-template> -->
+        <ng-template pTemplate="header" let-columns>
+            <tr class="fix-scroll">
+                <th *ngFor="let col of columns;">
+                    {{col.header}}
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-rowData let-columns="columns">
+            <tr [pSelectableRow]="rowData">
+                <td *ngFor="let col of columns; let i = index;" 
+                    [ngStyle]="{'text-align': i===5 ? 'center' : 'left'}">
+                    {{rowData[col.field]}}
+                    <p-button *ngIf="i===5" label="READ" (onClick)="ReadBook($event)"></p-button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div style="text-align: left">
+                {{selectedbook.id + ' - ' + selectedbook.name + ' - ' + selectedbook.desc + ' - ' + selectedbook.categories}}
+            </div>
+        </ng-template>
+    </p-table>
+</div>

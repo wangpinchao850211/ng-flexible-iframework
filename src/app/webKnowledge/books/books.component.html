@@ -30,6 +30,6 @@
     </ng-template>
     <ng-template #List>
         <!-- 加载list组件 -->
-        <app-list></app-list>
+        <app-list [books]="books | filterBook:keyWord"></app-list>
     </ng-template>
 </div>

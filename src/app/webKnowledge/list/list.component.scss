@@ -1,0 +1,58 @@
+@import '~src/assets/base.scss';
+
+.list-wrapper{
+    width: 100%;
+    overflow: hidden;
+    // border: 1px solid red;
+    .fix-scroll{
+        width: 110%;
+        th {
+            text-align: left;
+        }
+    }
+    // 定位table-head，缓解滚动条不对齐,没用上，用的下面，直接给最后一个th宽度
+    .fix-scroll>th:nth-child(6) {
+        // width: 17%;
+        text-align: center;
+        position: relative;
+        left: 4px;  // 调整位置1
+        &::before { // 第二步使用before来缓冲position: relative;为4的距离
+            display: block;
+            position: relative;
+            left: -15px;
+            top: -8px;
+            // 正常滚动条 调整位置2
+            // left: -30px;
+            // top: -8px;
+            content: "";
+            width: 4px; // 调整位置3
+            height: 100%;
+            border-top: 1px solid #c8c8c8;
+        }
+        &::after { // 第二步使用before来缓冲position: relative;为4的距离
+            display: block;
+            position: relative;
+            left: -15px;
+            top: 8px;
+            // 正常滚动条
+            // left: -30px;
+            // top: 8px;
+            content: "";
+            width: 4px;
+            height: 100%;
+            border-bottom: 1px solid #c8c8c8;
+        }
+    }
+    ::ng-deep {
+        .ui-table-scrollable-body {
+            @include mixin-min-scroll;
+        };
+        .ui-table-scrollable-header-box { // 1\真正没对齐的主要是这层，有个margin-right要与滚动条同宽
+            margin-right: 4px!important; // 调整位置4
+        };
+    }
+}
+// 没用上这种ng-deep，直接再tr上定义class，可用
+::ng-deep body .ui-table .ui-table-thead > tr > th {
+    // position: relative;
+}

@@ -41,6 +41,8 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { GalleriaModule } from 'primeng/galleria';
+import { RatingModule } from 'primeng/rating';
+import { TableModule } from 'primeng/table';
 
 // 全局管理
 import { StoreModule } from '@ngrx/store';
@@ -83,6 +85,8 @@ const primeModule = [
     DropdownModule,
     InputSwitchModule,
     GalleriaModule,
+    RatingModule,
+    TableModule
 ];
 
 @NgModule({

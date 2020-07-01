@@ -19,7 +19,10 @@ export class CardComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.book);
+  }
+
+  filterRating(rating) {
+    return Math.round(rating);
   }
 
   titBgColor() {
