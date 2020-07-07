@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Book } from 'src/app/common/domain/books';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -21,7 +22,9 @@ export class ListComponent implements OnInit {
   scrollHeight: string; // 动态添加table高度
 
   @Input() books;
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
     console.log(this.books);
@@ -36,8 +39,10 @@ export class ListComponent implements OnInit {
       console.log(event.data);
   }
 
-  ReadBook(ev: Event) {
-    console.log(ev);
+  ReadBook(ev: Event, book: Book) {
+    // console.log(ev);
+    // console.log(book);
+    this.router.navigate(['/TeLayout/bookDetail', book.id]);
   }
 
 }

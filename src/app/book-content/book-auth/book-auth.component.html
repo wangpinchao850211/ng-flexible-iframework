@@ -1,0 +1,32 @@
+<div class="auth-wrapper">
+    <div class="auth-container">
+        <h3 class="watch-title">没有阅读权限，请输入相关信息</h3>
+        <div class="watch-content">
+            <div class="book-auth-key">此书籍权限是{{readBooklevel}}级</div>
+            <div class="book-auth-message">请输入阅读权限</div>
+        </div>
+        <h5 class="watch-title">book.bookdetail，路由权限实现logic</h5>
+        <p>
+            一、路由拦截原理 <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            book-content为特性module，通过canLoad判断是否有权限进行加载操作 <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            module子路由使用canActivate，进行跳转到auth路由默认组件，再跳detail组件得进入拦截 <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            module子路由使用resolve，进行detail组件的数据获取 <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            module子路由使用canDeactivate，进行编辑后离开的拦截 <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+            书籍类别权限使用bookStorage.service进行存储 <br/>
+            二、业务实现逻辑 <br/>
+            <span>
+                点击card或list，通过路由拦截，判断是否已登录此类书籍的权限，登录即跳入detail页，
+                未登录，显示具体权限级别，需要点击 <mark>read按钮</mark> ，通过全局dialog输入用户名密码，改变bookStorage.service的存储数据，再重新跳入，执行验权守卫，跳入detail页
+            </span>
+        </p>
+        <div class="card-start-btn">
+            <button (click)="AssignPermissions()">READ</button>
+        </div>
+    </div>
+</div>
+

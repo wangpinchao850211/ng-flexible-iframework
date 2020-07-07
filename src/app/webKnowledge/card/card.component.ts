@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-card',
@@ -16,7 +17,10 @@ export class CardComponent implements OnInit {
     '#e91e63'
   ];
   uptateDate = new Date();
-  constructor() { }
+  constructor(
+    private router: Router,
+    private routeInfo: ActivatedRoute,
+  ) { }
 
   ngOnInit() {
   }
@@ -40,6 +44,11 @@ export class CardComponent implements OnInit {
       default:
         break;
     }
+  }
+
+  ReadBook() {
+    console.log(this.book.id);
+    this.router.navigate(['/TeLayout/bookDetail', this.book.id]); // 这种方式能传到路由中，在resolver里才可以使用id
   }
 
 }

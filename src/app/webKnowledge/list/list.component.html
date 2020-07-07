@@ -16,7 +16,7 @@
                 <td *ngFor="let col of columns; let i = index;" 
                     [ngStyle]="{'text-align': i===5 ? 'center' : 'left'}">
                     {{rowData[col.field]}}
-                    <p-button *ngIf="i===5" label="READ" (onClick)="ReadBook($event)"></p-button>
+                    <p-button *ngIf="i===5" label="READ" (onClick)="ReadBook($event,rowData)"></p-button>
                 </td>
             </tr>
         </ng-template>

@@ -18,6 +18,8 @@ import { AuthenticationGuard } from './core/authentication/authentication.guard'
 import { BooksComponent } from './webKnowledge/books/books.component';
 import { LoginGuard } from './core/authentication/login.guard';
 import { CanDeactivateGuard } from './core/authentication/can-deactivate.guard';
+// book module
+import { BookAuthGuard } from './book-content/guard/book-auth.guard';
 
 const routes: Routes = [
   // { path: '', redirectTo: 'flowlayout/markdown', pathMatch: 'full' },
@@ -73,6 +75,11 @@ const routes: Routes = [
           {
             path: 'books',
             component: BooksComponent
+          },
+          { 
+            path: 'bookDetail', 
+            loadChildren: () => import('./book-content/book-content.module').then(m => m.BookContentModule),
+            canLoad: [BookAuthGuard] // 通过canLoad判断是否有权限进行加载操作
           },
       ]
   },
