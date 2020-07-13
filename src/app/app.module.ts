@@ -27,6 +27,7 @@ import { httpInterceptorProviders } from '../app/common/http-interceptors/index'
 import { AjaxService } from './common/ajax/ajax.service';
 import { HttpErrorHandler } from './common/services/http-error-handler.service';
 import { LoggerService } from './common/services/logger.service';
+import { DialogService } from './common/dynamicSharingComponent/dialog.service';
 
 // External plugins
 import { MarkdownModule, MarkedOptions, MarkedRenderer } from 'ngx-markdown';
@@ -43,6 +44,8 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { GalleriaModule } from 'primeng/galleria';
 import { RatingModule } from 'primeng/rating';
 import { TableModule } from 'primeng/table';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/components/common/messageservice';
 
 // 全局管理
 import { StoreModule } from '@ngrx/store';
@@ -56,6 +59,7 @@ import { WpcTabComponent } from './flow-layout/share/wpc-tab/wpc-tab.component';
 import { WpcOptionsComponent } from './themes/wpc-options/wpc-options.component';
 import { ThemeSoltComponent } from './themes/theme-solt/theme-solt.component';
 import { FilterBookPipe } from './common/pipes/searchBook.pipe';
+import { WpcDialogComponent } from './common/dynamicSharingComponent/wpc-dialog/wpc-dialog.component';
 
 export function markedOptions(): MarkedOptions {
   const renderer = new MarkedRenderer();
@@ -86,7 +90,8 @@ const primeModule = [
     InputSwitchModule,
     GalleriaModule,
     RatingModule,
-    TableModule
+    TableModule,
+    ToastModule // (急性加载组件可调用,异步module需单独引入)
 ];
 
 @NgModule({
@@ -110,10 +115,12 @@ const primeModule = [
     WpcTabComponent,
     WpcOptionsComponent,
     ThemeSoltComponent,
-    FilterBookPipe
+    FilterBookPipe,
+    WpcDialogComponent
   ],
   entryComponents: [
-    PromptMessageComponent
+    PromptMessageComponent,
+    WpcDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -152,6 +159,8 @@ const primeModule = [
     AjaxService,
     HttpErrorHandler,
     LoggerService,
+    DialogService,
+    MessageService, // 注入prime message(急性加载组件可调用,异步module需单独引入)
     { provide: LocationStrategy, useClass: HashLocationStrategy }
   ],
   bootstrap: [AppComponent]

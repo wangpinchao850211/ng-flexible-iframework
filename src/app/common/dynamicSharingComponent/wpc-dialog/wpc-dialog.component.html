@@ -1,0 +1,22 @@
+<div id="overlay" (click)="removeDialog($event)">
+    <div id="dialog-container">
+        <header [ngClass]="{'headerDefaultconfirm': !solt}">
+            {{wpc}}
+            <span class="dialog-button-close" 
+                  (click)="closed.next();$event.stopPropagation();">
+                <i class="pi pi-times"></i>
+            </span>
+        </header>
+        <div class="content" (click)="$event.stopPropagation();">
+            <!-- 插入slot会替换下面节点 -->
+            <div class="default-confirm">
+                默认显示信息
+            </div>
+        </div>
+        <footer [ngClass]="{'footerDefaultconfirm': !solt}">
+            <ng-container *ngFor="let item of buttons">
+                <p-button  [label]="item.label" (onClick)="handleClick(item);$event.stopPropagation();"></p-button>
+            </ng-container>
+        </footer>
+    </div>
+</div>

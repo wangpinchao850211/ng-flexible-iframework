@@ -29,6 +29,7 @@
     flex-direction: column;
     flex: 1;
     background: $color-mask;
+    position: relative; // 为遮罩层添加定位父级
 }
 
 #wrapper{

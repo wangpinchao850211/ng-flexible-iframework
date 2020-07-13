@@ -8,7 +8,7 @@
                 <header class="main-header" *ngIf="showHeader" #header>
                     <app-wpc-header></app-wpc-header>
                 </header>
-                <section class="verti-main-content">
+                <section class="verti-main-content" id="main-content">
                     <div class="tab-bar-wrapper">
                         <app-wpc-tab [tabItems]="tabItems" [activeItem]="getActiveItem()" (switchTab)="switchTab($event)" (closeTab)="closeTab($event)"></app-wpc-tab>
                     </div>
@@ -31,7 +31,7 @@
                 <aside class="asild-menu" [ngClass]="{'asild-menu':fold, 'fold-asild-menu': !fold}" #aside>
                     <app-wpc-menu [arrow]="collapsedArrow" [showTitle]="showTitle" [fold]="fold" [menu]="items" (collapse)="folding($event)" (expand)="unfolding($event)"></app-wpc-menu>
                 </aside>
-                <section class="horiz-main-content">
+                <section class="horiz-main-content" id="main-content">
                     <div class="tab-bar-wrapper">
                         <app-wpc-tab [tabItems]="tabItems" [activeItem]="getActiveItem()" (switchTab)="switchTab($event)" (closeTab)="closeTab($event)"></app-wpc-tab>
                     </div>
@@ -48,3 +48,6 @@
 </div>
 
 <app-wpc-options></app-wpc-options>
+
+<!-- 注意必须在app.module里把MessageService注入: 并且在异步组件内调不到急性加载组件的p-toats -->
+<p-toast position="top-right"></p-toast>

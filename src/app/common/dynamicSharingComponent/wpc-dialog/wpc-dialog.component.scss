@@ -1,0 +1,69 @@
+#overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba($color: #000, $alpha: 0.4);
+    z-index: 2999;
+}
+#dialog-container{
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    background-color: #fff;
+    margin-left: 0;
+    text-align: center;
+    box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.16);
+    z-index: 3000;
+    display: flex;
+    flex-direction: column;
+    header{
+        width: 100%;
+        height: 60px;
+        line-height: 60px;
+        overflow: hidden;
+        border-bottom: 1px solid lightgrey;
+        .dialog-button-close{
+            float: right;
+            height: 50px;
+            line-height: 50px;
+            color: gray;
+            margin-right: 8px;
+            cursor: pointer;
+            i {
+                position: relative;
+                top: 6px;
+            }
+        }
+    }
+    .headerDefaultconfirm { // 默认header显示
+        border-bottom: none;
+        text-align: left;
+        padding-left: 24px;
+    }
+    .footerDefaultconfirm {// 默认footer显示
+        border-top: none;
+        text-align: right;
+    }
+    footer {
+        width: 100%;
+        height: 68px;
+        line-height: 68px;
+        overflow: hidden;
+        border-top: 1px solid lightgrey;
+    }
+    .content{
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+::ng-deep p-button {
+    margin-right: 20px;
+}
+

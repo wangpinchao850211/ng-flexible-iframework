@@ -18,6 +18,7 @@
             module子路由使用canDeactivate，进行编辑后离开的拦截 <br/>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
             书籍类别权限使用bookStorage.service进行存储 <br/>
+
             二、业务实现逻辑 <br/>
             <span>
                 点击card或list，通过路由拦截，判断是否已登录此类书籍的权限，登录即跳入detail页，
@@ -30,3 +31,22 @@
     </div>
 </div>
 
+<ng-container *ngIf="loadDialogContent">
+    <div class="dialog-solt-wrapper" #viewSlot>
+        <div class="p-field p-grid row-field">
+            <label for="username" class="p-col-fixed" style="width:100px">username</label>
+            <div class="p-col">
+                <input id="username" type="text" name="username" [(ngModel)]="username"> 
+            </div>
+        </div>
+        <div class="p-field p-grid row-field">
+            <label for="password" class="p-col-fixed" style="width:100px">password</label>
+            <div class="p-col">
+                <input id="password" type="text" name="password" [(ngModel)]="password"> 
+            </div>
+        </div>
+    </div>
+</ng-container>
+
+<!-- 注意必须在当前异步module里把MessageService和ToastModule注入,并且只能调到当前module的组件内的p-toast!!! -->
+<p-toast position="top-right"></p-toast>
