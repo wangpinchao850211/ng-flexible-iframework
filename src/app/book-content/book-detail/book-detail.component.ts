@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Book } from 'src/app/webKnowledge/books/books.component';
 import { Observable } from 'rxjs';
@@ -14,7 +15,8 @@ export class BookDetailComponent implements OnInit {
   bookcontent: Book;
   currentBookContent: Book;
   constructor(
-    private routeInfo: ActivatedRoute
+    private routeInfo: ActivatedRoute,
+    private location: Location
   ) { }
 
   ngOnInit() {
@@ -28,6 +30,10 @@ export class BookDetailComponent implements OnInit {
       this.currentBookContent = this.bookcontent = data.book.data; // 暂时使其相同，避免守卫拦截
       console.log(this.bookcontent);
     });
+  }
+
+  goBack() {
+    this.location.back();
   }
 
   canDeactivate(): Observable<boolean> | boolean {
