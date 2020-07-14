@@ -25,7 +25,7 @@ export class BookDetailComponent implements OnInit {
 
     this.routeInfo.data.subscribe((data) => {
       console.log('获取resolver数据');
-      this.bookcontent = data.book.data;
+      this.currentBookContent = this.bookcontent = data.book.data; // 暂时使其相同，避免守卫拦截
       console.log(this.bookcontent);
     });
   }
@@ -33,7 +33,7 @@ export class BookDetailComponent implements OnInit {
   canDeactivate(): Observable<boolean> | boolean {
     // 如果没有危机或危机没有改变，则允许同步导航（`true`）
     console.log(_.isEqual(this.bookcontent, this.currentBookContent));
-    if (!this.bookcontent && _.isEqual(this.bookcontent, this.currentBookContent)) {
+    if (this.bookcontent && _.isEqual(this.bookcontent, this.currentBookContent)) {
       return true;
     }
     // 调用一下全局dialog，提示请保存信息
