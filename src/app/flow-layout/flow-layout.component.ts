@@ -152,6 +152,24 @@ export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
                 }
             },
             {
+              label: 'NewQuestionnaire',
+              icon: 'pi pi-fw pi-ticket',
+              command: (event) => {
+                  console.log(event);
+
+                  const el = event.originalEvent.target;
+                  console.log(el);
+                  this.changeMenuActiveColor(el);
+
+                  this.store.dispatch(addTab({
+                      url: getUrlByName('NewQuestionnaire'),
+                      name: 'NewQuestionnaire',
+                      isSelect: true
+                  }));
+                  this.router.navigate([getUrlByName('NewQuestionnaire')]);
+              }
+          },
+            {
                 label: 'pipe',
                 icon: 'pi pi-fw pi-ticket',
                 command: (event) => {

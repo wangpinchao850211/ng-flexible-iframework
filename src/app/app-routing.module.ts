@@ -63,6 +63,7 @@ const routes: Routes = [
       { path: 'primeng-ui', component: PrimeNGUiComponent },
       { path: 'pipe', component: PipeComponent },
       { path: 'questionnaire', loadChildren: () => import('./examples/Questionnaire/questionnaire.module').then(m => m.QuestionnaireModule) },
+      { path: 'newverquestionnaire', loadChildren: () => import('./examples/newver-questionnaire/newver-questionnaire.module').then(n => n.NewverQuestionnaireModule) },
       { path: 'routerNaigation', component: RouterNavigationComponent },
     ]
   },
