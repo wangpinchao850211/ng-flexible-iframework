@@ -16,7 +16,175 @@ export class DataSource {
                     "DisplayOrderNbr": 1,
                     "SectionIdentifier": null,
                     "ToolTip": "",
-                    "ChildSections": [],
+                    "ChildSections": [{
+                        "ClassName": null,
+                        "Section": {
+                            "ChildSections": [],
+                            "DisplayOrderNbr": 1,
+                            "Repeatable": false,
+                            "Rows": [{
+                                Cols: [{
+                                    Col: 12,
+                                    Question: {
+                                        ClassName: null,
+                                        Question: {
+                                            ClassName: null,
+                                            Dependency: [
+                                                {
+                                                    DependencySource: [{
+                                                        DependencyOperator: "=",
+                                                        DependencyResponseValue: "true",
+                                                        OptionId: "a43950a1-aa43-440a-a993-07f64ae3742f",
+                                                        SourceQuestionId: "810bde9d-5e3c-4c93-8f9e-cd5e19261079"
+                                                    }],
+                                                    DependencyTypeId: 1, 
+                                                    DependencyTypeDesc: "Display",
+                                                    DependencyValue: "[[50f0b72b-0501-488e-a137-543c394462db]]",
+                                                    FrontFormula: "obj[1].Section.ChildSections[0].Section.Rows[0].Cols[0].Question.Question.OptionResponses[1].OptionResponse.ResponseTxt == 'true'"
+                                                }
+                                            ],
+                                            DisplayOrderNbr: 1,
+                                            Layout: "01-01-12",
+                                            OptionResponses: [
+                                                {
+                                                    ClassName: null, 
+                                                    OptionResponse: {
+                                                        Dependency: [],
+                                                        OptionDesc: "Yes",
+                                                        OptionId: "e4a0b5bc-060d-4c89-af93-e9eccea1eaeb",
+                                                        OptionTypeDesc: "Radio",
+                                                        OptionTypeId: 8,
+                                                        PlaceHolder: null,
+                                                        RepeatQuestionIdentifier: "",
+                                                        RepeatSectionIdentifier: "",
+                                                        ResponseId: "00000000-0000-0000-0000-000000000000",
+                                                        ResponseTxt: null,
+                                                        ToolTip: null
+                                                    }
+                                                },
+                                                {
+                                                    ClassName: null, 
+                                                    OptionResponse: {
+                                                        Dependency: [],
+                                                        OptionDesc: "No",
+                                                        OptionId: "8ea5df0e-221e-4b70-ad0b-09ffbf078b16",
+                                                        OptionTypeDesc: "Radio",
+                                                        OptionTypeId: 8,
+                                                        PlaceHolder: null,
+                                                        RepeatQuestionIdentifier: "",
+                                                        RepeatSectionIdentifier: "",
+                                                        ResponseId: "00000000-0000-0000-0000-000000000000",
+                                                        ResponseTxt: null,
+                                                        ToolTip: null
+                                                    }
+                                                }
+                                            ],
+                                            QuestionDesc: "Does the Intermediary conduct or has the Intermediary ever conducted business involving Crimea, Cuba, Iran, North Korea, Sudan, or Syria?",
+                                            QuestionId: "d38677c1-32cf-4c02-b304-6d226d7fcafa",
+                                            QuestionIdentifier: null,
+                                            QuestionNo: "5.1       ",
+                                            QuestionTypeId: 8,
+                                            QuestionVisibility: "V",
+                                            ResponseHistory: [],
+                                            Tooltip: null,
+                                            Validation: [{
+                                                ErrorMsg: "",
+                                                Expression: null,
+                                                FrontFormula: "\S",
+                                                ValidationCondition: [],
+                                                ValidationQuestionId: "d38677c1-32cf-4c02-b304-6d226d7fcafa",
+                                                ValidationTypeId: 5
+                                            }]
+                                        }
+                                    },
+                                    Rows: []
+                                }]
+                            }, {
+                                Cols: [{
+                                    Col: 12,
+                                    Question: {
+                                        ClassName: null,
+                                        Question: {
+                                            ClassName: null,
+                                            Dependency: [
+                                                {
+                                                    DependencySource: [{
+                                                        DependencyOperator: "=",
+                                                        DependencyResponseValue: "true",
+                                                        OptionId: "e07b2174-9793-40eb-b0af-a75c748f507c",
+                                                        SourceQuestionId: "810bde9d-5e3c-4c93-8f9e-cd5e19261079"
+                                                    }],
+                                                    DependencyTypeDesc: "Display",
+                                                    DependencyTypeId: 1,
+                                                    DependencyValue: "[[058e4695-4314-41f0-9f73-41d04e385436]]",
+                                                    FrontFormula: "obj[1].Section.ChildSections[0].Section.Rows[0].Cols[0].Question.Question.OptionResponses[0].OptionResponse.ResponseTxt == 'true'"
+                                                }
+                                            ],
+                                            DisplayOrderNbr: 1,
+                                            Layout: "01-01-12",
+                                            OptionResponses: [
+                                                {
+                                                    ClassName: null, 
+                                                    OptionResponse: {
+                                                        Dependency: [],
+                                                        OptionDesc: "Yes",
+                                                        OptionId: "e4a0b5bc-060d-4c89-af93-e9eccea1eaeb",
+                                                        OptionTypeDesc: "Radio",
+                                                        OptionTypeId: 8,
+                                                        PlaceHolder: null,
+                                                        RepeatQuestionIdentifier: "",
+                                                        RepeatSectionIdentifier: "",
+                                                        ResponseId: "00000000-0000-0000-0000-000000000000",
+                                                        ResponseTxt: null,
+                                                        ToolTip: null
+                                                    }
+                                                },
+                                                {
+                                                    ClassName: null, 
+                                                    OptionResponse: {
+                                                        Dependency: [],
+                                                        OptionDesc: "No",
+                                                        OptionId: "8ea5df0e-221e-4b70-ad0b-09ffbf078b16",
+                                                        OptionTypeDesc: "Radio",
+                                                        OptionTypeId: 8,
+                                                        PlaceHolder: null,
+                                                        RepeatQuestionIdentifier: "",
+                                                        RepeatSectionIdentifier: "",
+                                                        ResponseId: "00000000-0000-0000-0000-000000000000",
+                                                        ResponseTxt: null,
+                                                        ToolTip: null
+                                                    }
+                                                }
+                                            ],
+                                            QuestionDesc: "Does the Intermediary conduct or has the Intermediary ever conducted business involving Crimea, Cuba, Iran, North Korea, Sudan, or Syria?",
+                                            QuestionId: "bc4c05d6-3a14-4a76-a99d-bfbf06c12dc0",
+                                            QuestionIdentifier: null,
+                                            QuestionNo: "5.2       ",
+                                            QuestionTypeId: 8,
+                                            QuestionVisibility: "V",
+                                            ResponseHistory: [],
+                                            Tooltip: null,
+                                            Validation: [{
+                                                ErrorMsg: "",
+                                                Expression: null,
+                                                FrontFormula: "\S",
+                                                ValidationCondition: [],
+                                                ValidationQuestionId: "d38677c1-32cf-4c02-b304-6d226d7fcafa",
+                                                ValidationTypeId: 5
+                                            }]
+                                        }
+                                    },
+                                    Rows: []
+                                }]
+                            }],
+                            "SectionDesc": "Trade Compliance",
+                            "SectionId": "16015d76-d053-49c7-a15d-3490a9b10040",
+                            "SectionIdentifier": null,
+                            "SectionNo": "5         ",
+                            "SectionValidStatus": false,
+                            "ToolTip": "",
+                        }
+                    }],
                     "Rows": [
                         {
                             "Cols": [{

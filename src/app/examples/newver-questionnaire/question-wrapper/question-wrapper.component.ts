@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { QuestionService } from '../question.service';
 
 @Component({
   selector: 'app-question-wrapper',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionWrapperComponent implements OnInit {
 
-  constructor() { }
+  questions = [];
+
+  constructor(
+    private Qservice: QuestionService
+  ) {
+    console.log(this.Qservice.sections);
+    this.Qservice.fromartData(this.Qservice.sections);
+  }
 
   ngOnInit() {
+    console.log(this.Qservice.dataRows);
+    console.log(this.Qservice.assemblyComponent());
+    // this.questions = this.Qservice.dataRows;
   }
 
 }

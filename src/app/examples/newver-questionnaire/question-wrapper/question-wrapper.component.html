@@ -1,1 +1,6 @@
 <p>question-wrapper works!</p>
+
+<ng-container *ngFor="let item of questions">
+    <app-insert-field [question]="item"></app-insert-field>
+</ng-container>
+
