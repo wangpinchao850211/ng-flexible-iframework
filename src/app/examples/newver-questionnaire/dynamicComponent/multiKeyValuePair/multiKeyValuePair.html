@@ -1,0 +1,43 @@
+<section class="select_container" *ngIf="Question.display" >
+    <dynamic-shared-component [title]="Question.Tooltip"
+        [FieldNo]="Question.QuestionNo"
+        [inputHTML]="Question.QuestionDesc"
+        [validataion]="Question.Validation">
+    </dynamic-shared-component>
+
+    <div class="select_content" [ngClass]="{'select_disabled':Question.disabled,
+    'error_msg': Question.updated && !Question.validated, 'scollmore':Question.disabled && this.Question.selectedItems.length > maxLength}"
+       (click)="togglePanelFn();$event.stopPropagation();">
+         <div *ngIf="selectedPanel" >
+            <Multi-KeyValue-Pair-Panel
+              [questionId]="Question.QuestionId"
+              [options]="options"
+              [selectAll]="selectAll"
+              [unselectAll]="unselectAll"
+              [TierId]="TierId"
+              (togglePanelFn)     = "togglePanelFnEmit()"
+              (selectedItemFn)    = "selectedItemFn($event)"
+              (selectAllFn)       = "selectAllFn()"
+              (unselectAllFn)     = "unselectAllFn()"
+            >
+            </Multi-KeyValue-Pair-Panel>
+          </div>
+         <div class="selected_text">
+         <ng-container *ngIf="!Question.disabled; else disabled">
+           <div class="seletecd_item" *ngFor="let item of Question.selectedItems.slice(0,maxLength);let itemI = index;">
+             <i class="material-icons close" (click)="deleteSelectedFn(item);$event.stopPropagation();">close</i>
+             <span>{{item.optionWordingName}} </span>
+           </div>
+         </ng-container>
+         <ng-template #disabled>
+           <div class="seletecd_item" *ngFor="let item of Question.selectedItems;let itemI = index;">
+             <i class="material-icons close" (click)="deleteSelectedFn(item);$event.stopPropagation();">close</i>
+             <span>{{item.optionWordingName}} </span>
+           </div>
+         </ng-template>
+          <span class="selectedItems_more"  *ngIf="Question.selectedItems.length > 3">
+                  {{ Question.selectedItems.length - 3 }} +
+          </span>
+      </div>
+    </div>
+</section>

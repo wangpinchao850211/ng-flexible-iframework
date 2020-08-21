@@ -1,6 +1,8 @@
-<p>question-wrapper works!</p>
+<p>异步路由渲染NewverQuestionnaireModule!</p>
+<p>question-wrapper 是表单外层组件，此组件调用QuestionService（相当于dependency.ts）获取数据，处理数据，动态更新数据</p>
 
-<ng-container *ngFor="let item of questions">
+<ng-container *ngFor="let item of questions; let i = index">
+    <p>我的位置是：{{i}}</p>
     <app-insert-field [question]="item"></app-insert-field>
 </ng-container>
 

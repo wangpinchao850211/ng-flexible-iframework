@@ -4,6 +4,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { QuestionWrapperComponent } from './question-wrapper/question-wrapper.component';
 import { QuestionDirective } from './question.directive';
 import { InsertFieldComponent } from './insert-field.component';
+import { NewDynamicModule } from './dynamicComponent/DynamicdModule/DynamicdModule';
 
 const routes: Routes = [
   {
@@ -18,6 +19,7 @@ const routes: Routes = [
     InsertFieldComponent,
   ],
   imports: [
+    NewDynamicModule,
     RouterModule.forChild(routes),
     CommonModule
   ],

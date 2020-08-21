@@ -1,0 +1,102 @@
+.select_disabled{
+    color:#ccc;
+    background: #eee;
+  }
+  .select_content{
+    padding: 4px 30px 4px 16px;
+    border: 1px solid #8C44A3;
+    background: #fff;
+    border-radius: 4px;
+    font-size: 14px;
+    outline: 0 none;
+    position: relative;
+    width: 350px;
+    min-height:36px;
+    max-height:64px;
+    cursor: pointer;
+    height: auto !important;
+  }
+  .selected_text{
+    width: 275px;
+  }
+  .select_content:after{
+    content: 'expand_more';
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    top: 0;
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    color: #8C44A3;
+    font-feature-settings: 'liga';
+  }
+  .error_msg{
+    color:#B50128;
+    border: 1px solid #B50128;
+    background: #FFF1F4;
+  }
+  .error_msg:after{
+    color: #B50128 !important;
+  }
+
+  .error_msg .seletecd_item{
+    background: #B50128 !important;
+  }
+
+  .error_msg .seletecd_item .close{
+    display: none;
+  }
+  ::ng-deep.error_msg .regular-checkbox + label {
+    box-shadow: none;
+    border: 2px solid #B50128;
+    background-color: #FFF1F4;
+    border-radius: 5px;
+  }
+
+  ::ng-deep.error_msg .regular-checkbox + label:hover{
+    box-shadow: none;
+    background-color: #FFF1F4;
+  }
+
+  .scollmore{
+    overflow-y: scroll;
+  }
+
+  ::ng-deep.error_msg .regular-checkbox:checked + label:after {
+    width: 12px;
+    height: 12px;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    background-color: #B50128;
+    border-radius: 3px;
+  }
+  .seletecd_item{
+      background: #8C44A3;
+      line-height: 20px;
+      color: #fff;
+      vertical-align: middle;
+      padding: 2px 5px;
+      overflow: hidden;
+      text-overflow:ellipsis;
+      white-space: nowrap;
+      display: inline-block;
+      border-radius: 4px;
+      margin: 4px 4px 4px 0;
+      cursor: pointer;
+  }
+  .close{
+      cursor: pointer;
+      color: #fff;
+      font-size: 16px;
+      line-height: 20px;
+      float:right;
+  }
+  .selectedItems_more{
+      color: #8C44A3;
+      position: absolute;
+      right: 20px;
+      top: 6px;
+  }

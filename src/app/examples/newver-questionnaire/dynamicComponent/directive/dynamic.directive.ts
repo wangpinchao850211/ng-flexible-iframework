@@ -80,8 +80,6 @@ export class DynamicDirective implements OnInit {
   constructor(private resolver: ComponentFactoryResolver, private container: ViewContainerRef) { }
 
   ngOnInit() {
-    console.log("1111111");
-    console.log(this.config);
     this.config.RequestId = this.inRequestId;
     this.config.sectionId = this.sectionId;
     this.config.autoSave = this.autoSave;

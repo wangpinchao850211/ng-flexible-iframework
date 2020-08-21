@@ -1,0 +1,32 @@
+<section class="input-con" *ngIf="Question.display">
+    <dynamic-shared-component [title]="Question.Tooltip"
+          [FieldNo]="Question.QuestionNo"
+          [inputHTML]="Question.QuestionDesc"
+          [validataion]="Question.Validation">
+    </dynamic-shared-component>
+    <div class="bip-range-wrap">
+    <input class="bip-range-ctrl"  type="radio" name="bar1" (click)="changeValueFn('Green')" id="range1" [checked]="range1Chk">
+    <input class="bip-range-ctrl"  type="radio" name="bar1" (click)="changeValueFn('Yellow')" id="range2" [checked]="range2Chk">
+    <input class="bip-range-ctrl"  type="radio" name="bar1" (click)="changeValueFn('Red')" id="range3" [checked]="range3Chk">
+    <div class="bip-range-con-wrap">
+        <div class="bip-range-con-item"></div>
+        <div class="bip-range-con-item"></div>
+    </div>
+    <div class="bip-range-btn-wrap">
+        <label class="bip-range-ctrl-btn" for="range1"><span style="display: none;">wave</span></label>
+        <label class="bip-range-ctrl-btn" for="range2"><span style="display: none;">wave</span></label>
+        <label class="bip-range-ctrl-btn" for="range3"><span style="display: none;">wave</span></label>
+    </div>
+    <div class="bip-range-tt-wrap">
+        <div class="bip-range-tt-con">
+            green
+        </div>
+        <div class="bip-range-tt-con">
+            yellow
+        </div>
+        <div class="bip-range-tt-con">
+            red
+        </div>
+    </div>
+</div>
+</section>

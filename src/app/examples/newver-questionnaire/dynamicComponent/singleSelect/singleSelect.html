@@ -1,0 +1,17 @@
+<section class="select_container" *ngIf="options.length > 0 && Question.display">
+    <dynamic-shared-component [title]="Question.Tooltip"
+        [FieldNo]="Question.QuestionNo"
+        [inputHTML]="Question.QuestionDesc"
+        [validataion]="Question.Validation">
+    </dynamic-shared-component>
+    <div class="select_content" [ngClass]="{'select_disabled':Question.disabled , 'error_msg': Question.updated && !Question.validated}"
+       (click)="togglePanelFn();$event.stopPropagation();">
+       <div class="selected_text">{{Question.selecteItem.name}}</div>
+      <ul class="select_panel" *ngIf="selectedPanel">
+        <li class="select_item" (click)="selectedItemFn(option)" *ngFor="let option of options">
+            {{option.name}}
+            <span class="material-icons option-tooltip" title="{{option.tooltip}}" *ngIf="option.tooltip!=null && option.tooltip!=''">info</span>
+        </li>
+      </ul>
+    </div>
+</section>

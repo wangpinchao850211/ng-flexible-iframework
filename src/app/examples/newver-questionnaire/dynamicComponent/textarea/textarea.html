@@ -1,0 +1,16 @@
+<section class="textarea_con" *ngIf="Question.display">
+    <dynamic-shared-component [title]="Question.Tooltip"
+        [FieldNo]="Question.QuestionNo"
+        [inputHTML]="Question.QuestionDesc"
+        [validataion]="Question.Validation">
+    </dynamic-shared-component>
+    <textarea aria-label="input" type="text" [disabled]="Question.disabled "
+        (keyup)="valueChangeFn()" class="dynamic_textarea"
+        (blur)="valueChangeFn()"
+        [ngClass]="{'textarea_disabled':Question.disabled , 'error_msg':Question.updated && !Question.validated}"
+        [(ngModel)]="Question.OptionResponses[0].OptionResponse.ResponseTxt" (blur)="autoSaveFn()" title=""></textarea>
+    <ng-container  *ngIf="updated && !Question.validated">
+      <dynamic-ErrorMsg-component  [validataion]="Question.Validation">
+      </dynamic-ErrorMsg-component>
+    </ng-container>
+</section>

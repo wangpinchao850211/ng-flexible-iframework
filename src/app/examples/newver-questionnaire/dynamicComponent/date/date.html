@@ -1,0 +1,22 @@
+<section class="Date_con" >
+    <dynamic-shared-component [title]="Question.Tooltip"
+        [FieldNo]="Question.QuestionNo"
+        [inputHTML]="Question.QuestionDesc"
+        [validataion]="validataion">
+    </dynamic-shared-component>
+    <label class="mock_label" [ngClass]="{'Grey':Question.disabled,'error_msg': Question.updated && !Question.validated}"
+    [attr.for]="'Date_' + config.Question.Question.QuestionId">
+    {{data | date}}
+      <input aria-label="input" id="{{'Date_' + config.Question.Question.QuestionId }}"
+      type="text" [disabled]="Question.disabled" (bsValueChange)="valueChangeFn($event);"
+      class="hidden" (onShown)="handler()" [bsValue]="bsValue" bsDatepicker [bsConfig]="bsConfig" [outsideClick]="true"
+       [isDisabled]="Question.disabled || (Question.updated && !Question.validated)">
+      <div class="datepicker-icon">
+        <div class="material-icons date-icon">date_range</div>
+      </div>
+    </label>
+    <ng-container *ngIf="Question.updated && !Question.validated">
+      <dynamic-ErrorMsg-component  [validataion]="Question.Validation">
+      </dynamic-ErrorMsg-component>
+    </ng-container>
+</section>

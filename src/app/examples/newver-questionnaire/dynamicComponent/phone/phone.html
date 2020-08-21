@@ -1,0 +1,21 @@
+<section class="input-con" *ngIf="Question.display" (click) = "$event.stopPropagation();">
+    <dynamic-shared-component [title]="Question.Tooltip"
+          [FieldNo]="Question.QuestionNo"
+          [inputHTML]="Question.QuestionDesc"
+          [validataion]="Question.Validation">
+    </dynamic-shared-component>
+    <input aria-label="input" type="text" class="area_code" [disabled]=" Question.disabled"
+        (click) = "$event.stopPropagation();"
+        (input) = "$event.stopPropagation();"
+        (blur) = "blurCheck()"
+        (keyup)="changePhoneValueFn();$event.stopPropagation();"
+        [(ngModel)]="Question.OptionResponses[0].OptionResponse.ResponseTxt"
+        [ngClass]="{'input_disabled':Question.disabled , 'error_msg':Question.updated && !Question.validated}" title=""/>
+    <input aria-label="input" type="text" class="dynamic_input" [disabled]=" Question.disabled"
+        (click) = "$event.stopPropagation();"
+        (input) = "$event.stopPropagation();"
+        (blur) = "blurCheck()"
+        (keyup)="changePhoneValueFn();$event.stopPropagation();"
+        [(ngModel)]="Question.OptionResponses[1].OptionResponse.ResponseTxt"
+        [ngClass]="{'input_disabled':Question.disabled , 'error_msg':Question.updated && !Question.validated}" title=""/>
+</section>

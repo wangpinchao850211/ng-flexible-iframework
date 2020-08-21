@@ -1,0 +1,35 @@
+.input-con{
+    padding:10px 0;
+  }
+  .area_code{
+    padding: 8px 16px;
+    border: 1px solid #8C44A3;
+    background-color: #fff;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 90px;
+    display: inline-block;
+    margin-right: 10px;
+    color: #2D3540;
+  }
+  .dynamic_input{
+    padding: 8px 16px;
+    border: 1px solid #8C44A3;
+    background-color: #fff;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 240px;
+    display: inline-block;
+    margin-left:10px;
+    color: #2D3540;
+  }
+  .input_disabled{
+    background: #f5f5f5;
+    color: #535353;
+    border: 1px solid #535353;
+  }
+  .dynamic_input.error_msg,.area_code.error_msg {
+    border: 1px solid #B50128;
+    background: #FFF1F4;
+    color: #B50128;
+  }

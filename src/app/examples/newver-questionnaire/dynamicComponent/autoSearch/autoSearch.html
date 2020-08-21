@@ -1,0 +1,33 @@
+<section class="auto_search_con" *ngIf="Question.display">
+    <dynamic-shared-component [FieldNo]="Question.QuestionNo" [inputHTML]="Question.QuestionDesc"
+        [validataion]="Question.Validation" [title]="Question.Tooltip">
+    </dynamic-shared-component>
+    <input aria-label="input" class="identifier_input" type="text"
+        [(ngModel)]="seartchValue" (keyup)="keyupSearchFn($event)" title=""
+        (blur) = "blurCheck()" [disabled]="Question.disabled"
+       [ngClass]="{'input_disabled':Question.disabled,'error_msg':Question.updated && !Question.validated }" />
+    <div *ngIf="flage.toggle">
+      <section class="search_results" (click)="$event.stopPropagation();">
+        <ul>
+          <li *ngFor="let result of searchResults" (click)="reslultSelectItemFn(result);$event.stopPropagation();" class="search_item">
+            {{result}}
+          </li>
+          <div *ngIf="!flage.load && flage.error" class="error">
+            an error occured
+          </div>
+          <div class="Portrait-loader" *ngIf="flage.load">
+            <div class="dot">
+              <div class="first"></div>
+            </div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+          </div>
+        </ul>
+      </section>
+    </div>
+    <ng-container *ngIf="Question.updated && !Question.validated">
+      <dynamic-ErrorMsg-component  [validataion]="Question.Validation">
+      </dynamic-ErrorMsg-component>
+    </ng-container>
+</section>

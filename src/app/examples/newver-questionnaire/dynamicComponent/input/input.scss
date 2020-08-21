@@ -1,0 +1,24 @@
+.input-con{
+    margin: 15px 0;
+  }
+  .dynamic_input{
+    padding: 8px 16px;
+    border: 1px solid #005b9f;
+    background-color: #fff;
+    border-radius: 4px;
+    font-size: 14px;
+    width: 350px;
+    height: 40px;
+    color: #2D3540;
+    box-sizing: inherit;
+  }
+  .input_disabled{
+    background: #f5f5f5;
+    color: #535353;
+    border: 1px solid #535353;
+  }
+  .dynamic_input.error_msg {
+    border: 1px solid #B50128;
+    background: #FFF1F4;
+    color: #B50128;
+  }

@@ -1,0 +1,93 @@
+.radio_con{
+    margin:5px 0 20px;
+  }
+  .radio_item{
+    display: inline-block;
+    margin-right: 90px;
+  }
+  .radio_text{
+    vertical-align: middle;
+    font-size: 14px;
+    margin-left: 15px;
+  }
+
+  .regular-radio {
+    display: none;
+  }
+
+  .regular-radio + label {
+    border: 1px solid #005b9f;
+    background-color: #fff;
+}
+
+  ::ng-deep .regular-radio + label{
+    -webkit-appearance: none;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 2px solid #e6e4e9;
+    box-shadow: 0 1px 2px rgba(0,0,0,.05), inset 0 -15px 10px -12px rgba(0,0,0,.05);
+    padding: 7px;
+    display: inline-block;
+    position: relative;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #f9f8fd;
+  }
+
+  ::ng-deep .regular-radio + label:hover{
+    background-color: #ccc;
+  }
+
+  ::ng-deep .regular-radio:checked + label{
+    background-color: #fff;
+    color: #fff;
+  }
+
+  ::ng-deep .regular-radio:checked + label:hover{
+    background-color: #ccc;
+  }
+
+  .regular-radio:checked + label:after {
+    top: 3px;
+    left: 3px;
+}
+
+  ::ng-deep .regular-radio:checked + label:after{
+    content: ' ';
+    width: 12px;
+    height: 12px;
+    border-radius: 50px;
+    position: absolute;
+    top: 2px;
+    background: #005b9f;
+    left: 2px;
+    font-size: 32px;
+  }
+
+  .regular-radio:disabled  + label{
+    cursor: not-allowed;
+    border: 1px solid #535353 ;
+    background-color: #f5f5f5 ;
+  }
+
+  .regular-radio:disabled + label:hover{
+    box-shadow: none;
+  }
+
+  .regular-radio:disabled + label:after{
+      background: #535353;
+  }
+
+  .regular-radio.error_msg + label{
+    background: #FFF1F4;
+    border: 1px solid #B50128 ;
+  }
+
+  .regular-radio.error_msg + label:hover{
+    box-shadow: none;
+  }
+
+  .noStyle {
+    display: none;
+  }

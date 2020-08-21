@@ -34,6 +34,7 @@ export class QuestionnaireComponent implements OnInit {
 
     ngOnInit(): void {
         this.sections = DataSource.data.Sections;
+        console.log(this.sections);
         this.isAutoSave = CONFIG[0].useValue.IsAutoSave;
         this.dependencyService.fromartTabData(this.sections);
         this.el.nativeElement.querySelector('#successInfo').style.display = 'none';

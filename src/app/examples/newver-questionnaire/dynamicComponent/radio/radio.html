@@ -1,0 +1,22 @@
+<section class="radio_con" *ngIf="Question.display">
+    <dynamic-shared-component [title]="Question.Tooltip"
+          [FieldNo]="Question.QuestionNo"
+          [inputHTML]="Question.QuestionDesc"
+          [validataion]="Question.Validation">
+    </dynamic-shared-component>
+    <div class="radio_con">
+      <span class="radio_item" *ngFor="let radio of radios;let radioI = index;" (click)="$event.stopPropagation();">
+          <input class="regular-radio" type="radio" [ngClass]="{'error_msg': Question.updated && !Question.validated}"
+            (change)="selectRadioFn(radio);"
+            [name]="Question.QuestionId" [checked]="radio.OptionResponse.ResponseTxt == 'true' "
+            id="{{'radio_' + radio.OptionResponse.OptionId }}"
+            [disabled]="Question.disabled" title="" />
+            <label [attr.for]=" 'radio_' + radio.OptionResponse.OptionId "><span class="noStyle">none</span></label>
+            <span class="radio_text" [innerHtml]="radio.OptionResponse.OptionDesc"></span>
+      </span>
+    </div>
+    <ng-container  *ngIf="Question.updated && !Question.validated">
+      <dynamic-ErrorMsg-component  [validataion]="Question.Validation">
+      </dynamic-ErrorMsg-component>
+    </ng-container>
+</section>

@@ -1,0 +1,25 @@
+<section class="checkbox_con" *ngIf="Question.display"
+    [ngClass]="{'error_msg':Question.updated && !Question.validated}"
+    (click)="$event.stopPropagation();">
+        <dynamic-shared-component *ngIf="Question.QuestionDesc" [title]="Question.Tooltip"
+            [FieldNo]="Question.QuestionNo"
+            [inputHTML]="Question.QuestionDesc"
+            [validataion]="Question.Validation">
+        </dynamic-shared-component>
+        <div *ngFor="let item of checkboxs;let itemI = index;" class="content_con">
+              <div class="checkbox_icon" (click)="$event.stopPropagation();">
+                <input (click)="$event.stopPropagation();" class="regular-checkbox" [ngClass]="{'error_msg':Question.updated && !Question.validated}" type="checkbox" id="{{'checkbox_' + Question.QuestionId + itemI + Question.OptionResponses[0].OptionResponse.RepeatSectionIdentifier}}"
+                    [name]=" Question.QuestionId "  [checked]="item.OptionResponse.ResponseTxt == 'true' "
+                    [disabled]=" Question.disabled" (change)="valueChangeFn(item)" />
+                <label (click)="$event.stopPropagation();" [attr.for]=" 'checkbox_' + Question.QuestionId + itemI + Question.OptionResponses[0].OptionResponse.RepeatSectionIdentifier" ><span class="noStyle">none</span></label>
+              </div>
+              <div class="checkbox_content">
+                <span [innerHtml]="item.OptionResponse.OptionDesc"></span>
+                <span class="material-icons option-tooltip" [title]="item.OptionResponse.ToolTip ? item.OptionResponse.ToolTip : ''"  *ngIf="item.OptionResponse.ToolTip!=null && item.OptionResponse.ToolTip!='' && item.OptionResponse.ToolTip && !Question.disabled">info</span>
+              </div>
+        </div>
+        <ng-container  *ngIf="Question.updated && !Question.validated">
+          <dynamic-ErrorMsg-component  [validataion]="Question.Validation">
+          </dynamic-ErrorMsg-component>
+        </ng-container>
+    </section>

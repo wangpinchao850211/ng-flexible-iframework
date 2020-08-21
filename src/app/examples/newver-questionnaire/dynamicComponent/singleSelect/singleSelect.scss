@@ -1,0 +1,81 @@
+.select_disabled{
+    border: 1px solid #535353 !important;
+    color:#535353 !important;
+    background: #f5f5f5 !important;
+  }
+
+  .select_disabled:after {
+    color: #535353 !important;
+  }
+
+  .error_msg{
+    border: 1px solid #B50128 !important;
+    color:#B50128 !important;
+    background: #FFF1F4 !important;
+  }
+
+  .error_msg:after {
+    color: #B50128 !important;
+  }
+
+  .select_content{
+    padding: 0 30px 0 16px;
+    height: 38px;
+    line-height: 34px;
+    border: 1px solid #005b9f;
+    background: #fff;
+    color: #000;
+    border-radius: 4px;
+    font-size: 14px;
+    display: block;
+    outline: 0 none;
+    position: relative;
+    width: 350px;
+  }
+  .select_content:after {
+    content: 'expand_more';
+    position: absolute;
+    z-index: 1;
+    right: 10px;
+    top: 0;
+    font-family: 'Material Icons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 24px;
+    color: #005b9f;
+    font-feature-settings: 'liga';
+}
+  .selected_text{
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+  }
+
+  .select_panel{
+    position: absolute;
+    background: #fff;
+    width: 100%;
+    left: 0;
+    top: 38px;
+    overflow-y: auto;
+    max-height: 300px;
+    z-index: 10;
+    box-shadow: 0 2px 7px rgba(153,153,153,.3);
+  }
+  .select_item{
+    margin: 5px 0;
+    padding: 5px 14px;
+    line-height: 20px;
+    font-size: 14px;
+    color: #2D3540;
+  }
+  .select_item:hover {
+      background-color: #ebeaff;
+      cursor: pointer;
+  }
+  .option-tooltip {
+        color: #66696E;
+        font-size:18px;
+        vertical-align:middle;
+        cursor:default;
+   }

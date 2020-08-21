@@ -136,6 +136,9 @@ export class dynamicdynRadio implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.Question = this.config.Question.Question;
+    console.log('uuuuuuuuuu');
+    console.log(this.Question.display);
+    
     if (!!this.config.autoSave && !!this.config.autoSave.callBack) {
       this.removeDup();
     }

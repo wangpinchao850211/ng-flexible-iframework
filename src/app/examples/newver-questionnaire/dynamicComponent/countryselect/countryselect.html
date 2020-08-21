@@ -1,0 +1,25 @@
+<section class="select_container" *ngIf="Question.display">
+    <dynamic-shared-component [title]="Question.Tooltip"
+        [FieldNo]="Question.QuestionNo"
+        [inputHTML]="Question.QuestionDesc"
+        [validataion]="Question.Validation">
+    </dynamic-shared-component>
+
+    <input aria-label="input" class="identifier_input"   type="text"
+    [(ngModel)]="Question.seartchValue" (keyup)="keyupSearchFn($event)" title=""
+    (click)="togglePanelFn();$event.stopPropagation();"
+    [disabled]="Question.disabled"
+   [ngClass]="{'input_disabled':Question.disabled,
+    'error_msg':Question.updated && !Question.validated }" />
+    <section class="select_panel_identifier" *ngIf="selectedPanel" (click)="$event.stopPropagation();" >
+       <ul >
+         <li class="select_item" (click)="selectedItemFn(option)" *ngFor="let option of options" >
+             {{option.optionWordingName}}
+         </li>
+       </ul>
+       </section>
+    <ng-container  *ngIf="Question.updated && !Question.validated">
+    <dynamic-ErrorMsg-component  [validataion]="Question.Validation">
+    </dynamic-ErrorMsg-component>
+    </ng-container>
+</section>

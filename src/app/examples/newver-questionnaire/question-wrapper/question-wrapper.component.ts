@@ -14,13 +14,13 @@ export class QuestionWrapperComponent implements OnInit {
     private Qservice: QuestionService
   ) {
     console.log(this.Qservice.sections);
-    this.Qservice.fromartData(this.Qservice.sections);
+    this.Qservice.fromartTabData(this.Qservice.sections);
   }
 
   ngOnInit() {
     console.log(this.Qservice.dataRows);
     console.log(this.Qservice.assemblyComponent());
-    // this.questions = this.Qservice.dataRows;
+    this.questions = this.Qservice.assemblyComponent();
   }
 
 }

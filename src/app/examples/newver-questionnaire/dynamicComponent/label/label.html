@@ -1,0 +1,9 @@
+<section class="label_con" [ngClass]="{'slideTab':Question.QuestionIdentifier == 'slideTab'}" *ngIf="Question.display">
+    <dynamic-shared-component
+        [FieldNo]="Question.QuestionNo"
+        [inputHTML]="Question.QuestionDesc | SafeHtmlPipe"
+        [validataion]="validataion"
+        [title]="Question.Tooltip"
+        >
+    </dynamic-shared-component>
+</section>
