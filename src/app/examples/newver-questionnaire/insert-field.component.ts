@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ComponentFactoryResolver, AfterViewInit, ViewContainerRef } from '@angular/core';
 import { QuestionDirective } from './question.directive';
 import { QuestionService } from './question.service';
+import { IQuestionComponent } from './IQuestionComponent'
 
 @Component({
   selector: 'app-insert-field',
@@ -34,7 +35,6 @@ export class InsertFieldComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit() {
-    console.log(this.question);
     this.loadComponent();
   }
 
@@ -45,14 +45,14 @@ export class InsertFieldComponent implements OnInit, AfterViewInit {
   loadComponent() {
     console.log(this.question);
     this.setQuestion(this.question.data);
-    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(this.question.component);
-    console.log(componentFactory);
+    let componentFactory = this.componentFactoryResolver.resolveComponentFactory<IQuestionComponent>(this.question.component);
 
     let viewContainerRef = this.questionHost.viewContainerRef;
     // let viewContainerRef = this.container;
 
-    let componentRef = viewContainerRef.createComponent(componentFactory);
+    let componentRef = viewContainerRef.createComponent<IQuestionComponent>(componentFactory);
     (<any>componentRef.instance).config = this.question.data;
+    (<any>componentRef.instance).isAutoSave = this.isAutoSave;
   }
 
   setQuestion(config) {

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DependencyService } from '../service/dependency/dependency';
+import { QuestionService } from '../../question.service';
 
 @Component({
     selector: 'dynamic-label',
@@ -12,7 +12,7 @@ export class dynamicLabel implements OnInit {
     public validataion: any;
     public isDependOn: boolean = false;
 
-    constructor(private dependency: DependencyService) { }
+    constructor(private dependency: QuestionService) { }
 
     ngOnInit() {
         this.Question = this.config.Question.Question;

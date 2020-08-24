@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { DependencyService } from '../service/dependency/dependency';
+import { QuestionService } from '../../question.service';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'dynamic-textarea',
   templateUrl: './textarea.html',
-  styleUrls: ['./textarea.scss']
-
+  styleUrls: ['./textarea.scss'],
 })
 
 export class dynamicTextarea implements OnInit {
@@ -13,7 +13,7 @@ export class dynamicTextarea implements OnInit {
   public Question: any;
   public isAutoSave: any;
 
-  constructor(private dependency: DependencyService) { }
+  constructor(private dependency: QuestionService) { }
   ngOnInit() {
     this.Question = this.config.Question.Question;
     if (!!this.config.autoSave && !!this.config.autoSave.callBack) {
@@ -39,21 +39,11 @@ export class dynamicTextarea implements OnInit {
 
   removeDup() {
     let OleOptionResponses = this.Question.OptionResponses;
-    let NewOptionResponses = [];
-    for (var i = 0; i < OleOptionResponses.length; i++) {
-      var canAdd = true;
-      for (var j = NewOptionResponses.length; j--;) {
-        if (OleOptionResponses[i].OptionResponse.OptionId == NewOptionResponses[j].OptionResponse.OptionId) {
-          canAdd = false;
-          break;
-        }
-      }
-      if (canAdd) {
-        NewOptionResponses.push(OleOptionResponses[i]);
-      }
-    }
-    if (OleOptionResponses.length != NewOptionResponses.length) {
-      this.Question.OptionResponses = NewOptionResponses;
+    OleOptionResponses.push(OleOptionResponses[OleOptionResponses.length-1]);
+    const ids = _.map(_.map(OleOptionResponses, 'OptionResponse'), 'OptionId');
+    const duplication = Array.from(new Set(ids));
+    if (ids.length !== duplication.length) {
+      this.Question.OptionResponses = _.uniqBy(OleOptionResponses, 'OptionResponse.OptionId');
       this.autoSaveFn();
     }
   }

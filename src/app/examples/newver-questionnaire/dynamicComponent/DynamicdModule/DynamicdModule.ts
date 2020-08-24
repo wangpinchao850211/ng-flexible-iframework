@@ -1,10 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DynamicDirective } from '../directive/dynamic.directive';
-import { DependencyService } from '../service/dependency/dependency';
-import { ProgressService } from '../service/progress/progress';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+
+import { QuestionService } from '../../question.service';
 
 import { BrowserModule } from '@angular/platform-browser';
 // import { PipeModuel } from '../../../../../../common/HostModule/HostModule';
@@ -29,7 +28,6 @@ import { InputAutoSearch } from '../inputAutoSearch/inputAutoSearch';
 import { sharedComponent } from '../sharedComponent/sharedComponent';
 import { ErrorMsgComponent } from '../errorMsgComponent/errorMegComponet';
 import { SafeHtmlPipe } from '../pipes/SafeHtml.pipe';
-
 
 const components = {
   dynamicDate: dynamicDate,
@@ -83,21 +81,16 @@ export const Components = [
     BsDatepickerModule.forRoot()
   ],
   declarations: [
-    DynamicDirective,
     SafeHtmlPipe,
     ...Components
   ],
   exports: [
-    DynamicDirective,
     ...Components,
   ],
   entryComponents: [
     ...Components,
   ],
-  providers: [
-    ProgressService,
-    DependencyService
-  ]
+  providers: [QuestionService]
 })
 
 export class NewDynamicModule { }

@@ -5,6 +5,7 @@ import { QuestionWrapperComponent } from './question-wrapper/question-wrapper.co
 import { QuestionDirective } from './question.directive';
 import { InsertFieldComponent } from './insert-field.component';
 import { NewDynamicModule } from './dynamicComponent/DynamicdModule/DynamicdModule';
+// import { QuestionService } from './question.service';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     CommonModule
   ],
-  entryComponents: [InsertFieldComponent]
+  entryComponents: [InsertFieldComponent],
+  providers: []
 })
 export class NewverQuestionnaireModule { }

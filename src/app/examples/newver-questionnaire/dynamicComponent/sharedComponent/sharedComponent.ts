@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DependencyService } from '../service/dependency/dependency';
+import { QuestionService } from '../../question.service';
 
 @Component({
   selector: 'dynamic-shared-component',
@@ -42,7 +42,7 @@ export class sharedComponent implements OnInit {
   public mandatory: boolean = false;
   public title: string;
 
-  constructor(private dependency: DependencyService) { }
+  constructor(private dependency: QuestionService) { }
 
   ngOnInit() {
     this.checkMandatoryFn();

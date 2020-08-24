@@ -1,13 +1,13 @@
 import { Component, OnInit, HostListener, EventEmitter, AfterViewChecked } from '@angular/core';
-import { DependencyService } from '../service/dependency/dependency';
-// import { confirmService } from '../../../../../../common/components/confirm/confirmDialog.service';
+import { QuestionService } from '../../question.service';
+import * as _ from 'lodash';
 import { ActivatedRoute } from '@angular/router';
 import { DataSource } from 'src/app/common/Questionnaire/DataSource';
 
 @Component({
   selector: 'dynamic-auto-search',
   templateUrl: './autoSearch.html',
-  styleUrls: ['./autoSearch.scss']
+  styleUrls: ['./autoSearch.scss'],
 })
 export class dynAutoSearch implements OnInit, AfterViewChecked {
   public config: any;
@@ -35,8 +35,7 @@ export class dynAutoSearch implements OnInit, AfterViewChecked {
   public Timer: any;
   public searchResults: any;
   constructor(
-    private dependency: DependencyService,
-    // public _confirm: confirmService,
+    private dependency: QuestionService,
     private route: ActivatedRoute
   ) {
       console.log(this.config);
@@ -336,9 +335,6 @@ export class dynAutoSearch implements OnInit, AfterViewChecked {
   }
 
   autoSaveFn() {
-    console.log('sssssssssssssssss');
-    console.log(this.Question.disabled);
-    console.log(this);
 
     if (this.Question.disabled) {
         // this.Question.disabled = true;
@@ -400,21 +396,11 @@ export class dynAutoSearch implements OnInit, AfterViewChecked {
 
   removeDup() {
     let OleOptionResponses = this.Question.OptionResponses;
-    let NewOptionResponses = [];
-    for (var i = 0; i < OleOptionResponses.length; i++) {
-      var canAdd = true;
-      for (var j = NewOptionResponses.length; j--;) {
-        if (OleOptionResponses[i].OptionResponse.OptionId == NewOptionResponses[j].OptionResponse.OptionId) {
-          canAdd = false;
-          break;
-        }
-      }
-      if (canAdd) {
-        NewOptionResponses.push(OleOptionResponses[i]);
-      }
-    }
-    if (OleOptionResponses.length != NewOptionResponses.length) {
-      this.Question.OptionResponses = NewOptionResponses;
+    OleOptionResponses.push(OleOptionResponses[OleOptionResponses.length-1]);
+    const ids = _.map(_.map(OleOptionResponses, 'OptionResponse'), 'OptionId'); // 取出id
+    const duplication = Array.from(new Set(ids));                               // 去重id
+    if (ids.length !== duplication.length) { // 有重复, 去重
+      this.Question.OptionResponses = _.uniqBy(OleOptionResponses, 'OptionResponse.OptionId');
       this.autoSaveFn();
     }
   }

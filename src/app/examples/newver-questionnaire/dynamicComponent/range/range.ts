@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { DependencyService } from '../service/dependency/dependency';
-// import { Events } from '../../../CaseDetails/events/events';
+import { QuestionService } from '../../question.service';
+import * as _ from 'lodash';
+
 @Component({
     selector: 'dynamic-range',
     templateUrl: './range.html',
@@ -21,7 +22,7 @@ export class dynamicRange implements OnInit {
     public range3Chk: boolean = false;
 
     // constructor(private evants: Events, public dependency: DependencyService) { }
-    constructor(public dependency: DependencyService) { }
+    constructor(public dependency: QuestionService) { }
 
     ngOnInit() {
         this.value = this.config.Question.Question.OptionResponses[0].OptionResponse.ResponseTxt || '';

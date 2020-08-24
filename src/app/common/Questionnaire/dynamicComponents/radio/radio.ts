@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
 import { DependencyService } from '../service/dependency/dependency';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'dynamic-radio',
@@ -136,9 +137,6 @@ export class dynamicdynRadio implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.Question = this.config.Question.Question;
-    console.log('uuuuuuuuuu');
-    console.log(this.Question.display);
-    
     if (!!this.config.autoSave && !!this.config.autoSave.callBack) {
       this.removeDup();
     }
@@ -175,7 +173,7 @@ export class dynamicdynRadio implements OnInit, OnDestroy {
 
   selectRadioFn(radio) {
     console.log(radio);
-    debugger;   
+    // debugger;   
     this.dependency.validateBefore(this.Question.tabIndex + 1, this.Question.QuestionId);
     this.radios.forEach(e => {
       e.OptionResponse.ResponseTxt = 'false';
@@ -209,23 +207,30 @@ export class dynamicdynRadio implements OnInit, OnDestroy {
 
   removeDup() {
     let OleOptionResponses = this.Question.OptionResponses;
-    let NewOptionResponses = [];
-    for (var i = 0; i < OleOptionResponses.length; i++) {
-      var canAdd = true;
-      for (var j = NewOptionResponses.length; j--;) {
-        if (OleOptionResponses[i].OptionResponse.OptionId == NewOptionResponses[j].OptionResponse.OptionId) {
-          canAdd = false;
-          break;
-        }
-      }
-      if (canAdd) {
-        NewOptionResponses.push(OleOptionResponses[i]);
-      }
-    }
-    if (OleOptionResponses.length != NewOptionResponses.length) {
-      this.Question.OptionResponses = NewOptionResponses;
+    OleOptionResponses.push(OleOptionResponses[OleOptionResponses.length-1]);
+    const ids = _.map(_.map(OleOptionResponses, 'OptionResponse'), 'OptionId'); // 取出id
+    const duplication = Array.from(new Set(ids));                               // 去重id
+    if (ids.length !== duplication.length) { // 有重复, 去重
+      this.Question.OptionResponses = _.uniqBy(OleOptionResponses, 'OptionResponse.OptionId');
       this.autoSaveFn();
     }
+    
+    // for (var i = 0; i < OleOptionResponses.length; i++) {
+    //   var canAdd = true;
+    //   for (var j = NewOptionResponses.length; j--;) {
+    //     if (OleOptionResponses[i].OptionResponse.OptionId == NewOptionResponses[j].OptionResponse.OptionId) {
+    //       canAdd = false;
+    //       break;
+    //     }
+    //   }
+    //   if (canAdd) {
+    //     NewOptionResponses.push(OleOptionResponses[i]);
+    //   }
+    // }
+    // if (OleOptionResponses.length != NewOptionResponses.length) {
+    //   this.Question.OptionResponses = NewOptionResponses;
+    //   this.autoSaveFn();
+    // }
   }
 
   autoSaveFn() {

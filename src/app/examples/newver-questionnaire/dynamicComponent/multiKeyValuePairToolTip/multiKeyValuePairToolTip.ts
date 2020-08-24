@@ -1,5 +1,7 @@
 import { Component, OnInit, HostListener, EventEmitter, OnDestroy } from '@angular/core';
-import { DependencyService } from '../service/dependency/dependency';
+import { QuestionService } from '../../question.service';
+import * as _ from 'lodash';
+
 @Component({
   selector: 'dynamic-multi-keyValuePair-tooltip',
   templateUrl: './multiKeyValuePairTooltip.html',
@@ -20,7 +22,7 @@ export class dynamicMultiKeyValuePairTooltip implements OnInit, OnDestroy {
   public clicked: boolean = false;
   public openTimer: boolean = false;
   public hasSelectAll: boolean = true;
-  constructor(private dependency: DependencyService) { }
+  constructor(private dependency: QuestionService) { }
 
   ngOnInit() {
     this.QuestionDisabled = this.config.Question.Question.disabled;
@@ -73,21 +75,11 @@ export class dynamicMultiKeyValuePairTooltip implements OnInit, OnDestroy {
 
   removeDup() {
     let OleOptionResponses = this.Question.OptionResponses;
-    let NewOptionResponses = [];
-    for (var i = 0; i < OleOptionResponses.length; i++) {
-      var canAdd = true;
-      for (var j = NewOptionResponses.length; j--;) {
-        if (OleOptionResponses[i].OptionResponse.OptionId == NewOptionResponses[j].OptionResponse.OptionId) {
-          canAdd = false;
-          break;
-        }
-      }
-      if (canAdd) {
-        NewOptionResponses.push(OleOptionResponses[i]);
-      }
-    }
-    if (OleOptionResponses.length != NewOptionResponses.length) {
-      this.Question.OptionResponses = NewOptionResponses;
+    OleOptionResponses.push(OleOptionResponses[OleOptionResponses.length-1]);
+    const ids = _.map(_.map(OleOptionResponses, 'OptionResponse'), 'OptionId'); // 取出id
+    const duplication = Array.from(new Set(ids));                               // 去重id
+    if (ids.length !== duplication.length) { // 有重复, 去重
+      this.Question.OptionResponses = _.uniqBy(OleOptionResponses, 'OptionResponse.OptionId');
       this.autoSaveFn();
     }
   }
@@ -538,7 +530,7 @@ export class dynamicMultiKeyValuePairPanelTooltip implements OnInit {
   public unselectAllFn = new EventEmitter<any>();
   public hasSelectAll: boolean;
   public panelOptions: any;
-  constructor(private dependency: DependencyService) { }
+  constructor(private dependency: QuestionService) { }
 
   ngOnInit() {
     this.panelOptions = this.options;

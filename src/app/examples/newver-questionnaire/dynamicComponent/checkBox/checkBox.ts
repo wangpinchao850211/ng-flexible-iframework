@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
-import { DependencyService } from '../service/dependency/dependency';
+import { QuestionService } from '../../question.service';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'dynamic-input',
@@ -19,7 +20,7 @@ export class dynamicCheckBox implements OnInit, OnDestroy {
   //public timer : any;
   public openTimer: boolean = false;
   constructor(
-    private dependency: DependencyService,
+    private dependency: QuestionService,
   ) { }
 
   @HostListener("window:beforeunload", ["$event"]) unloadHandler(event: Event) {
@@ -102,21 +103,11 @@ export class dynamicCheckBox implements OnInit, OnDestroy {
 
   removeDup() {
     let OleOptionResponses = this.Question.OptionResponses;
-    let NewOptionResponses = [];
-    for (var i = 0; i < OleOptionResponses.length; i++) {
-      var canAdd = true;
-      for (var j = NewOptionResponses.length; j--;) {
-        if (OleOptionResponses[i].OptionResponse.OptionId == NewOptionResponses[j].OptionResponse.OptionId) {
-          canAdd = false;
-          break;
-        }
-      }
-      if (canAdd) {
-        NewOptionResponses.push(OleOptionResponses[i]);
-      }
-    }
-    if (OleOptionResponses.length != NewOptionResponses.length) {
-      this.Question.OptionResponses = NewOptionResponses;
+    OleOptionResponses.push(OleOptionResponses[OleOptionResponses.length-1]);
+    const ids = _.map(_.map(OleOptionResponses, 'OptionResponse'), 'OptionId'); // 取出id
+    const duplication = Array.from(new Set(ids));                               // 去重id
+    if (ids.length !== duplication.length) { // 有重复, 去重
+      this.Question.OptionResponses = _.uniqBy(OleOptionResponses, 'OptionResponse.OptionId');
       this.autoSaveFn();
     }
   }

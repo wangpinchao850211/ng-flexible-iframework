@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener, OnDestroy } from '@angular/core';
-import { DependencyService } from '../service/dependency/dependency';
 import { QuestionService } from '../../question.service';
+import * as _ from 'lodash';
 
 @Component({
   selector: 'dynamic-radio',
@@ -17,11 +17,11 @@ export class dynamicdynRadio implements OnInit, OnDestroy {
   public openTimer: boolean = false;
 
   constructor(private dependency: QuestionService) { 
-    console.log(this.config);
+    
   }
 
   ngOnInit() {
-    
+    console.log(this.config);
     this.Question = this.config.Question.Question;
     console.log(this.Question);
 
@@ -35,6 +35,7 @@ export class dynamicdynRadio implements OnInit, OnDestroy {
       Reflect.set(this.Question, 'timer', null);
     }
     Reflect.set(this.Question, 'flage', false);
+
     this.radios = this.config.Question.Question.OptionResponses;
     this.isDependOn = this.dependency.hasDependOn(this.Question.QuestionId);
     this.dependency.checkDependcyFn(this.Question);
@@ -59,57 +60,51 @@ export class dynamicdynRadio implements OnInit, OnDestroy {
     }
   }
 
-  // selectRadioFn(radio) {
-  //   console.log(radio);
-  //   debugger;   
-  //   this.dependency.validateBefore(this.Question.tabIndex + 1, this.Question.QuestionId);
-  //   this.radios.forEach(e => {
-  //     e.OptionResponse.ResponseTxt = 'false';
-  //   });
-  //   radio.OptionResponse.ResponseTxt = 'true';
-  //   if (Reflect.has(this.Question, 'NewValue')) {
-  //     this.Question.NewValue = radio.OptionResponse.OptionDesc;
-  //   }
-  //   var flage = this.radios.some(e => e.OptionResponse.ResponseTxt == 'true');
-  //   this.Question.flage = flage;
-  //   if (this.Question.Validation.length > 0) {
-  //     this.Question.updated = true;
-  //     this.dependency.setValidationFn(this.Question, radio.OptionResponse.ResponseTxt);
-  //   }
-  //   if (this.isDependOn) {
-  //     this.DependQuestions = this.dependency.sendDependFn(this.Question, this.radios, '');
-  //   }
-  //   this.autoSaveFn();
-  //   // if (this.config.autoSave) {
-  //   //   this.openTimer = true;
-  //   //   if (!this.Question.timer) {
-  //   //     this.autoSaveFn();
-  //   //     this.Question.timer = setInterval(() => {
-  //   //       if (this.openTimer) {
-  //   //         this.autoSaveFn();
-  //   //       }
-  //   //     }, 2000)
-  //   //   }
-  //   // }
-  // }
+  selectRadioFn(radio) {
+    console.log(radio);  
+    this.dependency.validateBefore(this.Question.tabIndex + 1, this.Question.QuestionId);
+    // 赋值操作start
+    this.radios.forEach(e => {
+      e.OptionResponse.ResponseTxt = 'false';
+    });
+    radio.OptionResponse.ResponseTxt = 'true';
+    // 赋值操作end
+    if (Reflect.has(this.Question, 'NewValue')) {
+      this.Question.NewValue = radio.OptionResponse.OptionDesc;
+    }
+    var flage = this.radios.some(e => e.OptionResponse.ResponseTxt == 'true');
+    this.Question.flage = flage;
+
+    if (this.Question.Validation.length > 0) {
+      this.Question.updated = true;
+      this.dependency.setValidationFn(this.Question, radio.OptionResponse.ResponseTxt);
+    }
+
+    if (this.isDependOn) {
+      this.DependQuestions = this.dependency.sendDependFn(this.Question, this.radios, '');
+    }
+    
+    this.autoSaveFn();
+    // if (this.config.autoSave) {
+    //   this.openTimer = true;
+    //   if (!this.Question.timer) {
+    //     this.autoSaveFn();
+    //     this.Question.timer = setInterval(() => {
+    //       if (this.openTimer) {
+    //         this.autoSaveFn();
+    //       }
+    //     }, 2000)
+    //   }
+    // }
+  }
 
   removeDup() {
     let OleOptionResponses = this.Question.OptionResponses;
-    let NewOptionResponses = [];
-    for (var i = 0; i < OleOptionResponses.length; i++) {
-      var canAdd = true;
-      for (var j = NewOptionResponses.length; j--;) {
-        if (OleOptionResponses[i].OptionResponse.OptionId == NewOptionResponses[j].OptionResponse.OptionId) {
-          canAdd = false;
-          break;
-        }
-      }
-      if (canAdd) {
-        NewOptionResponses.push(OleOptionResponses[i]);
-      }
-    }
-    if (OleOptionResponses.length != NewOptionResponses.length) {
-      this.Question.OptionResponses = NewOptionResponses;
+    OleOptionResponses.push(OleOptionResponses[OleOptionResponses.length-1]);
+    const ids = _.map(_.map(OleOptionResponses, 'OptionResponse'), 'OptionId'); // 取出id
+    const duplication = Array.from(new Set(ids));                               // 去重id
+    if (ids.length !== duplication.length) { // 有重复, 去重
+      this.Question.OptionResponses = _.uniqBy(OleOptionResponses, 'OptionResponse.OptionId');
       this.autoSaveFn();
     }
   }
