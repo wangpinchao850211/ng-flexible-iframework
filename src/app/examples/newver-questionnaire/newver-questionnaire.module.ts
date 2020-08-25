@@ -6,6 +6,8 @@ import { QuestionDirective } from './question.directive';
 import { InsertFieldComponent } from './insert-field.component';
 import { NewDynamicModule } from './dynamicComponent/DynamicdModule/DynamicdModule';
 // import { QuestionService } from './question.service';
+import { AccordionModule } from 'primeng/accordion';
+import { ButtonModule } from 'primeng/button';
 
 const routes: Routes = [
   {
@@ -22,7 +24,9 @@ const routes: Routes = [
   imports: [
     NewDynamicModule,
     RouterModule.forChild(routes),
-    CommonModule
+    CommonModule,
+    AccordionModule, // 注意在哪使用，就在哪个module引入
+    ButtonModule
   ],
   entryComponents: [InsertFieldComponent],
   providers: []

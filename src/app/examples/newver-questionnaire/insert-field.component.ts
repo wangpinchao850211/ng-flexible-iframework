@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ComponentFactoryResolver, AfterViewInit, ViewContainerRef } from '@angular/core';
 import { QuestionDirective } from './question.directive';
 import { QuestionService } from './question.service';
+import { AssemblComponentsService } from './assembComponent.service';
 import { IQuestionComponent } from './IQuestionComponent'
 
 @Component({
@@ -8,13 +9,16 @@ import { IQuestionComponent } from './IQuestionComponent'
   template: `
     <ng-template appQuestion></ng-template>
   `,
-  styles: []
+  styles: [],
+  providers: [ AssemblComponentsService ]
 })
 export class InsertFieldComponent implements OnInit, AfterViewInit {
 
   @ViewChild(QuestionDirective, { static: true }) questionHost: QuestionDirective;
 
   currentComponent = null;//当前的组件
+
+  private assemblQuestion: any; // 内部组装存储变量
 
   @Input() question: any;//需要动态加载组件
 
@@ -30,6 +34,7 @@ export class InsertFieldComponent implements OnInit, AfterViewInit {
 
   constructor(
     private Qservice: QuestionService,
+    private Assemblservice: AssemblComponentsService,
     private componentFactoryResolver: ComponentFactoryResolver, 
     private container: ViewContainerRef
   ) { }
@@ -39,11 +44,13 @@ export class InsertFieldComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    // this.loadComponent(); 放上面了，否则Question.display报错，生命周期问题
+    // this.assemblQuestion = this.Assemblservice.assemblyComponent(this.question);
+    
+    // this.loadComponent(); // 放上面了，否则Question.display报错，生命周期问题
   }
 
   loadComponent() {
-    console.log(this.question);
+    // console.log(this.question);
     this.setQuestion(this.question.data);
     let componentFactory = this.componentFactoryResolver.resolveComponentFactory<IQuestionComponent>(this.question.component);
 
@@ -55,6 +62,12 @@ export class InsertFieldComponent implements OnInit, AfterViewInit {
     (<any>componentRef.instance).isAutoSave = this.isAutoSave;
   }
 
+  /** 
+     *  config params
+     *  Col: number
+     *  Question: obj
+     *  Rows: []
+     * */
   setQuestion(config) {
     config.RequestId = this.inRequestId;
     config.sectionId = this.sectionId;

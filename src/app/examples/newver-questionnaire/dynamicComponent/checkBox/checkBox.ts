@@ -7,7 +7,7 @@ import * as _ from 'lodash';
   templateUrl: './checkbox.html',
   styleUrls: ['./checkbox.scss']
 })
-export class dynamicCheckBox implements OnInit, OnDestroy {
+export class newdynamicCheckBox implements OnInit, OnDestroy {
   public config: any;
   public Question: any;
   public isAutoSave: any;

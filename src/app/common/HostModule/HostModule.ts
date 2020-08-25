@@ -6,8 +6,16 @@ import { UtcDatePipe } from '../pipes/dateUtc.pipe'
 import * as Timezone from '../pipes/dateUtc.pipe';
 @NgModule({
     imports: [ CommonModule],
-    declarations: [  UtcDatePipe, PaAddTaxPipe, PaCategoryFilterPipe ],
-    exports: [ UtcDatePipe,PaAddTaxPipe, PaCategoryFilterPipe],
+    declarations: [  
+        UtcDatePipe, 
+        PaAddTaxPipe, 
+        PaCategoryFilterPipe 
+    ],
+    exports: [ 
+        UtcDatePipe,
+        PaAddTaxPipe, 
+        PaCategoryFilterPipe
+    ],
    
 })
 

@@ -5,10 +5,10 @@ import { dynamicDate } from './dynamicComponent/date/date';
 import { dynamicInput } from './dynamicComponent/input/input';
 import { dynamicPhone } from './dynamicComponent/phone/phone';
 import { dynamicRange } from './dynamicComponent/range/range';
-import { dynamicCheckBox } from './dynamicComponent/checkBox/checkBox';
+import { newdynamicCheckBox } from './dynamicComponent/checkBox/checkBox';
 import { dynamicTextarea } from './dynamicComponent/textarea/textarea';
 import { dynMultiSelect } from './dynamicComponent/multiSelect/multiSelect';
-import { dynAutoSearch } from './dynamicComponent/autoSearch/autoSearch';
+import { newdynAutoSearch } from './dynamicComponent/autoSearch/autoSearch';
 import { dynamicdynRadio } from './dynamicComponent/radio/radio';
 import { dynCountrySelect } from './dynamicComponent/countryselect/countryselect';
 import { notMaped } from './dynamicComponent/notMaped/notMaped';
@@ -20,16 +20,64 @@ import { dynamicMultiKeyValuePair, dynamicMultiKeyValuePairPanel } from './dynam
 import { dynamicMultiKeyValuePairTooltip, dynamicMultiKeyValuePairPanelTooltip } from './dynamicComponent/multiKeyValuePairToolTip/multiKeyValuePairToolTip';
 import { InputAutoSearch } from './dynamicComponent/inputAutoSearch/inputAutoSearch';
 
+/**
+ * ro：
+ *  dynamicDate,
+    dynamicInput,
+    dynamicCheckBox,
+    dynamicTextarea,
+    DynMultiSelect,
+    dynamicdynRadio,
+    sharedComponent,
+    ErrorMsgComponent,
+    DynamicSingleSelect,
+    dynamicLabel,
+  独有的：
+    dynamicRepeatableTextarea,
+    dynamicPeoplepicker,
+    autoResponseComponent,
+    DynamicMultiSelectIdentifierPanel,
+    DynTypeaheadMultiSelect,
+    DynamicMultiSelectCountryPanel,
+    DynamicCountryPicker,
+    DynamicCountryAutoResponseList
+ * */ 
+
+/**
+ * bip：
+ *  dynamicDate,
+    dynamicInput,
+    dynamicCheckBox,
+    dynamicTextarea,
+    dynMultiSelect,
+    dynamicdynRadio,
+    sharedComponent,
+    ErrorMsgComponent,
+    dynamicSingleSelect,
+    dynamicLabel,
+独有的：
+    dynamicPhone, 
+    dynamicRange,
+    dynAutoSearch,
+    dynCountrySelect,
+    notMaped,
+    dynamicMultiKeyValuePair,
+    dynamicMultiKeyValuePairPanel,
+    dynamicMultiKeyValuePairTooltip,
+    dynamicMultiKeyValuePairPanelTooltip,
+    InputAutoSearch
+ * */  
+
 const components = {
   dynamicDate: dynamicDate,
   dynamicInput: dynamicInput,
   dynamicPhone: dynamicPhone,
   dynamicRange: dynamicRange,
-  dynamicCheckBox: dynamicCheckBox,
+  newdynamicCheckBox: newdynamicCheckBox,
   dynamicTextarea: dynamicTextarea,
   dynCountrySelect: dynCountrySelect,
   dynMultiSelect: dynMultiSelect,
-  dynAutoSearch: dynAutoSearch,
+  newdynAutoSearch: newdynAutoSearch,
   dynamicRadio: dynamicdynRadio,
   notMaped: notMaped,
   dynamicSingleSelect: dynamicSingleSelect,
@@ -44,10 +92,10 @@ export const Components = [
   dynamicInput,
   dynamicPhone,
   dynamicRange,
-  dynamicCheckBox,
+  newdynamicCheckBox,
   dynamicTextarea,
   dynMultiSelect,
-  dynAutoSearch,
+  newdynAutoSearch,
   dynamicdynRadio,
   dynCountrySelect,
   notMaped,
@@ -66,16 +114,16 @@ export const Components = [
 export class AssemblComponentsService {
     constructor() { }
     assemblyComponent(data) {
-    const resultComp = [];
-    data.forEach((item) => {
-        const config = item.Cols[0].Question.Question;
-        const configData = item.Cols[0];
-        resultComp.push(new FieldItem(this.selectComponentFn(config), {...configData}));
-    });
+      const resultComp = [];
+      data.forEach((item) => {
+          const config = item.Cols[0].Question.Question;
+          const configData = item.Cols[0];
+          resultComp.push(new FieldItem(this.selectComponentFn(config), {...configData}));
+      });
 
-    console.log(resultComp);
+      console.log(resultComp);
 
-    return resultComp;
+      return resultComp;
     }
 
     selectComponentFn(param) {
@@ -125,7 +173,7 @@ export class AssemblComponentsService {
         result = components['dynamicTextarea'];
         break;
         // case 7: // 7 CheckBox
-        //   result = components['dynamicCheckBoxIdentifier'];
+        //   result = components['newdynamicCheckBoxIdentifier'];
         //   break;
         case 8: // Radio
         result = components['dynamicRadio'];
@@ -134,7 +182,7 @@ export class AssemblComponentsService {
         result = components['dynamicLabel'];
         break;
         case 14: // Type Ahead  KeyValuePair
-        result = components['dynAutoSearch'];
+        result = components['newdynAutoSearch'];
         // result = components['dynamicInputIdentifier'];
         break;
         case 16: // Single Select KeyValuePair
@@ -182,7 +230,7 @@ export class AssemblComponentsService {
         result = components['dynamicTextarea'];
         break;
         case 7: // 7 CheckBox
-        result = components['dynamicCheckBox'];
+        result = components['newdynamicCheckBox'];
         break;
         case 8: // Radio
         result = components['dynamicRadio'];

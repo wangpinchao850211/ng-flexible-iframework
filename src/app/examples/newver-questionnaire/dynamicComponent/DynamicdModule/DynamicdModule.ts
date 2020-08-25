@@ -4,7 +4,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 import { QuestionService } from '../../question.service';
-
 import { BrowserModule } from '@angular/platform-browser';
 // import { PipeModuel } from '../../../../../../common/HostModule/HostModule';
 // import { DirectiveModuel } from '../../../directive/clicktoggle.directive';
@@ -13,11 +12,11 @@ import { dynamicDate } from '../date/date';
 import { dynamicInput } from '../input/input';
 import { dynamicPhone } from '../phone/phone';
 import { dynamicRange } from '../range/range';
-import { dynamicCheckBox } from '../checkBox/checkBox';
+import { newdynamicCheckBox } from '../checkBox/checkBox';
 import { dynamicTextarea } from '../textarea/textarea';
 import { dynCountrySelect } from '../countryselect/countryselect';
 import { dynMultiSelect } from '../multiSelect/multiSelect';
-import { dynAutoSearch } from '../autoSearch/autoSearch';
+import { newdynAutoSearch } from '../autoSearch/autoSearch';
 import { dynamicdynRadio } from '../radio/radio';
 import { notMaped } from '../notMaped/notMaped';
 import { dynamicSingleSelect } from '../singleSelect/singleSelect';
@@ -28,24 +27,27 @@ import { InputAutoSearch } from '../inputAutoSearch/inputAutoSearch';
 import { sharedComponent } from '../sharedComponent/sharedComponent';
 import { ErrorMsgComponent } from '../errorMsgComponent/errorMegComponet';
 import { SafeHtmlPipe } from '../pipes/SafeHtml.pipe';
+import { Accordion, AccordionTab } from '../wpcAccordion/wpc-accordion';
 
 const components = {
   dynamicDate: dynamicDate,
   dynamicInput: dynamicInput,
   dynamicPhone: dynamicPhone,
   dynamicRange: dynamicRange,
-  dynamicCheckBox: dynamicCheckBox,
+  newdynamicCheckBox: newdynamicCheckBox,
   dynamicTextarea: dynamicTextarea,
   dynCountrySelect: dynCountrySelect,
   dynMultiSelect: dynMultiSelect,
-  dynAutoSearch: dynAutoSearch,
+  newdynAutoSearch: newdynAutoSearch,
   dynamicRadio: dynamicdynRadio,
   notMaped: notMaped,
   dynamicSingleSelect: dynamicSingleSelect,
   dynamicLabel: dynamicLabel,
   dynamicMultiKeyValuePair: dynamicMultiKeyValuePair,
   dynamicMultiKeyValuePairTooltip: dynamicMultiKeyValuePairTooltip,
-  InputAutoSearch: InputAutoSearch
+  InputAutoSearch: InputAutoSearch,
+  Accordion: Accordion,
+  AccordionTab: AccordionTab
 };
 
 export const Components = [
@@ -53,10 +55,10 @@ export const Components = [
   dynamicInput,
   dynamicPhone,
   dynamicRange,
-  dynamicCheckBox,
+  newdynamicCheckBox,
   dynamicTextarea,
   dynMultiSelect,
-  dynAutoSearch,
+  newdynAutoSearch,
   dynamicdynRadio,
   dynCountrySelect,
   notMaped,
@@ -68,7 +70,9 @@ export const Components = [
   dynamicMultiKeyValuePairPanel,
   dynamicMultiKeyValuePairTooltip,
   dynamicMultiKeyValuePairPanelTooltip,
-  InputAutoSearch
+  InputAutoSearch,
+  Accordion,
+  AccordionTab
 ];
 
 @NgModule({

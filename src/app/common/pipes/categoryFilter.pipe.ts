@@ -5,7 +5,6 @@ import { Product } from '../services/model/product.model';
     name: "filter",
     pure: false
 })
-
 export class PaCategoryFilterPipe {
     transform(products: Product[], category: string): Product[] {
         return category == undefined?

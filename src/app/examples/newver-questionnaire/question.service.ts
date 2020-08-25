@@ -98,6 +98,7 @@ export class QuestionService {
       Reflect.set(item, 'display', true);
       Reflect.set(item, 'clicked', { count: 1, displayVal: false });
       Reflect.set(item, 'required', { require: 0, requireValidated: 0, checked: true });
+      Reflect.set(item, 'selected', false); // 设置accordion折叠展开
       this.dataRows = [...this.dataRows, ...Prows];
     });
     this.data = data;

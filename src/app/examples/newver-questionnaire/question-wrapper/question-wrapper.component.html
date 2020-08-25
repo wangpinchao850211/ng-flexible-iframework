@@ -3,16 +3,58 @@
     调用QuestionService（相当于dependency.ts）获取数据，处理数据，动态更新数据<br/>
     调用AssemblComponentsService组装组件及组件数据
 </p>
+<div style="padding: 20px">
+    <div style="display: inline-block; margin: 10px;">
+        <button type="button" pButton icon="pi pi-chevron-up" (click)="openPrev()"></button>
+    </div>
+    <div style="display: inline-block; margin: 10px;">
+        <button type="button" pButton icon="pi pi-chevron-down" (click)="openNext()"></button>
+    </div>
+</div>
 
-<ng-container *ngFor="let item of questions; let i = index">
-    <p>我的位置是：{{i}}</p>
+<!-- 使用自己封装的accordion start -->
+<!-- <wpc-p-accordion 
+        multiple="true" 
+        [activeIndex]="indexArr" 
+        (activeIndexChange)="activeIndexChange($event)"
+        (onClose)="onTabClose($event)" 
+        (onOpen)="onTabOpen($event)">
+    <wpc-p-accordionTab *ngFor="let section of Qservice.sections; let i = index" header="Header 1" [transitionOptions]="'200ms'" [selected]="i===indexArr[0]">
+        Content 1
+    </wpc-p-accordionTab>
+    <wpc-p-accordionTab header="Header 3" [disabled]="true">
+        Content 3    
+    </wpc-p-accordionTab>
+</wpc-p-accordion> -->
+<!-- 使用自己封装的accordion end -->
+<p-accordion 
+        multiple="true" 
+        [activeIndex]="indexArr" 
+        (activeIndexChange)="activeIndexChange($event)"
+        (onClose)="onTabClose($event)" 
+        (onOpen)="onTabOpen($event)">
+    <p-accordionTab *ngFor="let data of allQuestionData; let i = index" header="Section Title - {{data.Section.SectionDesc}}" [transitionOptions]="'200ms'" [selected]="i===indexArr[0]">
+        <!-- 此方法封装questions，再不行就把组装放到app-insert-field内部了 -->
+        <ng-container *ngFor="let row of questions[i];">
+            <app-insert-field 
+                [question]="row" 
+                [autoSave]="autoSave" 
+                [isAutoSave]="isAutoSave"
+                [tabIndex]="i"
+                ></app-insert-field>
+        </ng-container>
+    </p-accordionTab>
+</p-accordion>
+
+<!-- 下面是可渲染全部 -->
+<!-- <ng-container *ngFor="let item of questions;">
     <app-insert-field 
         [question]="item" 
         [autoSave]="autoSave" 
         [isAutoSave]="isAutoSave"
         [tabIndex]="tabIndex"
         ></app-insert-field>
-</ng-container>
+</ng-container> -->
 
 <div id="successInfo">
     Auto Save Sucess

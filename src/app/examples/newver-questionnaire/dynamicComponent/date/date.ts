@@ -15,7 +15,7 @@ export class dynamicDate implements OnInit, OnDestroy {
   public isAutoSave: any;
   public validataion: any;
   public bsValue: any;
-  public data: Date;
+  public data: string | Date;
   public bsConfig: Partial<BsDatepickerConfig>;
   public selectedPanel: boolean = false;
   public clicked: boolean = false;

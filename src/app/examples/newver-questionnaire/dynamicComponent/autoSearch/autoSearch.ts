@@ -9,7 +9,7 @@ import { DataSource } from 'src/app/common/Questionnaire/DataSource';
   templateUrl: './autoSearch.html',
   styleUrls: ['./autoSearch.scss'],
 })
-export class dynAutoSearch implements OnInit, AfterViewChecked {
+export class newdynAutoSearch implements OnInit, AfterViewChecked {
   public config: any;
   public isAutoSave: any;
   public Question: any;
