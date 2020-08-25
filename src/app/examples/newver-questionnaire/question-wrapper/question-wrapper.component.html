@@ -1,61 +1,77 @@
-<p>异步路由渲染NewverQuestionnaireModule!</p>
-<p>question-wrapper 是表单外层组件，此组件<br/>
-    调用QuestionService（相当于dependency.ts）获取数据，处理数据，动态更新数据<br/>
-    调用AssemblComponentsService组装组件及组件数据
-</p>
-<div style="padding: 20px">
-    <div style="display: inline-block; margin: 10px;">
-        <button type="button" pButton icon="pi pi-chevron-up" (click)="openPrev()"></button>
+<div class="question-wrapper">
+    <h3>new questionnaire渲染加载原理：</h3>
+    <p>1、异步路由渲染NewverQuestionnaireModule!</p>
+    <p>2、question-wrapper 是表单外层组件<br/>
+&nbsp;&nbsp; &nbsp;&nbsp;此组件调用QuestionService（相当于dependency.ts）获取数据，处理数据，动态更新数据<br/>
+&nbsp;&nbsp; &nbsp;&nbsp;调用AssemblComponentsService组装组件及组件数据<br/>
+&nbsp;&nbsp; &nbsp;&nbsp;调用app-insert-field组件(传入组装的数据)
+    </p>
+    <p>3、app-insert-field组件动态渲染每个表单（是核心组件，使用指令将创建的组件动态渲染到ng-template上）</p>
+    <p>4、文件作用梳理：<br/>
+&nbsp;&nbsp; &nbsp;&nbsp; QuestionService注入到dynamicComponent的module中，在question-wrapper和app-insert-field组件是单独providers<br/>
+&nbsp;&nbsp; &nbsp;&nbsp; AssemblComponentsService在question-wrapper组件是单独providers的<br/>
+&nbsp;&nbsp; &nbsp;&nbsp; directive.ts直接被app-insert-field组件使用<br/>
+&nbsp;&nbsp; &nbsp;&nbsp; FieldItem是组装数据类，单独被AssemblComponentsService使用<br/>
+&nbsp;&nbsp; &nbsp;&nbsp; IQuestionComponent约束组件instance 数据<br/>
+&nbsp;&nbsp; &nbsp;&nbsp; CONFIG配置当前question的IsAutoSave，IsShowTooltip数据<br/>
+    </p>
+    <div style="padding: 20px">
+        <div style="display: inline-block; margin: 10px;">
+            <button type="button" pButton icon="pi pi-chevron-up" (click)="openPrev()"></button>
+        </div>
+        <div style="display: inline-block; margin: 10px;">
+            <button type="button" pButton icon="pi pi-chevron-down" (click)="openNext()"></button>
+        </div>
     </div>
-    <div style="display: inline-block; margin: 10px;">
-        <button type="button" pButton icon="pi pi-chevron-down" (click)="openNext()"></button>
+
+    <!-- 使用自己封装的accordion start -->
+    <!-- <wpc-p-accordion 
+            multiple="true" 
+            [activeIndex]="indexArr" 
+            (activeIndexChange)="activeIndexChange($event)"
+            (onClose)="onTabClose($event)" 
+            (onOpen)="onTabOpen($event)">
+        <wpc-p-accordionTab *ngFor="let section of Qservice.sections; let i = index" header="Header 1" [transitionOptions]="'200ms'" [selected]="i===indexArr[0]">
+            Content 1
+        </wpc-p-accordionTab>
+        <wpc-p-accordionTab header="Header 3" [disabled]="true">
+            Content 3    
+        </wpc-p-accordionTab>
+    </wpc-p-accordion> -->
+    <!-- 使用自己封装的accordion end -->
+
+    <!-- 注意：prime 标签使用style如下方式 -->
+    <p-accordion 
+            [style]="{padding: '30px'}"
+            multiple="true" 
+            [activeIndex]="indexArr" 
+            (activeIndexChange)="activeIndexChange($event)"
+            (onClose)="onTabClose($event)" 
+            (onOpen)="onTabOpen($event)">
+        <p-accordionTab *ngFor="let data of allQuestionData; let i = index" header="Section Title - {{data.Section.SectionDesc}}" [transitionOptions]="'200ms'" [selected]="i===indexArr[0]">
+            <!-- 此方法封装questions，再不行就把组装放到app-insert-field内部了 -->
+            <ng-container *ngFor="let row of questions[i];">
+                <app-insert-field 
+                    [question]="row" 
+                    [autoSave]="autoSave" 
+                    [isAutoSave]="isAutoSave"
+                    [tabIndex]="i"
+                    ></app-insert-field>
+            </ng-container>
+        </p-accordionTab>
+    </p-accordion>
+
+    <!-- 下面是可渲染全部 -->
+    <!-- <ng-container *ngFor="let item of questions;">
+        <app-insert-field 
+            [question]="item" 
+            [autoSave]="autoSave" 
+            [isAutoSave]="isAutoSave"
+            [tabIndex]="tabIndex"
+            ></app-insert-field>
+    </ng-container> -->
+
+    <div id="successInfo">
+        Auto Save Sucess
     </div>
-</div>
-
-<!-- 使用自己封装的accordion start -->
-<!-- <wpc-p-accordion 
-        multiple="true" 
-        [activeIndex]="indexArr" 
-        (activeIndexChange)="activeIndexChange($event)"
-        (onClose)="onTabClose($event)" 
-        (onOpen)="onTabOpen($event)">
-    <wpc-p-accordionTab *ngFor="let section of Qservice.sections; let i = index" header="Header 1" [transitionOptions]="'200ms'" [selected]="i===indexArr[0]">
-        Content 1
-    </wpc-p-accordionTab>
-    <wpc-p-accordionTab header="Header 3" [disabled]="true">
-        Content 3    
-    </wpc-p-accordionTab>
-</wpc-p-accordion> -->
-<!-- 使用自己封装的accordion end -->
-<p-accordion 
-        multiple="true" 
-        [activeIndex]="indexArr" 
-        (activeIndexChange)="activeIndexChange($event)"
-        (onClose)="onTabClose($event)" 
-        (onOpen)="onTabOpen($event)">
-    <p-accordionTab *ngFor="let data of allQuestionData; let i = index" header="Section Title - {{data.Section.SectionDesc}}" [transitionOptions]="'200ms'" [selected]="i===indexArr[0]">
-        <!-- 此方法封装questions，再不行就把组装放到app-insert-field内部了 -->
-        <ng-container *ngFor="let row of questions[i];">
-            <app-insert-field 
-                [question]="row" 
-                [autoSave]="autoSave" 
-                [isAutoSave]="isAutoSave"
-                [tabIndex]="i"
-                ></app-insert-field>
-        </ng-container>
-    </p-accordionTab>
-</p-accordion>
-
-<!-- 下面是可渲染全部 -->
-<!-- <ng-container *ngFor="let item of questions;">
-    <app-insert-field 
-        [question]="item" 
-        [autoSave]="autoSave" 
-        [isAutoSave]="isAutoSave"
-        [tabIndex]="tabIndex"
-        ></app-insert-field>
-</ng-container> -->
-
-<div id="successInfo">
-    Auto Save Sucess
 </div>

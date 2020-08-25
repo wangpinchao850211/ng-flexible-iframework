@@ -11,7 +11,7 @@ import { CONFIG } from '../config';
 })
 export class QuestionWrapperComponent implements OnInit {
 
-  indexArr: Array<number> = [0];
+  indexArr: Array<number> = [-1];
 
   allQuestionData: Array<any> = []; // 所有数据
   questions = []; // 组装成的二维数组
