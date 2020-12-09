@@ -13,8 +13,8 @@ export class AuthService {
     public TOKENKEY = environment.OAuth.storage.TOKEN_KEYS;
     public EXPIRATION_KEY = environment.OAuth.storage.EXPIRATION_KEY;
     public USERNAME = environment.OAuth.storage.USERNAME;
-    public clientID = environment.OAuth.clientID;
-    public TENANT = environment.OAuth.tenant;
+    public wpclientID = environment.OAuth.wpclientID;
+    public wpcTenant = environment.OAuth.wpcTenant;
     public localloginUrl = environment.OAuth.localLoginUrl;
     public expireOffset = environment.OAuth.expireOffsetSeconds;
     public responseType = environment.OAuth.response_type;
@@ -43,7 +43,7 @@ export class AuthService {
         return storage._getItem(`${this.TOKENKEY}${resource}`);
     }
     get expiredTime() {
-        return storage._getItem(`${this.EXPIRATION_KEY}${this.clientID}`);
+        return storage._getItem(`${this.EXPIRATION_KEY}${this.wpclientID}`);
     }
     getUserProfile() {
         return storage._getItem(this.USERNAME);
@@ -115,7 +115,7 @@ export class AuthService {
         // iat: 1586402018456
         // Eid: "qihuan.wang"
         // 设置效期时间
-        storage._setItem(`${this.EXPIRATION_KEY}${this.clientID}`, claims['exp']);
+        storage._setItem(`${this.EXPIRATION_KEY}${this.wpclientID}`, claims['exp']);
         // 设置eid
         storage._setItem('usernameEid', claims['Eid']);
         // 设置用户信息
@@ -129,7 +129,7 @@ export class AuthService {
     resolveToken(token) { // 解析token, set token, expired, userInfo
         // 第一步，存储token
         this.token = this.token ? this.token : token;
-        storage._setItem(`${this.TOKENKEY}${this.clientID}`, token);
+        storage._setItem(`${this.TOKENKEY}${this.wpclientID}`, token);
         // 第二步，解析token
         let claims = JWT(token);
         console.log(claims);
@@ -162,7 +162,7 @@ export class AuthService {
     }
 
     updateDataFromCache() { // 闭环了！！！
-        this.token = this.token ? this.token : this.getCacheToken(this.clientID);
+        this.token = this.token ? this.token : this.getCacheToken(this.wpclientID);
         console.log(this.token);
         this.authData.isAuthenticated = this.token != null && this.token.length > 0;
         // console.log(this.authData.isAuthenticated);

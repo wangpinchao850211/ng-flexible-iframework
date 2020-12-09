@@ -10,7 +10,7 @@ export class LocalAuthenticationContext {
 
     logout() {
         sessionStorage.removeItem('11405.GovernmentComplianceHub.Web.adal.access.token.key');
-        sessionStorage.removeItem('adal.expiration.key' + environment.OAuth.clientID);
+        sessionStorage.removeItem('adal.expiration.key' + environment.OAuth.wpclientID);
         this.router.navigate(['/login']);
     }
 
@@ -28,7 +28,7 @@ export class LocalAuthenticationContext {
         const now = Math.round(new Date().getTime() / 1000.0);
         sessionStorage.setItem('11405.GovernmentComplianceHub.Web.adal.access.token.key', key);
         const jwt = this.parseJwt(key);
-        sessionStorage.setItem('adal.expiration.key' + environment.OAuth.clientID, jwt.exp.toString());
+        sessionStorage.setItem('adal.expiration.key' + environment.OAuth.wpclientID, jwt.exp.toString());
     }
 
     getCachedUser() {

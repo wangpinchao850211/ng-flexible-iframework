@@ -10,7 +10,7 @@ export class HttpsHeaderInterceptor implements HttpInterceptor {
     constructor(private auth: AuthService) {}
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        const authToken = this.auth.getCacheToken(environment.OAuth.clientID);
+        const authToken = this.auth.getCacheToken(environment.OAuth.wpclientID);
         // console.log(authToken); 调用service里的方法就出错
         const authReq = req.clone({
             headers: req.headers.set('Content-Type', 'application/json')

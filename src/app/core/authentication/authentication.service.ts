@@ -12,8 +12,8 @@ export class AuthenticationService {
 
   private context: any;
   private conf = {
-    tenant: environment.OAuth.tenant,
-    clientId: environment.OAuth.clientID,
+    wpcTenant: environment.OAuth.wpcTenant,
+    wpclientID: environment.OAuth.wpclientID,
     redirectUri: location.origin,
     postLogoutRedirectUri: location.origin,
     scope: environment.OAuth.SCOPE,
@@ -76,11 +76,11 @@ export class AuthenticationService {
   }
 
   public get Token() {
-    return this.context.getCachedToken(this.conf.clientId);
+    return this.context.getCachedToken(this.conf.wpclientID);
   }
 
   public get TokenExpiration() {
-    const utcSeconds = sessionStorage.getItem('adal.expiration.key' + environment.OAuth.clientID);
+    const utcSeconds = sessionStorage.getItem('adal.expiration.key' + environment.OAuth.wpclientID);
     const d = new Date(0);
     d.setUTCSeconds(parseInt(utcSeconds));
     return d;

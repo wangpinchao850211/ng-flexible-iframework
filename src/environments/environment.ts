@@ -10,8 +10,8 @@ export const environment = {
   echUrl: '',
   reportUrl: '',
   OAuth: {
-    clientID: 'c047b90b-07de-45cc-b2e2-cca83ab14163',
-    tenant: 'f3211d0e-125b-42c3-86db-322b19a65a22',
+    wpclientID: '123456',
+    wpcTenant: '123456',
     localLoginUrl: '设置此项可将用户重定向到自定义登录页',
     expireOffsetSeconds: 120,
     noaccess_groups: 'noaccess1;noaccess2',
