@@ -61,6 +61,8 @@ import { ThemeSoltComponent } from './themes/theme-solt/theme-solt.component';
 import { FilterBookPipe } from './common/pipes/searchBook.pipe';
 import { WpcDialogComponent } from './common/dynamicSharingComponent/wpc-dialog/wpc-dialog.component';
 
+// import '../assets/mock';
+
 export function markedOptions(): MarkedOptions {
   const renderer = new MarkedRenderer();
   renderer.blockquote = (text: string) => {
@@ -144,7 +146,6 @@ const primeModule = [
         useFactory: markedOptions
       }
     }),
-    
     StoreModule.forRoot(reducers, {
       initialState: initState,
       metaReducers,

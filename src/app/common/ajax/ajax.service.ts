@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { HttpErrorHandler, HandleError } from '../services/http-error-handler.service'
-import { catchError } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
@@ -15,6 +15,13 @@ export class AjaxService {
 
     constructor(private http: HttpClient, httpErrorHandler: HttpErrorHandler) {
         this.handleError = httpErrorHandler.createHandleError('AjaxService');
+
+        // Content-Type 种类
+        /**
+         * 1、application/json
+         * 2、application/x-www-form-urlencoded
+         * 3、multipart/form-data
+         *  */ 
     }
 
     doGet(uri: string, params: any): Observable<any> {
@@ -24,9 +31,10 @@ export class AjaxService {
         );
     }
 
-    doPost(uri: string, params: any): Observable<any> {
+    doPost(uri: string, params: any) {
         console.log(params);
-        return this.http.post<any>(this.baseUrl+uri, params)
+        return this.http.post<any>(this.baseUrl + uri, params)
+                // .pipe(map(q => JSON.parse(JSON.stringify(q))));
             .pipe(catchError(this.handleError('doPost', params)));
     }
 

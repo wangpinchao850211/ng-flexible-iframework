@@ -112,7 +112,7 @@ export class LoginComponent implements OnInit {
     console.log(currentUserNameValid);
     console.log(currentPassWordValid);
     console.log(currentcaptchaValid);
-    let error:any = this.loginForm.get('username').errors
+    let error: any = this.loginForm.get('username').errors
     console.log(JSON.stringify(error));
     if (currentUserNameValid && currentPassWordValid) {
       console.log('校验通过');
@@ -134,6 +134,7 @@ export class LoginComponent implements OnInit {
             // 调用全局message。提示错误消息
         }
       });
+
     }
   }
 

@@ -62,8 +62,10 @@ const routes: Routes = [
       // 惰性加载的语法：[loadChildren] 后面紧跟着一个字符串，它指向模块的相对路径，然后是一个 #，然后是该模块的类名
       { path: 'primeng-ui', component: PrimeNGUiComponent },
       { path: 'pipe', component: PipeComponent },
-      { path: 'questionnaire', loadChildren: () => import('./examples/Questionnaire/questionnaire.module').then(m => m.QuestionnaireModule) },
-      { path: 'newverquestionnaire', loadChildren: () => import('./examples/newver-questionnaire/newver-questionnaire.module').then(n => n.NewverQuestionnaireModule) },
+      { path: 'questionnaire', loadChildren: () => import('./examples/Questionnaire/questionnaire.module')
+              .then(m => m.QuestionnaireModule) },
+      { path: 'newverquestionnaire', loadChildren: () => import('./examples/newver-questionnaire/newver-questionnaire.module')
+              .then(n => n.NewverQuestionnaireModule) },
       { path: 'routerNaigation', component: RouterNavigationComponent },
     ]
   },
@@ -77,7 +79,7 @@ const routes: Routes = [
             path: 'books',
             component: BooksComponent
           },
-          { 
+          {
             path: 'bookDetail', 
             loadChildren: () => import('./book-content/book-content.module').then(m => m.BookContentModule),
             canLoad: [BookAuthGuard] // 通过canLoad判断是否有权限进行加载操作
