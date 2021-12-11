@@ -85,7 +85,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(loginForm, ev: Event) {
-    const {value, valid} = loginForm;
+    const { value, valid } = loginForm;
     console.log(value);
     console.log(valid);
     // 开始校验
@@ -98,13 +98,13 @@ export class LoginComponent implements OnInit {
     this.loginForm.controls['password'].setValidators(passwordVaild);
     let currentcaptchaValid;
     if (this.captchaShow) {
-        this.loginForm.controls['captcha'].setValidators([Validators.required, captchaVaild]);
-        this.loginForm.controls['captcha'].updateValueAndValidity({onlySelf: true, emitEvent: true});
-        currentcaptchaValid = this.loginForm.get('captcha').valid;
+      this.loginForm.controls['captcha'].setValidators([Validators.required, captchaVaild]);
+      this.loginForm.controls['captcha'].updateValueAndValidity({ onlySelf: true, emitEvent: true });
+      currentcaptchaValid = this.loginForm.get('captcha').valid;
     }
 
-    this.loginForm.controls['username'].updateValueAndValidity({onlySelf: true, emitEvent: true});
-    this.loginForm.controls['password'].updateValueAndValidity({onlySelf: true, emitEvent: true});
+    this.loginForm.controls['username'].updateValueAndValidity({ onlySelf: true, emitEvent: true });
+    this.loginForm.controls['password'].updateValueAndValidity({ onlySelf: true, emitEvent: true });
 
     const currentUserNameValid = this.loginForm.get('username').valid;
     const currentPassWordValid = this.loginForm.get('password').valid;
@@ -123,16 +123,26 @@ export class LoginComponent implements OnInit {
       } else if (this.captchaShow && !currentcaptchaValid) {
         return;
       }
+
       this.http.doPost('/user/login', this.loginForm.value).subscribe(res => {
         console.log(res);
-        const {data, message, errno} = res;
-        if ( errno === 0 ) {
-            // 调用全局message。提示成功消息
-            this.storage.resolveToken(data);
-            this.router.navigate(['flowlayout/rxjs']);
+        // mock
+        const { result, status } = res;
+        if (status === 1 && result.token) {
+          this.storage.resolveToken(result.token);
+          this.router.navigate(['flowlayout/rxjs']);
         } else {
-            // 调用全局message。提示错误消息
+          throw new Error('err');
         }
+        // 请求node
+        // const { data, message, errno } = res;
+        // if (errno === 0) {
+        //   // 调用全局message。提示成功消息
+        //   this.storage.resolveToken(data);
+        //   this.router.navigate(['flowlayout/rxjs']);
+        // } else {
+        //   // 调用全局message。提示错误消息
+        // }
       });
 
     }
@@ -145,6 +155,6 @@ export class LoginComponent implements OnInit {
     this.router.navigate(['/passport/setPassword']);
   }
   goToActivation() {
-    this.router.navigate(['/activation'], {queryParams: {email: 'qihuan.wang@domain.com'}});
+    this.router.navigate(['/activation'], { queryParams: { email: 'qihuan.wang@domain.com' } });
   }
 }

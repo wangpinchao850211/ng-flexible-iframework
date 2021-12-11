@@ -18,7 +18,7 @@ export default {
       const res = {
         status: 1,
         result: {
-          token: 'token',
+          token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InFpaHVhbi53YW5nQDEyNi5jb20iLCJhZG1pbiI6dHJ1ZSwiaXNzIjoid2FuZ3BpbmNoYW8ifQ.AjOTOXD-GOHl1n1EIYM4Jz2PpdW1zxG67_i6EytbWz0',
           user: { username: 'qihuan.wang@126.com', password: 'wqh9090QQ' },
         },
       };
