@@ -29,26 +29,26 @@ const routes: Routes = [
     component: LoginLayoutComponent,
     // canActivate: [ LoginGuard ], 没用loginGuard，使用的是CanDeactivateGuard
     children: [
-        {
-          path: 'login',
-          component: LoginComponent,
-          data: { title: '登录'}
-        },
-        {
-            path: 'setPassword',
-            component: SetPasswordComponent,
-            data: { title: '设置密码' }
-        },
-        {
-            path: 'forgetPassWord',
-            component: SetPasswordComponent,
-            data: { title: '忘记密码' }
-        },
-        // {
-        //     path: 'lock',
-        //     component: UserLockComponent,
-        //     data: { title: '锁屏' }
-        // },
+      {
+        path: 'login',
+        component: LoginComponent,
+        data: { title: '登录' }
+      },
+      {
+        path: 'setPassword',
+        component: SetPasswordComponent,
+        data: { title: '设置密码' }
+      },
+      {
+        path: 'forgetPassWord',
+        component: SetPasswordComponent,
+        data: { title: '忘记密码' }
+      },
+      // {
+      //     path: 'lock',
+      //     component: UserLockComponent,
+      //     data: { title: '锁屏' }
+      // },
     ]
   },
   {
@@ -62,33 +62,41 @@ const routes: Routes = [
       // 惰性加载的语法：[loadChildren] 后面紧跟着一个字符串，它指向模块的相对路径，然后是一个 #，然后是该模块的类名
       { path: 'primeng-ui', component: PrimeNGUiComponent },
       { path: 'pipe', component: PipeComponent },
-      { path: 'questionnaire', loadChildren: () => import('./examples/Questionnaire/questionnaire.module')
-              .then(m => m.QuestionnaireModule) },
-      { path: 'newverquestionnaire', loadChildren: () => import('./examples/newver-questionnaire/newver-questionnaire.module')
-              .then(n => n.NewverQuestionnaireModule) },
+      {
+        path: 'questionnaire', loadChildren: () => import('./examples/Questionnaire/questionnaire.module')
+          .then(m => m.QuestionnaireModule)
+      },
+      {
+        path: 'newverquestionnaire', loadChildren: () => import('./examples/newver-questionnaire/newver-questionnaire.module')
+          .then(n => n.NewverQuestionnaireModule)
+      },
       { path: 'routerNaigation', component: RouterNavigationComponent },
     ]
   },
   {
-      path: 'TeLayout',
-      component: FlowLayoutComponent,
-      canActivate: [AuthenticationGuard],
-      canDeactivate: [CanDeactivateGuard],
-      children: [
-          {
-            path: 'books',
-            component: BooksComponent
-          },
-          {
-            path: 'bookDetail', 
-            loadChildren: () => import('./book-content/book-content.module').then(m => m.BookContentModule),
-            canLoad: [BookAuthGuard] // 通过canLoad判断是否有权限进行加载操作
-          },
-      ]
+    path: 'TeLayout',
+    component: FlowLayoutComponent,
+    canActivate: [AuthenticationGuard],
+    canDeactivate: [CanDeactivateGuard],
+    children: [
+      {
+        path: 'books',
+        component: BooksComponent
+      },
+      {
+        path: 'bookDetail',
+        loadChildren: () => import('./book-content/book-content.module').then(m => m.BookContentModule),
+        canLoad: [BookAuthGuard] // 通过canLoad判断是否有权限进行加载操作
+      },
+      {
+        path: 'simpleQuestionnaire',
+        loadChildren: () => import('./simpleConvenientImplementQuestion/simpleQuestionnaire.module').then(m => m.SimpleQuestionnaireModule),
+      }
+    ]
   },
   {
-      path: 'access-denied',
-      component: DeniedComponent
+    path: 'access-denied',
+    component: DeniedComponent
   },
   { path: '**', redirectTo: 'flowlayout' }
 ];

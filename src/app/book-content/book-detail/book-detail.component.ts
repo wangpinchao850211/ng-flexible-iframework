@@ -27,7 +27,7 @@ export class BookDetailComponent implements OnInit {
 
     this.routeInfo.data.subscribe((data) => {
       console.log('获取resolver数据');
-      this.currentBookContent = this.bookcontent = data.book.data; // 暂时使其相同，避免守卫拦截
+      this.currentBookContent = this.bookcontent = data.book.result.data; // 暂时使其相同，避免守卫拦截
       console.log(this.bookcontent);
     });
   }

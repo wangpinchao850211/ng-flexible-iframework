@@ -33,7 +33,7 @@ export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   storeInitForm: ThemeBasicStore;
   // theme Color
   currentColor = '';
-  @ViewChild('outletBg', {static: false}) outletBg: ElementRef;
+  @ViewChild('outletBg', { static: false }) outletBg: ElementRef;
   // theme layout
   layout = {
     config: {
@@ -41,176 +41,192 @@ export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
   // layout width
-  @ViewChild('cotainer', {static: false}) cotainer: ElementRef;
+  @ViewChild('cotainer', { static: false }) cotainer: ElementRef;
   widthKey: string; // 存储width的值
   // navbarTheme
   showMenu: boolean = true;
   showTitle: boolean = true;
-  @ViewChild('aside', {static: false}) aside: ElementRef;
+  @ViewChild('aside', { static: false }) aside: ElementRef;
   collapsedArrow: boolean = true;
   // toolbarTheme
   showHeader: boolean = true;
-  @ViewChild('Vcotainer', {static: false}) Vcotainer: ElementRef;
-  @ViewChild('Hcotainer', {static: false}) Hcotainer: ElementRef;
-  @ViewChild('header', {static: false}) header: ElementRef;
+  @ViewChild('Vcotainer', { static: false }) Vcotainer: ElementRef;
+  @ViewChild('Hcotainer', { static: false }) Hcotainer: ElementRef;
+  @ViewChild('header', { static: false }) header: ElementRef;
   // footerTheme
-  @ViewChild('footer', {static: false}) footer: ElementRef;
+  @ViewChild('footer', { static: false }) footer: ElementRef;
   showFooter: boolean = true;
 
   items: MenuItem[];
   itemsResouce: MenuItem[] = [
-      {
-          label: 'frameWorkBasic',
+    {
+      label: 'frameWorkBasic',
+      icon: 'pi pi-pw pi-file',
+      items: [
+        {
+          label: 'Rxjs',
+          icon: 'pi pi-fw pi-ticket',
+          command: (event) => {
+
+            const el = event.originalEvent.target;
+            console.log(el);
+            this.changeMenuActiveColor(el);
+
+            this.store.dispatch(addTab({
+              url: getUrlByName('Rxjs'),
+              name: 'Rxjs',
+              isSelect: true
+            }));
+            this.router.navigate([getUrlByName('Rxjs')]);
+          }
+        },
+        {
+          label: 'Markdown',
           icon: 'pi pi-pw pi-file',
-          items: [
-              {
-                label: 'Rxjs',
-                icon: 'pi pi-fw pi-ticket',
-                command: (event) => {
+          command: (event) => {
+            console.log(event);
 
-                    const el = event.originalEvent.target;
-                    console.log(el);
-                    this.changeMenuActiveColor(el);
+            const el = event.originalEvent.target;
+            console.log(el);
+            this.changeMenuActiveColor(el);
 
-                    this.store.dispatch(addTab({
-                      url: getUrlByName('Rxjs'),
-                      name: 'Rxjs',
-                      isSelect: true
-                    }));
-                    this.router.navigate([getUrlByName('Rxjs')]);
-                }
-            },
-            {
-                label: 'Markdown',
-                icon: 'pi pi-pw pi-file',
-                command: (event) => {
-                    console.log(event);
+            this.store.dispatch(addTab({
+              url: getUrlByName('Markdown'),
+              name: 'Markdown',
+              isSelect: true
+            }));
 
-                    const el = event.originalEvent.target;
-                    console.log(el);
-                    this.changeMenuActiveColor(el);
+            this.router.navigate([getUrlByName('Markdown')]);
+          }
+        },
+        {
+          label: 'PrimeNG-UI',
+          icon: 'pi pi-fw pi-tags',
+          command: (event) => {
 
-                    this.store.dispatch(addTab({
-                      url: getUrlByName('Markdown'),
-                      name: 'Markdown',
-                      isSelect: true
-                    }));
+            const el = event.originalEvent.target;
+            console.log(el);
+            this.changeMenuActiveColor(el);
 
-                    this.router.navigate([getUrlByName('Markdown')]);
-                }
-            },
-            {
-                label: 'PrimeNG-UI',
-                icon: 'pi pi-fw pi-tags',
-                command: (event) => {
+            this.store.dispatch(addTab({
+              url: getUrlByName('PrimeNGUI'),
+              name: 'PrimeNGUI',
+              isSelect: true
+            }));
+            this.router.navigate([getUrlByName('PrimeNGUI')]);
+          }
+        },
+        {
+          label: 'RouterNavigation',
+          icon: 'pi pi-fw pi-ticket',
+          command: (event) => {
 
-                    const el = event.originalEvent.target;
-                    console.log(el);
-                    this.changeMenuActiveColor(el);
+            const el = event.originalEvent.target;
+            console.log(el);
+            this.changeMenuActiveColor(el);
 
-                    this.store.dispatch(addTab({
-                      url: getUrlByName('PrimeNGUI'),
-                      name: 'PrimeNGUI',
-                      isSelect: true
-                    }));
-                    this.router.navigate([getUrlByName('PrimeNGUI')]);
-                }
-            },
-            {
-                label: 'RouterNavigation',
-                icon: 'pi pi-fw pi-ticket',
-                command: (event) => {
+            this.store.dispatch(addTab({
+              url: getUrlByName('RouterNavigation'),
+              name: 'RouterNavigation',
+              isSelect: true
+            }));
+            this.router.navigate([getUrlByName('RouterNavigation')]);
+          }
+        },
+        {
+          label: 'Questionnaire',
+          icon: 'pi pi-fw pi-ticket',
+          command: (event) => {
+            console.log(event);
 
-                    const el = event.originalEvent.target;
-                    console.log(el);
-                    this.changeMenuActiveColor(el);
+            const el = event.originalEvent.target;
+            console.log(el);
+            this.changeMenuActiveColor(el);
 
-                    this.store.dispatch(addTab({
-                      url: getUrlByName('RouterNavigation'),
-                      name: 'RouterNavigation',
-                      isSelect: true
-                    }));
-                    this.router.navigate([getUrlByName('RouterNavigation')]);
-                }
-            },
-            {
-                label: 'Questionnaire',
-                icon: 'pi pi-fw pi-ticket',
-                command: (event) => {
-                    console.log(event);
+            this.store.dispatch(addTab({
+              url: getUrlByName('Questionnaire'),
+              name: 'Questionnaire',
+              isSelect: true
+            }));
+            this.router.navigate([getUrlByName('Questionnaire')]);
+          }
+        },
+        {
+          label: 'NewQuestionnaire',
+          icon: 'pi pi-fw pi-ticket',
+          command: (event) => {
+            console.log(event);
 
-                    const el = event.originalEvent.target;
-                    console.log(el);
-                    this.changeMenuActiveColor(el);
+            const el = event.originalEvent.target;
+            console.log(el);
+            this.changeMenuActiveColor(el);
 
-                    this.store.dispatch(addTab({
-                        url: getUrlByName('Questionnaire'),
-                        name: 'Questionnaire',
-                        isSelect: true
-                    }));
-                    this.router.navigate([getUrlByName('Questionnaire')]);
-                }
-            },
-            {
-              label: 'NewQuestionnaire',
-              icon: 'pi pi-fw pi-ticket',
-              command: (event) => {
-                  console.log(event);
+            this.store.dispatch(addTab({
+              url: getUrlByName('NewQuestionnaire'),
+              name: 'NewQuestionnaire',
+              isSelect: true
+            }));
+            this.router.navigate([getUrlByName('NewQuestionnaire')]);
+          }
+        },
+        {
+          label: 'pipe',
+          icon: 'pi pi-fw pi-ticket',
+          command: (event) => {
+            console.log(event);
 
-                  const el = event.originalEvent.target;
-                  console.log(el);
-                  this.changeMenuActiveColor(el);
+            const el = event.originalEvent.target;
+            console.log(el);
+            this.changeMenuActiveColor(el);
 
-                  this.store.dispatch(addTab({
-                      url: getUrlByName('NewQuestionnaire'),
-                      name: 'NewQuestionnaire',
-                      isSelect: true
-                  }));
-                  this.router.navigate([getUrlByName('NewQuestionnaire')]);
-              }
-          },
-            {
-                label: 'pipe',
-                icon: 'pi pi-fw pi-ticket',
-                command: (event) => {
-                    console.log(event);
-
-                    const el = event.originalEvent.target;
-                    console.log(el);
-                    this.changeMenuActiveColor(el);
-
-                    this.store.dispatch(addTab({
-                        url: getUrlByName('pipe'),
-                        name: 'pipe',
-                        isSelect: true
-                    }));
-                    this.router.navigate([getUrlByName('pipe')]);
-                }
-            }
-          ]
-      },
-      {
-          label: 'web中级汇总',
+            this.store.dispatch(addTab({
+              url: getUrlByName('pipe'),
+              name: 'pipe',
+              isSelect: true
+            }));
+            this.router.navigate([getUrlByName('pipe')]);
+          }
+        }
+      ]
+    },
+    {
+      label: 'web中级汇总',
+      icon: 'pi pi-pw pi-file',
+      items: [
+        {
+          label: 'books',
           icon: 'pi pi-pw pi-file',
-          items: [
-            {
-                label: 'books',
-                icon: 'pi pi-pw pi-file',
-                command: (event) => {
-                    console.log(event);
-                    const el = event.originalEvent.target;
-                    console.log(el);
-                    this.changeMenuActiveColor(el);
-                    this.store.dispatch(addTab({
-                    url: getUrlByName('books'),
-                    name: 'books',
-                    isSelect: true
-                    }));
-                    this.router.navigate([getUrlByName('books')]);
-                }
-            },
-          ]
-      }
+          command: (event) => {
+            console.log(event);
+            const el = event.originalEvent.target;
+            console.log(el);
+            this.changeMenuActiveColor(el);
+            this.store.dispatch(addTab({
+              url: getUrlByName('books'),
+              name: 'books',
+              isSelect: true
+            }));
+            this.router.navigate([getUrlByName('books')]);
+          }
+        },
+        {
+          label: 'simpleQuestionnaire',
+          icon: 'pi pi-pw pi-file',
+          command: (event) => {
+            console.log(event);
+            const el = event.originalEvent.target;
+            console.log(el);
+            this.changeMenuActiveColor(el);
+            this.store.dispatch(addTab({
+              url: getUrlByName('simpleQuestionnaire'),
+              name: 'simpleQuestionnaire',
+              isSelect: true
+            }));
+            this.router.navigate([getUrlByName('simpleQuestionnaire')]);
+          }
+        }
+      ]
+    }
   ];
 
   changeMenuActiveColor(el) {
@@ -236,9 +252,9 @@ export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
     return this.tabItems.filter(i => i.isSelect)[0];
   };
 
-  tabItems:Array<MenuTab> = [];
+  tabItems: Array<MenuTab> = [];
   fold: boolean = true;
-  
+
   @HostListener('window:resize')
   onWindowResize() {
     this.layoutService.changeLayoutSize(`${window.innerHeight}px`);
@@ -259,7 +275,7 @@ export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
     console.log(currentUrl);
     if (currentUrl !== '/flowlayout/rxjs') {
       const urlName = getNameByUrl(currentUrl);
-      this.store.dispatch(addTab({url: currentUrl, name: urlName, isSelect: true}));
+      this.store.dispatch(addTab({ url: currentUrl, name: urlName, isSelect: true }));
     }
     this.updateMenuTab$ = this.store.pipe(select('tab'));
     this.updateMenuTab$.subscribe((data) => {
@@ -278,7 +294,7 @@ export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
    * theme 定制业务指南，需要闲暇时先整理出来，
    * 然后有空根据业务在重新梳理逻辑，
    * 这样会清晰得处理dom操作，避免漏洞
-   * */ 
+   * */
 
   updateColor() {
     this.themeColor$ = this.store.pipe(select('color')).subscribe((color) => {
@@ -351,7 +367,7 @@ export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
       }
       setTimeout(() => {
         this.setCurrentColor();
-      },0);
+      }, 0);
     });
   }
 
@@ -359,9 +375,9 @@ export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
     const resetNav = navEntity;
     const resetFooter = footerEntity;
     const resetToolbar = toolbarEntity;
-    this.store.dispatch(navbar({navbar: resetNav, falg: 2, falgKey: ''}));
-    this.store.dispatch(toolbar({toolbar: resetToolbar, falg: 2, falgKey: ''}));
-    this.store.dispatch(footer({footer: resetFooter, falg: 2, falgKey: ''}));
+    this.store.dispatch(navbar({ navbar: resetNav, falg: 2, falgKey: '' }));
+    this.store.dispatch(toolbar({ toolbar: resetToolbar, falg: 2, falgKey: '' }));
+    this.store.dispatch(footer({ footer: resetFooter, falg: 2, falgKey: '' }));
   }
 
   updateBoxWidth() {
@@ -406,7 +422,7 @@ export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
         this.resetHeader();
         this.resetFooter();
       }
-      
+
       console.log(`变更navbar布局：`);
       console.log(navbar);
       if (navbar['falg'] > 0) { // 初始化不变更
@@ -490,7 +506,7 @@ export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
             if (toolbar['toolbar'].TcustomBackgroundColor) {
               // 重置custom颜色
               this.render.setStyle(this.header.nativeElement, 'backgroundColor', '#030c2799');
-            }      
+            }
             break;
           case 'Tbackground':
             if (toolbar['toolbar'].Tbackground) {
@@ -545,7 +561,7 @@ export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
         // 定位footer
         this.fixedFooter();
         this.showTitle = true;
-      } else if (this.layout.config.type === 'HL#1'){
+      } else if (this.layout.config.type === 'HL#1') {
         const child = this.Hcotainer.nativeElement.children[1]; // main节点
         this.render.setStyle(this.Hcotainer.nativeElement, 'overflow-y', 'auto');
         this.render.setStyle(child, 'overflow-y', 'visible');
@@ -562,7 +578,7 @@ export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
           // this.fixedFooter();
         }
 
-      } else if (this.layout.config.type === 'HL#1'){
+      } else if (this.layout.config.type === 'HL#1') {
         const child = this.Hcotainer.nativeElement.children[1]; // main节点
         this.render.setStyle(this.Hcotainer.nativeElement, 'overflow-y', 'visible');
         this.render.setStyle(child, 'overflow-y', 'hidden');
@@ -573,7 +589,7 @@ export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
       if (this.layout.config.type === 'VL#1') {
         this.fixedHeader();
         this.showTitle = false;
-      } else if (this.layout.config.type === 'HL#1'){ 
+      } else if (this.layout.config.type === 'HL#1') {
         // 有待详细梳理下theme操作业务！！
       }
     }
@@ -697,7 +713,7 @@ export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
     if (footer['footer'].footerPosition === 'Below Static') {
       if (this.layout.config.type === 'VL#1') {
         const child = this.Vcotainer.nativeElement.children[1].children[1];
-      } else if (this.layout.config.type === 'HL#1'){
+      } else if (this.layout.config.type === 'HL#1') {
         const child = this.Hcotainer.nativeElement.children[1]; // main节点
       }
     } else if (footer['footer'].footerPosition === 'Below Fixed') {
@@ -710,7 +726,7 @@ export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
           this.render.setStyle(this.footer.nativeElement, 'right', '0px');
           this.render.setStyle(this.footer.nativeElement, 'width', '100%');
         }
-      } else if (this.layout.config.type === 'HL#1'){ 
+      } else if (this.layout.config.type === 'HL#1') {
         // 有待详细梳理下theme操作业务！！
         if (this.footer) {
           this.render.setStyle(this.footer.nativeElement, 'position', 'absolute');
@@ -730,13 +746,13 @@ export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
 
   ngAfterViewInit() { // 在AfterViewInit里方可获取到元素
     // theme color
-    this.updateColor(); 
+    this.updateColor();
     // theme style
     this.updateLayout();
     // layout width, 
     this.updateBoxWidth();
     // theme Navbar
-    this.updateNavbar(); 
+    this.updateNavbar();
     // theme Toolbar
     this.updateToolbar();
     // layout Footer
@@ -811,7 +827,7 @@ export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
           // this.render.setStyle(this.footer.nativeElement, 'width', '100%');
         }
       }
-    },0);
+    }, 0);
   }
 
   unfolding(ev) {
@@ -834,7 +850,7 @@ export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
           // this.render.setStyle(this.footer.nativeElement, 'width', '100%');
         }
       }
-    },0);
+    }, 0);
   }
 
   getMiniStyle() {

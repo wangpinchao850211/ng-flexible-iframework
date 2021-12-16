@@ -16,4 +16,5 @@ export enum MenuToTabMapping {
     NewQuestionnaire = '/flowlayout/newverquestionnaire',
     pipe = '/flowlayout/pipe',
     books = '/TeLayout/books',
+    simpleQuestionnaire = './TeLayout/simpleQuestionnaire'
 }
