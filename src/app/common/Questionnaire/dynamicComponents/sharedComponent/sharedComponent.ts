@@ -26,7 +26,6 @@ import { DependencyService } from '../service/dependency/dependency';
           }
           .com_descipt_info{
             color: #66696E;
-            // background-color: #fcfbfe;
             font-size:18px;
             vertical-align:middle;
             cursor:default;
@@ -52,7 +51,7 @@ export class sharedComponent implements OnInit {
   }
 
   checkMandatoryFn() {
-    this.mandatory = this.validataion.some(e => {if (e.ValidationTypeId == 5) { return true; }});
+    this.mandatory = this.validataion.some(e => { if (e.ValidationTypeId == 5) { return true; } });
   }
 }
 

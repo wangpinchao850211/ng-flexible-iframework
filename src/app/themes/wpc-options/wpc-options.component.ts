@@ -52,9 +52,9 @@ export class WpcOptionsComponent implements OnInit {
   selectedValue: string = 'val1';
 
   // change nav color icon
-  @ViewChild('navbarPaletteColor', {static: false}) navColorIcon: ElementRef;
-  @ViewChild('toolbarPaletteColor', {static: false}) toolColorIcon: ElementRef;
-  @ViewChild('footerPaletteColor', {static: false}) footerColorIcon: ElementRef;
+  @ViewChild('navbarPaletteColor') navColorIcon: ElementRef;
+  @ViewChild('toolbarPaletteColor') toolColorIcon: ElementRef;
+  @ViewChild('footerPaletteColor') footerColorIcon: ElementRef;
   
 
   constructor(
@@ -160,7 +160,7 @@ export class WpcOptionsComponent implements OnInit {
               Fbackground           : new FormControl(),
               FcustomBackgroundColor: new FormControl(),
               Fhidden               : new FormControl(),
-              footerPosition             : new FormControl()
+              footerPosition             : new FormControl({value: '', disabled: true})
           })
       })
     });

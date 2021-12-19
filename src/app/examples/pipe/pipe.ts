@@ -8,7 +8,7 @@ import { Product } from '../../../app/common/services/model/product.model';
 })
 
 export class PipeComponent implements OnInit {
-    md = `
+    public md = `
     Angular内置的pipe->直接使用，但是内置管道的module里一定要引BrowserModule，否则不好用。
     1.大写转换:uppercase 小写:lowcase
     \`\`\`html
@@ -59,6 +59,8 @@ export class PipeComponent implements OnInit {
 `
     public products: Product[];
     public CreateDttm: any = new Date();
+    public categoryFilter: any;
+    public taxRate = 0;
     constructor(
     ) { }
     ngOnInit() {
@@ -70,7 +72,7 @@ export class PipeComponent implements OnInit {
             { id: 5, name: "window", category: "tool" },
         ];
         //  this.CreateDttm = new Date();
-      
-     console.log("CreateDttm",this.CreateDttm);
+
+        console.log("CreateDttm", this.CreateDttm);
     }
 }

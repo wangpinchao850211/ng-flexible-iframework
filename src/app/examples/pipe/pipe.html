@@ -9,36 +9,37 @@
         <br>
         <img src="../../../assets/images/pipe2.PNG" alt="">
         <br>
-        //<b>output:</b> {{ CreateDttm | utcDate:(value || -8) | date:"medium"}}
+        <b>output:</b>
+        <!-- <span [value]="{{ CreateDttm | utcDate:-8) | date: 'medium'}}"></span> -->
         <br>
         2. 根据选的百分比不同，通过管道里的算法计算rate
         <br>
-        <p style="font-weight: bold">For Example:<p>
-                <br>
-                <div class="for-example">
-                    <div>
-                        <label class="title">Tax Rate:</label>
-                        <select [value]="taxRate || 0" (change)="taxRate = $event.target.value"
-                            class="iframe-pipe-eg-input">
-                            <option value="0">None</option>
-                            <option value="10">10%</option>
-                            <option value="20">20%</option>
-                            <option value="50">50%</option>
-                        </select>
-                    </div>
-                    <div style="background-color: seagreen; width: 200px; margin: 10px;">运算结果：
-                        {{100 | addTax:(taxRate || 0) | currency:"USD":true}}</div>
-                </div>
-                <br>
-                具体代码：
-                <br>
-                <img src="../../../assets/images/pipe.PNG" alt="">
-                <br>
-                用法：把pipe放在module里，然后引这个module到组件中
-                <br>
-                结合自定义的管道和angular内置管道，自定义pipe的输出作为内置pipe的输入：
-                <br>
-                <img src="../../../assets/images/pipe1.PNG" alt="">
+        <p style="font-weight: bold">For Example:
+        <p>
+            <br>
+        <div class="for-example">
+            <div>
+                <label class="title">Tax Rate:</label>
+                <select [value]="taxRate || 0" (change)="taxRate = $event.target.value" class="iframe-pipe-eg-input">
+                    <option value="0">None</option>
+                    <option value="10">10%</option>
+                    <option value="20">20%</option>
+                    <option value="50">50%</option>
+                </select>
+            </div>
+            <div style="background-color: seagreen; width: 200px; margin: 10px;">运算结果：
+                {{100 | addTax:(taxRate || 0) | currency:"USD":true}}</div>
+        </div>
+        <br>
+        具体代码：
+        <br>
+        <img src="../../../assets/images/pipe.PNG" alt="">
+        <br>
+        用法：把pipe放在module里，然后引这个module到组件中
+        <br>
+        结合自定义的管道和angular内置管道，自定义pipe的输出作为内置pipe的输入：
+        <br>
+        <img src="../../../assets/images/pipe1.PNG" alt="">
     </div>
     <div class="variable-binding">
         <br>
@@ -58,14 +59,14 @@
                     <th>name</th>
                     <th>category</th>
                 </tr>
-                <tr *ngFor="let item of products | filter:categoryFilter; let i = index;">
+                <tr *ngFor="let item of products; let i = index;">
                     <td>{{item.id}}</td>
                     <td>{{item.name}}</td>
                     <td>{{item.category}}</td>
                 </tr>
             </table>
             <br>
-                <img src="../../../assets/images/pipe3.PNG" alt="">
+            <img src="../../../assets/images/pipe3.PNG" alt="">
         </div>
     </div>
     <div class="variable-binding">

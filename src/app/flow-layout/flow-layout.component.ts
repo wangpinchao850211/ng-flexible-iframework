@@ -33,7 +33,7 @@ export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
   storeInitForm: ThemeBasicStore;
   // theme Color
   currentColor = '';
-  @ViewChild('outletBg', { static: false }) outletBg: ElementRef;
+  @ViewChild('outletBg') outletBg: ElementRef;
   // theme layout
   layout = {
     config: {
@@ -41,20 +41,20 @@ export class FlowLayoutComponent implements OnInit, AfterViewInit, OnDestroy {
     }
   }
   // layout width
-  @ViewChild('cotainer', { static: false }) cotainer: ElementRef;
+  @ViewChild('cotainer') cotainer: ElementRef;
   widthKey: string; // 存储width的值
   // navbarTheme
   showMenu: boolean = true;
   showTitle: boolean = true;
-  @ViewChild('aside', { static: false }) aside: ElementRef;
+  @ViewChild('aside') aside: ElementRef;
   collapsedArrow: boolean = true;
   // toolbarTheme
   showHeader: boolean = true;
-  @ViewChild('Vcotainer', { static: false }) Vcotainer: ElementRef;
-  @ViewChild('Hcotainer', { static: false }) Hcotainer: ElementRef;
-  @ViewChild('header', { static: false }) header: ElementRef;
+  @ViewChild('Vcotainer') Vcotainer: ElementRef;
+  @ViewChild('Hcotainer') Hcotainer: ElementRef;
+  @ViewChild('header') header: ElementRef;
   // footerTheme
-  @ViewChild('footer', { static: false }) footer: ElementRef;
+  @ViewChild('footer') footer: ElementRef;
   showFooter: boolean = true;
 
   items: MenuItem[];

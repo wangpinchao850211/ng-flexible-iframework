@@ -633,7 +633,6 @@ export class dynamicMultiKeyValuePairTooltip implements OnInit, OnDestroy {
       }
       .input_con{
           width: 100%;
-          // padding-left: 30px;
       }
       .search_content{
           width: 100% !important;

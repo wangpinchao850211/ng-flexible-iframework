@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { PromptMessageComponent } from './prompt-message.component';
 
@@ -6,7 +6,7 @@ describe('PromptMessageComponent', () => {
   let component: PromptMessageComponent;
   let fixture: ComponentFixture<PromptMessageComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ PromptMessageComponent ]
     })

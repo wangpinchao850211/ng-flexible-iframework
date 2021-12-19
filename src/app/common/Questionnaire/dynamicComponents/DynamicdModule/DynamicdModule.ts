@@ -7,16 +7,12 @@ import { ProgressService } from '../service/progress/progress';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { SafeHtmlPipe } from 'src/app/common/pipes/SafeHtml.pipe';
 import { BrowserModule } from '@angular/platform-browser';
-// import { PipeModuel } from '../../../../../../common/HostModule/HostModule';
-// import { DirectiveModuel } from '../../../directive/clicktoggle.directive';
 
 @NgModule({
   imports: [
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
-    // PipeModuel,
-    // DirectiveModuel,
     BsDatepickerModule.forRoot()
   ],
   declarations: [

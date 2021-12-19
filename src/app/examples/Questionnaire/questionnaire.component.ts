@@ -1,6 +1,6 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { Message } from 'primeng/components/common/api';
-import { MessageService } from 'primeng/components/common/messageservice';
+// import { Message } from 'primeng/components/common/api';
+import { Message, MessageService } from 'primeng/api';
 import { DependencyService } from 'src/app/common/Questionnaire/dynamicComponents/service/dependency/dependency';
 import { DataSource } from 'src/app/common/Questionnaire/DataSource';
 import { CONFIG } from 'src/app/common/Questionnaire/service/config/config';

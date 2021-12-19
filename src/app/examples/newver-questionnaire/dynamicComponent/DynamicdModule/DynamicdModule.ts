@@ -5,8 +5,6 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 import { QuestionService } from '../../question.service';
 import { BrowserModule } from '@angular/platform-browser';
-// import { PipeModuel } from '../../../../../../common/HostModule/HostModule';
-// import { DirectiveModuel } from '../../../directive/clicktoggle.directive';
 
 import { dynamicDate } from '../date/date';
 import { dynamicInput } from '../input/input';
@@ -80,8 +78,6 @@ export const Components = [
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
-    // PipeModuel,
-    // DirectiveModuel,
     BsDatepickerModule.forRoot()
   ],
   declarations: [

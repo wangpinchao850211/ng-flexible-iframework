@@ -18,7 +18,6 @@ import { FlowLayoutComponent } from './flow-layout/flow-layout.component';
 import { RxjsLibraryComponent } from './examples/rxjs-library/rxjs-library.component';
 import { MarkdownComponent } from './examples/markdown/markdown.component';
 import { PrimeNGUiComponent } from './examples/prime-ng-ui/prime-ng-ui.component';
-import { PipeComponentModel } from '../app/examples/pipe/Module';
 import { RouterNavigationModule } from './examples/router-navigation/router-navigation.module';
 import { BooksComponent } from './webKnowledge/books/books.component';
 
@@ -28,11 +27,12 @@ import { AjaxService } from './common/ajax/ajax.service';
 import { HttpErrorHandler } from './common/services/http-error-handler.service';
 import { LoggerService } from './common/services/logger.service';
 import { DialogService } from './common/dynamicSharingComponent/dialog.service';
+import { PipeComponent } from './examples/pipe/pipe';
 
 // External plugins
 import { MarkdownModule, MarkedOptions, MarkedRenderer } from 'ngx-markdown';
 // primeng
-import { AccordionModule } from 'primeng/accordion';     // accordion and accordion tab
+// import { AccordionModule } from 'primeng/accordion';     // accordion and accordion tab
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { FileUploadModule } from 'primeng/fileupload';
@@ -45,7 +45,7 @@ import { GalleriaModule } from 'primeng/galleria';
 import { RatingModule } from 'primeng/rating';
 import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/components/common/messageservice';
+import { MessageService } from 'primeng/api';
 
 // 全局管理
 import { StoreModule } from '@ngrx/store';
@@ -81,19 +81,19 @@ export function markedOptions(): MarkedOptions {
 }
 
 const primeModule = [
-    FileUploadModule,
-    RadioButtonModule,
-    TabMenuModule,
-    TooltipModule,
-    AccordionModule,
-    PanelMenuModule,
-    CheckboxModule,
-    DropdownModule,
-    InputSwitchModule,
-    GalleriaModule,
-    RatingModule,
-    TableModule,
-    ToastModule // (急性加载组件可调用,异步module需单独引入)
+  FileUploadModule,
+  RadioButtonModule,
+  TabMenuModule,
+  TooltipModule,
+  // AccordionModule,
+  PanelMenuModule,
+  CheckboxModule,
+  DropdownModule,
+  InputSwitchModule,
+  GalleriaModule,
+  RatingModule,
+  TableModule,
+  ToastModule // (急性加载组件可调用,异步module需单独引入)
 ];
 
 @NgModule({
@@ -108,6 +108,7 @@ const primeModule = [
     SetPasswordComponent,
     PromptMessageComponent,
     BooksComponent,
+    PipeComponent,
     DeniedComponent,
     CardComponent,
     ListComponent,
@@ -129,8 +130,8 @@ const primeModule = [
     CommonModule,
     CoreModule,
     AppRoutingModule,
-    PipeComponentModel,
     RouterNavigationModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     ...primeModule,
@@ -166,5 +167,5 @@ const primeModule = [
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }
 

@@ -6,6 +6,9 @@ import { FormsModule } from '@angular/forms';
 import { UseraccessService } from './useraccess/useraccess.service';
 import { AuthenticationService } from './authentication/authentication.service';
 import { AuthenticationGuard } from './authentication/authentication.guard';
+import { UtcDatePipe } from '../common/pipes/dateUtc.pipe';
+import { PaAddTaxPipe } from '../common/pipes/addTax.pipe';
+// import { PaCategoryFilterPipe } from '../common/pipes/categoryFilter.pipe';
 
 @NgModule({
   imports: [
@@ -15,6 +18,9 @@ import { AuthenticationGuard } from './authentication/authentication.guard';
     RouterModule,
   ],
   declarations: [
+    UtcDatePipe,
+    PaAddTaxPipe,
+    // PaCategoryFilterPipe 
   ],
   providers: [
     AuthenticationService,
@@ -23,7 +29,10 @@ import { AuthenticationGuard } from './authentication/authentication.guard';
   ],
   exports: [
     FormsModule,
-    CommonModule
+    CommonModule,
+    UtcDatePipe,
+    PaAddTaxPipe,
+    // PaCategoryFilterPipe 
   ],
   entryComponents: [
   ]

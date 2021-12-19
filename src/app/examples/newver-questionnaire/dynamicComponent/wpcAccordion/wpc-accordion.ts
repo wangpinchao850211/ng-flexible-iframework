@@ -2,9 +2,9 @@ import { NgModule, Component, ElementRef, AfterContentInit, OnDestroy, Input, Ou
     ContentChildren, QueryList, ChangeDetectorRef, Inject, forwardRef, TemplateRef, ViewRef, ChangeDetectionStrategy, ViewEncapsulation} from '@angular/core';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 import { CommonModule } from '@angular/common';
-import { BlockableUI } from 'primeng/api';
+import { BlockableUI, Header, PrimeTemplate } from 'primeng/api';
 import { Subscription } from 'rxjs';
-import { SharedModule, Header, PrimeTemplate } from 'primeng/components/common/shared';
+// import { SharedModule, Header, PrimeTemplate } from 'primeng/components/common/shared';
 // import { Header, PrimeTemplate } from '_primeng@8.1.4@primeng/components/common/shared';
 
 let idx: number = 0;

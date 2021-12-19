@@ -18,6 +18,7 @@ import { sharedComponent } from '../sharedComponent/sharedComponent';
 import { ErrorMsgComponent } from '../errorMsgComponent/errorMegComponet';
 import { dynamicLabel } from '../label/label';
 import { InputAutoSearch } from '../inputAutoSearch/inputAutoSearch';
+import { IQuestionComponent } from '../IQuestionComponent';
 
 const components = {
   dynamicDate: dynamicDate,

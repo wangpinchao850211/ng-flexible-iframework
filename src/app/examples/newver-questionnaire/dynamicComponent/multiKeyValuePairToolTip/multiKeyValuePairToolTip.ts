@@ -75,7 +75,7 @@ export class dynamicMultiKeyValuePairTooltip implements OnInit, OnDestroy {
 
   removeDup() {
     let OleOptionResponses = this.Question.OptionResponses;
-    OleOptionResponses.push(OleOptionResponses[OleOptionResponses.length-1]);
+    OleOptionResponses.push(OleOptionResponses[OleOptionResponses.length - 1]);
     const ids = _.map(_.map(OleOptionResponses, 'OptionResponse'), 'OptionId'); // 取出id
     const duplication = Array.from(new Set(ids));                               // 去重id
     if (ids.length !== duplication.length) { // 有重复, 去重
@@ -414,7 +414,6 @@ export class dynamicMultiKeyValuePairTooltip implements OnInit, OnDestroy {
       }
       .input_con{
           width: 100%;
-          // padding-left: 30px;
       }
       .search_content{
           width: 100% !important;

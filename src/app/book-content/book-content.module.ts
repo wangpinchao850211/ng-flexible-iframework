@@ -6,7 +6,7 @@ import { BookContentRoutingModule } from './book-content-routing.module';
 import { BookAuthComponent } from './book-auth/book-auth.component';
 
 import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/components/common/messageservice';
+import { MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [BookDetailComponent, BookAuthComponent],

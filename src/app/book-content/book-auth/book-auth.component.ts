@@ -15,7 +15,7 @@ export class BookAuthComponent implements OnInit, AfterViewChecked {
   readBookId: string;
   readBooklevel: string;
 
-  @ViewChild('viewSlot', {static: false}) viewSlot: ElementRef;
+  @ViewChild('viewSlot') viewSlot: ElementRef;
   loadDialogContent: boolean = false;
   username: string;
   password: string;
