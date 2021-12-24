@@ -3,6 +3,9 @@
         <a class="tab-item-link" (click)="switchtab($event, item)">
             <span class="tab-item-text">{{item.name}}</span>
         </a>
-        <i *ngIf="item.url!=='/flowlayout/rxjs'" (click)="closetab($event, item)" class="tab-item-close pi pi-times"></i>
+        <!-- 1、primeNg 的 tabMenu 有自己的路由跳转，和我的store配合不好
+             2、使用tabView要求内容也有对应的，tabView需要将路由的<route-outlet></route-outlet>放入路由内容区 
+             3、不行这种旧的使用ipams的插槽写法，自己封装比较实用-->
+        <i *ngIf="item.url!=='/flowlayout/rxjs'" (mousedown)="closetab($event, item)" class="tab-item-close pi pi-times"></i>
     </ng-template>
 </p-tabMenu>

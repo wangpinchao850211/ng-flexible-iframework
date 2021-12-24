@@ -37,6 +37,7 @@ import { PanelMenuModule } from 'primeng/panelmenu';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { FileUploadModule } from 'primeng/fileupload';
 import { TabMenuModule } from 'primeng/tabmenu';
+import { TabViewModule } from 'primeng/tabview';
 import { TooltipModule } from 'primeng/tooltip';
 import { CheckboxModule } from 'primeng/checkbox';
 import { DropdownModule } from 'primeng/dropdown';
@@ -84,6 +85,7 @@ const primeModule = [
   FileUploadModule,
   RadioButtonModule,
   TabMenuModule,
+  TabViewModule,
   TooltipModule,
   // AccordionModule,
   PanelMenuModule,

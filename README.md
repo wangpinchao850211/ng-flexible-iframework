@@ -39,3 +39,5 @@
 ### PrimeNG format theme
  if we use the PrimeMG, We can customize a new style theme to suit our project needs and you can also introduce existing theme style in the plug-in, It is a common style that covers the entire project, if you have a special style, you can change it separately in component to override the original theme style, Now we have create name as "newtheme.css" format theme, you just need to introduce it into the styles.scss to use it. 
  For example: @import "../node_modules/primeng/resources/themes/nova-light/newtheme.css";
+
+ ## Project Technical point Introduce
