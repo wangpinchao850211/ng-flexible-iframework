@@ -28,7 +28,7 @@
             "allowedCommonJsDependencies": [
               "moment-timezone",
               "jwt-decode",
-              "@angularClass/hmr"
+              "@angularclass/hmr"
             ],
             "assets": [
               "src/favicon.ico",

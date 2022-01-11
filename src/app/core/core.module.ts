@@ -8,6 +8,7 @@ import { AuthenticationService } from './authentication/authentication.service';
 import { AuthenticationGuard } from './authentication/authentication.guard';
 import { UtcDatePipe } from '../common/pipes/dateUtc.pipe';
 import { PaAddTaxPipe } from '../common/pipes/addTax.pipe';
+import { MultiplePipe } from '../common/pipes/multiple.pipe';
 // import { PaCategoryFilterPipe } from '../common/pipes/categoryFilter.pipe';
 
 @NgModule({
@@ -20,6 +21,7 @@ import { PaAddTaxPipe } from '../common/pipes/addTax.pipe';
   declarations: [
     UtcDatePipe,
     PaAddTaxPipe,
+    MultiplePipe,
     // PaCategoryFilterPipe 
   ],
   providers: [
@@ -32,6 +34,7 @@ import { PaAddTaxPipe } from '../common/pipes/addTax.pipe';
     CommonModule,
     UtcDatePipe,
     PaAddTaxPipe,
+    MultiplePipe,
     // PaCategoryFilterPipe 
   ],
   entryComponents: [

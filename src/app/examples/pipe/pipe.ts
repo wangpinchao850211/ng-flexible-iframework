@@ -57,6 +57,9 @@ export class PipeComponent implements OnInit {
     
 
 `
+    birthday: Date = new Date();
+    pi: number = 3.1415926;
+    size: number = 9;
     public products: Product[];
     public CreateDttm: any = new Date();
     public categoryFilter: any;
