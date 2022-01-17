@@ -1,35 +1,41 @@
 @import '~src/assets/base.scss';
 ::ng-deep {
     //  tab style
-    .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem a {
+    .p-tabmenu .p-tabmenu-nav .p-tabmenuitem a {
         float: none;
         display: inline-block;
         padding: 0;
     }
-    body .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem .tab-item-close {
+    body .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .tab-item-close {
         font-size: 14px!important;
         margin-left: 5px;
+        position: relative;
+        top: -2px;
     }
     // tab active
-    body .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem.ui-state-active {
+    body .p-tabmenu .p-tabmenu-nav .p-tabmenuitem.ui-state-active {
         background-color: #409eff;
         border: 1px solid #409eff;
     }
-    body .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem.ui-state-active .tab-item-link{
+    body .p-tabmenu .p-tabmenu-nav .p-tabmenuitem.ui-state-active .tab-item-link{
         color: white;
     }
     body .pi {
         font-size: 18px!important;
         margin-left: 5px;
     }
-    body .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem.ui-state-active .tab-item-close{
+    body .p-tabmenu .p-tabmenu-nav .p-tabmenuitem.ui-state-active .tab-item-close{
         color: white;
         font-size: 14px!important;
         margin-left: 5px;
     }
 
     // tab ul
-    body .ui-tabmenu .ui-tabmenu-nav {
+    body .p-tabmenu {
+        height: 100%;
+    }
+    body .p-tabmenu .p-tabmenu-nav {
+        box-sizing: border-box;
         max-width: 99%;
         height: 100%;
         margin: 0 auto;
@@ -39,9 +45,12 @@
         @include mixin-min-scroll;
     }
     // tab li
-    .ui-tabmenu .ui-tabmenu-nav .ui-tabmenuitem {
+    .p-tabmenu .p-tabmenu-nav .p-tabmenuitem {
         float: none;
         display: inline-block;
+    }
+    .p-tabmenu .p-tabmenu-nav .p-tabmenuitem .p-menuitem-link {
+        padding: 10px 1rem;
     }
 }
 

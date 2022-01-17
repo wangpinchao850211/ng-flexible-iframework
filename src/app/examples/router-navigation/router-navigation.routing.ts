@@ -14,8 +14,10 @@ const routes: Routes = [
     Route.withShell([
         { path: '', redirectTo: '/RouterNavigationSample', pathMatch: 'full' },
         {
-            path: 'RouterNavigationSample', component: RouterNavigationComponent,
-            canDeactivate: [CanDeactivateGuard], data: { title: 'RouterNavigationSampleTest' }
+            path: 'RouterNavigationSample',
+            component: RouterNavigationComponent,
+            canDeactivate: [CanDeactivateGuard],
+            data: { title: 'RouterNavigationSampleTest' }
         }
     ])
 ];

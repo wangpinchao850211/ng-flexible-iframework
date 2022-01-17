@@ -30,7 +30,7 @@ export class ConfirmService {
 /**
  * 实际dialog封装原则：
  * 参数一：业务dialog： DialogService OpenDialog方法可以接受外部传入业务dialog(业务dialog会调用通用组件WpcDialogComponent，这个通用组件是一个插槽组件，将业务dialog内容插入显示内容区，这样无需将业务数据传递给通用组件)
- * 参数二：dialogConfig设置到 业务dialog组件上，但是position是设置在查入层位置
+ * 参数二：dialogConfig设置到 业务dialog组件上，但是position是设置在插入层位置
  * 
  * 此项目自己封装dialog原则：没有将通用dialog的封装成完全插槽组件
  * 
@@ -40,7 +40,7 @@ export class ConfirmService {
  * 
  * 参数四：overLayParent可传递，是设置遮罩层的参照父级（通过传递调用处定义#ref模板引用变量或者是id标识，获取到插入节点）
  * 
- * */ 
+ * */
 
 @Injectable()
 export class DialogService {
@@ -48,7 +48,7 @@ export class DialogService {
   constructor(
     private domService: DomService,
     @Inject(DOCUMENT) private document: Document
-  ) {}
+  ) { }
 
   async OpenDialog(config: DiologConfig): Promise<any> {
     return new Promise<any>((resolve, reject) => {
@@ -70,7 +70,7 @@ export class DialogService {
           });
         }
       }
-      
+
       // console.log(btns);
       config.inputs['buttons'] = [];
       config.inputs['buttons'] = btns;

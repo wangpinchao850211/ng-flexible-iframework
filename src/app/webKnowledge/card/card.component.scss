@@ -27,11 +27,14 @@
             height: 100%;
             font-weight: 600;
             ::ng-deep {
-                .ui-rating {
+                .p-rating {
                     float: right;
-                    a {
-                        color: #262022;
-                    }
+                    // a {
+                    //     color: #0f0ed0;
+                    // }
+                }
+                .p-rating .p-rating-icon.pi-star-fill {
+                    color: #0f0ed0;
                 }
             }
         }
